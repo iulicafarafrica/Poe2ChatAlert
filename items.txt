@@ -1,0 +1,3592 @@
+accessory|Crimson Amulet|0
+accessory|Gold Amulet|0
+accessory|Pearlescent Amulet|0
+accessory|Azure Amulet|0
+accessory|Amber Amulet|0
+accessory|Jade Amulet|0
+accessory|Lapis Amulet|0
+accessory|Lunar Amulet|0
+accessory|Bloodstone Amulet|0
+accessory|Stellar Amulet|0
+accessory|Solar Amulet|0
+accessory|Lament Amulet|0
+accessory|Portent Amulet|0
+accessory|Absent Amulet|0
+accessory|Corona Amulet|0
+accessory|Twisted Amulet|0
+accessory|Distorted Amulet|0
+accessory|Dusk Amulet|0
+accessory|Gloam Amulet|0
+accessory|Penumbra Amulet|0
+accessory|Tenebrous Amulet|0
+accessory|Veridical Chain|0
+accessory|Runemastered Veridical Chain|0
+accessory|Rawhide Belt|0
+accessory|Utility Belt|0
+accessory|Fine Belt|0
+accessory|Linen Belt|0
+accessory|Wide Belt|0
+accessory|Long Belt|0
+accessory|Plate Belt|0
+accessory|Ornate Belt|0
+accessory|Mail Belt|0
+accessory|Double Belt|0
+accessory|Heavy Belt|0
+accessory|Runemastered Heavy Belt|0
+accessory|Stalking Belt|0
+accessory|Invoking Belt|0
+accessory|Sinew Belt|0
+accessory|Forking Belt|0
+accessory|Iron Ring|0
+accessory|Gold Ring|0
+accessory|Unset Ring|0
+accessory|Abyssal Signet|0
+accessory|Two-Stone Ring|0
+accessory|Lazuli Ring|0
+accessory|Ruby Ring|0
+accessory|Sapphire Ring|0
+accessory|Topaz Ring|0
+accessory|Amethyst Ring|0
+accessory|Emerald Ring|0
+accessory|Pearl Ring|0
+accessory|Prismatic Ring|0
+accessory|Biostatic Ring|0
+accessory|Vitalic Ring|0
+accessory|Mnemonic Ring|0
+accessory|Kinetic Ring|0
+accessory|Oneiric Ring|0
+accessory|Grasping Ring|0
+accessory|Ring|0
+accessory|Breach Ring|0
+accessory|Refined Breach Ring|0
+accessory|Dusk Ring|0
+accessory|Gloam Ring|0
+accessory|Penumbra Ring|0
+accessory|Tenebrous Ring|0
+accessory|Andvarius|1
+accessory|Astramentis|1
+accessory|Beacon of Azis|1
+accessory|Berek's Grip|1
+accessory|Berek's Pass|1
+accessory|Berek's Respite|1
+accessory|Bijouborne|1
+accessory|Birthright Buckle|1
+accessory|Blackflame|1
+accessory|Blackheart|1
+accessory|Blistering Bond|1
+accessory|Byrnabas|1
+accessory|Bursting Decay|1
+accessory|Call of the Brotherhood|1
+accessory|Carnage Heart|1
+accessory|Cat O' Nine Tails|1
+accessory|Choir of the Storm|1
+accessory|Coward's Legacy|1
+accessory|Cracklecreep|1
+accessory|Darkness Enthroned|1
+accessory|Death Rush|1
+accessory|Defiance of Destiny|1
+accessory|Doedre's Damning|1
+accessory|Dream Fragments|1
+accessory|Eventide Petals|1
+accessory|Evergrasping Ring|1
+accessory|Eye of Chayula|1
+accessory|Fireflower|1
+accessory|Fixation of Yix|1
+accessory|Gifts from Above|1
+accessory|Glowswarm|1
+accessory|Goregirdle|1
+accessory|Grip of Kulemak|1
+accessory|Headhunter|1
+accessory|Heartbound Loop|1
+accessory|Hinekora's Sight|1
+accessory|Icefang Orbit|1
+accessory|Idol of Uldurn|1
+accessory|Igniferis|1
+accessory|Immaculate Adherence|1
+accessory|Infernoclasp|1
+accessory|Ingenuity|1
+accessory|Kalandra's Touch|1
+accessory|Keelhaul|1
+accessory|Levinstone|1
+accessory|Ligurium Talisman|1
+accessory|Mageblood|1
+accessory|Meginord's Girdle|1
+accessory|Midnight Braid|1
+accessory|Ming's Heart|1
+accessory|Original Sin|1
+accessory|Perandus Seal|1
+accessory|Polcirkeln|1
+accessory|Prized Pain|1
+accessory|Revered Resin|1
+accessory|Rondel of Fragility|1
+accessory|Ryslatha's Coil|1
+accessory|Seed of Cataclysm|1
+accessory|Eshtera's Path|1
+accessory|Safrin's Resolve|1
+accessory|Zaida's Longevity|1
+accessory|Serpent's Egg|1
+accessory|Shavronne's Satchel|1
+accessory|Snakepit|1
+accessory|Soul Tether|1
+accessory|Stone of Lazhwar|1
+accessory|Strugglescream|1
+accessory|Surefooted Sigil|1
+accessory|The Anvil|1
+accessory|The Burrower|1
+accessory|The Everlasting Gaze|1
+accessory|The Gnashing Sash|1
+accessory|The Pandemonius|1
+accessory|The Taming|1
+accessory|Thief's Torment|1
+accessory|Umbilicus Immortalis|1
+accessory|Ungil's Harmony|1
+accessory|Veilpiercer|1
+accessory|Venopuncture|1
+accessory|Ventor's Gamble|1
+accessory|Vigilant View|1
+accessory|Waistgate|1
+accessory|Whisper of the Brotherhood|1
+accessory|Xoph's Blood|1
+accessory|Yoke of Suffering|1
+accessory|Zerphi's Genesis|1
+armour|Leather Vest|0
+armour|Smuggler Coat|0
+armour|Corsair Coat|0
+armour|Runeforged Corsair Coat|0
+armour|Runeforged Smuggler Coat|0
+armour|Runemastered Smuggler Coat|0
+armour|Strider Vest|0
+armour|Runemastered Strider Vest|0
+armour|Exquisite Vest|0
+armour|Runemastered Exquisite Vest|0
+armour|Armoured Vest|0
+armour|Runemastered Armoured Vest|0
+armour|Runeforged Leather Vest|0
+armour|Runemastered Leather Vest|0
+armour|Quilted Vest|0
+armour|Patchwork Vest|0
+armour|Runeforged Quilted Vest|0
+armour|Runemastered Quilted Vest|0
+armour|Pathfinder Coat|0
+armour|Hunting Coat|0
+armour|Swiftstalker Coat|0
+armour|Runeforged Swiftstalker Coat|0
+armour|Runeforged Pathfinder Coat|0
+armour|Runemastered Pathfinder Coat|0
+armour|Shrouded Vest|0
+armour|Runeforged Shrouded Vest|0
+armour|Runemastered Shrouded Vest|0
+armour|Rhoahide Coat|0
+armour|Riding Coat|0
+armour|Runeforged Rhoahide Coat|0
+armour|Runemastered Rhoahide Coat|0
+armour|Studded Vest|0
+armour|Layered Vest|0
+armour|Runeforged Layered Vest|0
+armour|Slipstrike Vest|0
+armour|Runeforged Slipstrike Vest|0
+armour|Runeforged Studded Vest|0
+armour|Runemastered Studded Vest|0
+armour|Scout's Vest|0
+armour|Runner Vest|0
+armour|Runeforged Runner Vest|0
+armour|Runeforged Scout's Vest|0
+armour|Runemastered Scout's Vest|0
+armour|Serpentscale Coat|0
+armour|Lizardscale Coat|0
+armour|Runeforged Lizardscale Coat|0
+armour|Wyrmscale Coat|0
+armour|Runeforged Wyrmscale Coat|0
+armour|Runeforged Serpentscale Coat|0
+armour|Runemastered Serpentscale Coat|0
+armour|Corsair Vest|0
+armour|Runeforged Corsair Vest|0
+armour|Hermit Garb|0
+armour|Assassin Garb|0
+armour|Runemastered Assassin Garb|0
+armour|Ascetic Garb|0
+armour|Runeforged Hermit Garb|0
+armour|Runemastered Hermit Garb|0
+armour|Waxed Jacket|0
+armour|Oiled Jacket|0
+armour|Sleek Jacket|0
+armour|Runeforged Sleek Jacket|0
+armour|Runeforged Waxed Jacket|0
+armour|Runemastered Waxed Jacket|0
+armour|Marabout Garb|0
+armour|Evangelist Garb|0
+armour|Runeforged Marabout Garb|0
+armour|Runemastered Marabout Garb|0
+armour|Wayfarer Jacket|0
+armour|Itinerant Jacket|0
+armour|Runeforged Itinerant Jacket|0
+armour|Rambler Jacket|0
+armour|Runeforged Rambler Jacket|0
+armour|Runeforged Wayfarer Jacket|0
+armour|Runemastered Wayfarer Jacket|0
+armour|Anchorite Garb|0
+armour|Hatungo Garb|0
+armour|Runeforged Hatungo Garb|0
+armour|Runeforged Anchorite Garb|0
+armour|Runemastered Anchorite Garb|0
+armour|Scalper's Jacket|0
+armour|Hawker's Jacket|0
+armour|Runeforged Hawker's Jacket|0
+armour|Falconer's Jacket|0
+armour|Runeforged Falconer's Jacket|0
+armour|Runeforged Scalper's Jacket|0
+armour|Runemastered Scalper's Jacket|0
+armour|Scoundrel Jacket|0
+armour|Runeforged Scoundrel Jacket|0
+armour|Austere Garb|0
+armour|Runeforged Austere Garb|0
+armour|Runeforged Ascetic Garb|0
+armour|Primal Markings|0
+armour|Runemastered Primal Markings|0
+armour|Tattered Robe|0
+armour|Mystic Raiment|0
+armour|Feathered Raiment|0
+armour|Runeforged Feathered Raiment|0
+armour|Runeforged Mystic Raiment|0
+armour|Plated Raiment|0
+armour|Runemastered Plated Raiment|0
+armour|Havoc Raiment|0
+armour|Runemastered Havoc Raiment|0
+armour|Enlightened Robe|0
+armour|Runemastered Enlightened Robe|0
+armour|Runeforged Tattered Robe|0
+armour|Runemastered Tattered Robe|0
+armour|Feathered Robe|0
+armour|Avian Robe|0
+armour|Runeforged Feathered Robe|0
+armour|Runemastered Feathered Robe|0
+armour|Hexer's Robe|0
+armour|Cursespeaker's Robe|0
+armour|Vile Robe|0
+armour|Runeforged Vile Robe|0
+armour|Runeforged Hexer's Robe|0
+armour|Runemastered Hexer's Robe|0
+armour|Bone Raiment|0
+armour|Runeforged Bone Raiment|0
+armour|Runemastered Bone Raiment|0
+armour|Silk Robe|0
+armour|Luxurious Robe|0
+armour|Runeforged Silk Robe|0
+armour|Runemastered Silk Robe|0
+armour|Keth Raiment|0
+armour|River Raiment|0
+armour|Runeforged River Raiment|0
+armour|Flowing Raiment|0
+armour|Runeforged Flowing Raiment|0
+armour|Runeforged Keth Raiment|0
+armour|Runemastered Keth Raiment|0
+armour|Votive Raiment|0
+armour|Adherent's Raiment|0
+armour|Runeforged Adherent's Raiment|0
+armour|Runeforged Votive Raiment|0
+armour|Runemastered Votive Raiment|0
+armour|Altar Robe|0
+armour|Ceremonial Robe|0
+armour|Runeforged Ceremonial Robe|0
+armour|Sacramental Robe|0
+armour|Runeforged Sacramental Robe|0
+armour|Runeforged Altar Robe|0
+armour|Runemastered Altar Robe|0
+armour|Elementalist Robe|0
+armour|Runeforged Elementalist Robe|0
+armour|Runemastered Elementalist Robe|0
+armour|Rusted Cuirass|0
+armour|Chieftain Cuirass|0
+armour|Warlord Cuirass|0
+armour|Runeforged Warlord Cuirass|0
+armour|Runeforged Chieftain Cuirass|0
+armour|Champion Cuirass|0
+armour|Runeforged Champion Cuirass|0
+armour|Conqueror Plate|0
+armour|Runeforged Conqueror Plate|0
+armour|Runeforged Rusted Cuirass|0
+armour|Runemastered Rusted Cuirass|0
+armour|Fur Plate|0
+armour|Barbarian Plate|0
+armour|Runeforged Fur Plate|0
+armour|Iron Cuirass|0
+armour|Rugged Cuirass|0
+armour|Soldier Cuirass|0
+armour|Runeforged Soldier Cuirass|0
+armour|Runeforged Iron Cuirass|0
+armour|Runemastered Iron Cuirass|0
+armour|Raider Plate|0
+armour|Runeforged Raider Plate|0
+armour|Maraketh Cuirass|0
+armour|Sandsworn Cuirass|0
+armour|Runeforged Maraketh Cuirass|0
+armour|Runemastered Maraketh Cuirass|0
+armour|Steel Plate|0
+armour|Elegant Plate|0
+armour|Runeforged Elegant Plate|0
+armour|Ornate Plate|0
+armour|Runeforged Ornate Plate|0
+armour|Runeforged Steel Plate|0
+armour|Runemastered Steel Plate|0
+armour|Full Plate|0
+armour|Heavy Plate|0
+armour|Runeforged Heavy Plate|0
+armour|Runeforged Full Plate|0
+armour|Runemastered Full Plate|0
+armour|Vaal Cuirass|0
+armour|Stone Cuirass|0
+armour|Runeforged Stone Cuirass|0
+armour|Utzaal Cuirass|0
+armour|Runeforged Utzaal Cuirass|0
+armour|Runeforged Vaal Cuirass|0
+armour|Runemastered Vaal Cuirass|0
+armour|Juggernaut Plate|0
+armour|Runeforged Juggernaut Plate|0
+armour|Chain Mail|0
+armour|Heroic Armour|0
+armour|Runemastered Heroic Armour|0
+armour|Ring Mail|0
+armour|Runeforged Chain Mail|0
+armour|Runemastered Chain Mail|0
+armour|Rogue Armour|0
+armour|Scoundrel Armour|0
+armour|Dastard Armour|0
+armour|Runeforged Dastard Armour|0
+armour|Runeforged Rogue Armour|0
+armour|Runemastered Rogue Armour|0
+armour|Vagabond Armour|0
+armour|Wanderer Armour|0
+armour|Runeforged Vagabond Armour|0
+armour|Runemastered Vagabond Armour|0
+armour|Cloaked Mail|0
+armour|Shrouded Mail|0
+armour|Runeforged Shrouded Mail|0
+armour|Mantled Mail|0
+armour|Runeforged Mantled Mail|0
+armour|Runeforged Cloaked Mail|0
+armour|Runemastered Cloaked Mail|0
+armour|Explorer Armour|0
+armour|Trailblazer Armour|0
+armour|Runeforged Trailblazer Armour|0
+armour|Runeforged Explorer Armour|0
+armour|Runemastered Explorer Armour|0
+armour|Scale Mail|0
+armour|Golden Mail|0
+armour|Runeforged Golden Mail|0
+armour|Death Mail|0
+armour|Runeforged Death Mail|0
+armour|Runeforged Scale Mail|0
+armour|Runemastered Scale Mail|0
+armour|Knight Armour|0
+armour|Runeforged Knight Armour|0
+armour|Runemastered Knight Armour|0
+armour|Ancestral Mail|0
+armour|Thane Mail|0
+armour|Runeforged Thane Mail|0
+armour|Runeforged Ancestral Mail|0
+armour|Runemastered Ancestral Mail|0
+armour|Lamellar Mail|0
+armour|Grand Regalia|0
+armour|Runemastered Grand Regalia|0
+armour|Sacrificial Regalia|0
+armour|Runeforged Sacrificial Regalia|0
+armour|Runemastered Sacrificial Regalia|0
+armour|Grasping Mail|0
+armour|Runeforged Grasping Mail|0
+armour|Runemastered Grasping Mail|0
+armour|Runefather's Grasping Mail|0
+armour|Garment|0
+armour|Runeforged Garment|0
+armour|Pilgrim Vestments|0
+armour|Revered Vestments|0
+armour|Runemastered Revered Vestments|0
+armour|Corvus Mantle|0
+armour|Runemastered Corvus Mantle|0
+armour|Templar Vestments|0
+armour|Runeforged Pilgrim Vestments|0
+armour|Runemastered Pilgrim Vestments|0
+armour|Pelt Mantle|0
+armour|Bearskin Mantle|0
+armour|Wolfskin Mantle|0
+armour|Runeforged Wolfskin Mantle|0
+armour|Runeforged Pelt Mantle|0
+armour|Mail Vestments|0
+armour|Chain Vestments|0
+armour|Runeforged Mail Vestments|0
+armour|Runemastered Mail Vestments|0
+armour|Shaman Mantle|0
+armour|Occultist Mantle|0
+armour|Runeforged Occultist Mantle|0
+armour|Conjurer Mantle|0
+armour|Runeforged Conjurer Mantle|0
+armour|Runeforged Shaman Mantle|0
+armour|Runemastered Shaman Mantle|0
+armour|Ironclad Vestments|0
+armour|Plated Vestments|0
+armour|Runeforged Plated Vestments|0
+armour|Runeforged Ironclad Vestments|0
+armour|Runemastered Ironclad Vestments|0
+armour|Sacrificial Mantle|0
+armour|Heartcarver Mantle|0
+armour|Runeforged Heartcarver Mantle|0
+armour|Death Mantle|0
+armour|Runeforged Death Mantle|0
+armour|Runeforged Sacrificial Mantle|0
+armour|Runemastered Sacrificial Mantle|0
+armour|Cleric Vestments|0
+armour|Runeforged Cleric Vestments|0
+armour|Runemastered Cleric Vestments|0
+armour|Tideseer Mantle|0
+armour|Seastorm Mantle|0
+armour|Runeforged Seastorm Mantle|0
+armour|Runeforged Tideseer Mantle|0
+armour|Runemastered Tideseer Mantle|0
+armour|Gilded Vestments|0
+armour|Runemastered Gilded Vestments|0
+armour|Ornate Ringmail|0
+armour|Runemastered Ornate Ringmail|0
+armour|Ancient Mail|0
+armour|Runemastered Ancient Mail|0
+armour|Rawhide Boots|0
+armour|Runeforged Rawhide Boots|0
+armour|Laced Boots|0
+armour|Bound Boots|0
+armour|Cinched Boots|0
+armour|Runeforged Cinched Boots|0
+armour|Runemastered Cinched Boots|0
+armour|Runeforged Laced Boots|0
+armour|Runemastered Laced Boots|0
+armour|Embossed Boots|0
+armour|Sleek Boots|0
+armour|Runeforged Embossed Boots|0
+armour|Runemastered Embossed Boots|0
+armour|Steeltoe Boots|0
+armour|Studded Boots|0
+armour|Runeforged Studded Boots|0
+armour|Cavalry Boots|0
+armour|Runeforged Cavalry Boots|0
+armour|Runeforged Steeltoe Boots|0
+armour|Lizardscale Boots|0
+armour|Serpentscale Boots|0
+armour|Runeforged Serpentscale Boots|0
+armour|Dragonscale Boots|0
+armour|Runeforged Dragonscale Boots|0
+armour|Runeforged Lizardscale Boots|0
+armour|Runemastered Lizardscale Boots|0
+armour|Flared Boots|0
+armour|Drakeskin Boots|0
+armour|Runeforged Drakeskin Boots|0
+armour|Runeforged Flared Boots|0
+armour|Frayed Shoes|0
+armour|Wayfarer Shoes|0
+armour|Wanderer Shoes|0
+armour|Runeforged Wanderer Shoes|0
+armour|Runeforged Frayed Shoes|0
+armour|Threaded Shoes|0
+armour|Silverbuckled Shoes|0
+armour|Charmed Shoes|0
+armour|Runeforged Charmed Shoes|0
+armour|Runeforged Threaded Shoes|0
+armour|Runemastered Threaded Shoes|0
+armour|Hunting Shoes|0
+armour|Treerunner Shoes|0
+armour|Runeforged Treerunner Shoes|0
+armour|Quickslip Shoes|0
+armour|Runeforged Quickslip Shoes|0
+armour|Runeforged Hunting Shoes|0
+armour|Runemastered Hunting Shoes|0
+armour|Steelpoint Shoes|0
+armour|Daggerfoot Shoes|0
+armour|Runeforged Daggerfoot Shoes|0
+armour|Runeforged Steelpoint Shoes|0
+armour|Velour Shoes|0
+armour|Runemastered Velour Shoes|0
+armour|Straw Sandals|0
+armour|Runeforged Straw Sandals|0
+armour|Runemastered Straw Sandals|0
+armour|Wrapped Sandals|0
+armour|Laced Sandals|0
+armour|Bound Sandals|0
+armour|Runeforged Bound Sandals|0
+armour|Runeforged Wrapped Sandals|0
+armour|Runemastered Wrapped Sandals|0
+armour|Lattice Sandals|0
+armour|Bangled Sandals|0
+armour|Runeforged Lattice Sandals|0
+armour|Runemastered Lattice Sandals|0
+armour|Silk Slippers|0
+armour|Elegant Slippers|0
+armour|Runeforged Elegant Slippers|0
+armour|Luxurious Slippers|0
+armour|Runeforged Luxurious Slippers|0
+armour|Runeforged Silk Slippers|0
+armour|Runemastered Silk Slippers|0
+armour|Feathered Sandals|0
+armour|Dunerunner Sandals|0
+armour|Runeforged Dunerunner Sandals|0
+armour|Sandsworn Sandals|0
+armour|Runeforged Sandsworn Sandals|0
+armour|Runeforged Feathered Sandals|0
+armour|Runemastered Feathered Sandals|0
+armour|Flax Sandals|0
+armour|Sekhema Sandals|0
+armour|Runeforged Sekhema Sandals|0
+armour|Runeforged Flax Sandals|0
+armour|Rough Greaves|0
+armour|Runeforged Rough Greaves|0
+armour|Runemastered Rough Greaves|0
+armour|Iron Greaves|0
+armour|Plated Greaves|0
+armour|Bulwark Greaves|0
+armour|Runeforged Bulwark Greaves|0
+armour|Runeforged Iron Greaves|0
+armour|Runemastered Iron Greaves|0
+armour|Bronze Greaves|0
+armour|Lionheart Greaves|0
+armour|Runeforged Bronze Greaves|0
+armour|Runemastered Bronze Greaves|0
+armour|Trimmed Greaves|0
+armour|Elegant Greaves|0
+armour|Runeforged Elegant Greaves|0
+armour|Ornate Greaves|0
+armour|Runeforged Ornate Greaves|0
+armour|Runeforged Trimmed Greaves|0
+armour|Runemastered Trimmed Greaves|0
+armour|Stone Greaves|0
+armour|Carved Greaves|0
+armour|Runeforged Carved Greaves|0
+armour|Vaal Greaves|0
+armour|Runeforged Vaal Greaves|0
+armour|Runeforged Stone Greaves|0
+armour|Runemastered Stone Greaves|0
+armour|Reefsteel Greaves|0
+armour|Tasalian Greaves|0
+armour|Runeforged Tasalian Greaves|0
+armour|Runeforged Reefsteel Greaves|0
+armour|Mail Sabatons|0
+armour|Soldiering Sabatons|0
+armour|Veteran Sabatons|0
+armour|Runeforged Veteran Sabatons|0
+armour|Runeforged Mail Sabatons|0
+armour|Runemastered Mail Sabatons|0
+armour|Braced Sabatons|0
+armour|Goldwork Sabatons|0
+armour|Noble Sabatons|0
+armour|Runeforged Noble Sabatons|0
+armour|Runeforged Braced Sabatons|0
+armour|Runemastered Braced Sabatons|0
+armour|Stacked Sabatons|0
+armour|Bastion Sabatons|0
+armour|Runeforged Bastion Sabatons|0
+armour|Fortress Sabatons|0
+armour|Runeforged Fortress Sabatons|0
+armour|Runeforged Stacked Sabatons|0
+armour|Runemastered Stacked Sabatons|0
+armour|Covered Sabatons|0
+armour|Blacksteel Sabatons|0
+armour|Runeforged Blacksteel Sabatons|0
+armour|Runeforged Covered Sabatons|0
+armour|Runemastered Covered Sabatons|0
+armour|Grand Cuisses|0
+armour|Runemastered Grand Cuisses|0
+armour|Padded Leggings|0
+armour|Adherent Leggings|0
+armour|Faithful Leggings|0
+armour|Runeforged Faithful Leggings|0
+armour|Runeforged Padded Leggings|0
+armour|Secured Leggings|0
+armour|Bound Leggings|0
+armour|Apostle Leggings|0
+armour|Runeforged Apostle Leggings|0
+armour|Runeforged Secured Leggings|0
+armour|Runemastered Secured Leggings|0
+armour|Pelt Leggings|0
+armour|Shamanistic Leggings|0
+armour|Runeforged Shamanistic Leggings|0
+armour|Warlock Leggings|0
+armour|Runeforged Warlock Leggings|0
+armour|Runeforged Pelt Leggings|0
+armour|Weaver Leggings|0
+armour|Cryptic Leggings|0
+armour|Runeforged Cryptic Leggings|0
+armour|Runeforged Weaver Leggings|0
+armour|Ancient Leggings|0
+armour|Runemastered Ancient Leggings|0
+armour|Twig Focus|0
+armour|Whorl Focus|0
+armour|Tasalian Focus|0
+armour|Runeforged Tasalian Focus|0
+armour|Runeforged Whorl Focus|0
+armour|Runeforged Twig Focus|0
+armour|Runemastered Twig Focus|0
+armour|Woven Focus|0
+armour|Wreath Focus|0
+armour|Runeforged Woven Focus|0
+armour|Runemastered Woven Focus|0
+armour|Antler Focus|0
+armour|Staghorn Focus|0
+armour|Druidic Focus|0
+armour|Runeforged Druidic Focus|0
+armour|Runeforged Antler Focus|0
+armour|Runemastered Antler Focus|0
+armour|Engraved Focus|0
+armour|Runeforged Engraved Focus|0
+armour|Runemastered Engraved Focus|0
+armour|Tonal Focus|0
+armour|Jingling Focus|0
+armour|Runeforged Tonal Focus|0
+armour|Runemastered Tonal Focus|0
+armour|Crystal Focus|0
+armour|Arrayed Focus|0
+armour|Runeforged Arrayed Focus|0
+armour|Leyline Focus|0
+armour|Runeforged Leyline Focus|0
+armour|Runeforged Crystal Focus|0
+armour|Runemastered Crystal Focus|0
+armour|Voodoo Focus|0
+armour|Cultist Focus|0
+armour|Runeforged Cultist Focus|0
+armour|Runeforged Voodoo Focus|0
+armour|Runemastered Voodoo Focus|0
+armour|Plumed Focus|0
+armour|Hallowed Focus|0
+armour|Runeforged Hallowed Focus|0
+armour|Sacred Focus|0
+armour|Runeforged Sacred Focus|0
+armour|Runeforged Plumed Focus|0
+armour|Runemastered Plumed Focus|0
+armour|Runed Focus|0
+armour|Runeforged Runed Focus|0
+armour|Suede Bracers|0
+armour|Runeforged Suede Bracers|0
+armour|Runemastered Suede Bracers|0
+armour|Firm Bracers|0
+armour|Hunting Bracers|0
+armour|Stalking Bracers|0
+armour|Runeforged Stalking Bracers|0
+armour|Runeforged Firm Bracers|0
+armour|Runemastered Firm Bracers|0
+armour|Bound Bracers|0
+armour|Swift Bracers|0
+armour|Runeforged Bound Bracers|0
+armour|Sectioned Bracers|0
+armour|Refined Bracers|0
+armour|Runeforged Refined Bracers|0
+armour|Grand Bracers|0
+armour|Runeforged Grand Bracers|0
+armour|Runeforged Sectioned Bracers|0
+armour|Runemastered Sectioned Bracers|0
+armour|Spined Bracers|0
+armour|Spiked Bracers|0
+armour|Runeforged Spiked Bracers|0
+armour|Barbed Bracers|0
+armour|Runeforged Barbed Bracers|0
+armour|Runeforged Spined Bracers|0
+armour|Runemastered Spined Bracers|0
+armour|Fine Bracers|0
+armour|Polished Bracers|0
+armour|Runeforged Polished Bracers|0
+armour|Runeforged Fine Bracers|0
+armour|Runemastered Fine Bracers|0
+armour|Engraved Bracers|0
+armour|Gauze Wraps|0
+armour|Bandage Wraps|0
+armour|War Wraps|0
+armour|Runeforged War Wraps|0
+armour|Runeforged Gauze Wraps|0
+armour|Runemastered Gauze Wraps|0
+armour|Linen Wraps|0
+armour|Cambric Wraps|0
+armour|Elegant Wraps|0
+armour|Runeforged Elegant Wraps|0
+armour|Runeforged Linen Wraps|0
+armour|Runemastered Linen Wraps|0
+armour|Spiral Wraps|0
+armour|Adorned Wraps|0
+armour|Runeforged Adorned Wraps|0
+armour|Vaal Wraps|0
+armour|Runeforged Vaal Wraps|0
+armour|Runeforged Spiral Wraps|0
+armour|Runemastered Spiral Wraps|0
+armour|Buckled Wraps|0
+armour|Secured Wraps|0
+armour|Runeforged Secured Wraps|0
+armour|Runeforged Buckled Wraps|0
+armour|Furtive Wraps|0
+armour|Runemastered Furtive Wraps|0
+armour|Utility Wraps|0
+armour|Runemastered Utility Wraps|0
+armour|Torn Gloves|0
+armour|Runeforged Torn Gloves|0
+armour|Runemastered Torn Gloves|0
+armour|Sombre Gloves|0
+armour|Ominous Gloves|0
+armour|Grim Gloves|0
+armour|Runeforged Grim Gloves|0
+armour|Runeforged Sombre Gloves|0
+armour|Runemastered Sombre Gloves|0
+armour|Stitched Gloves|0
+armour|Embellished Gloves|0
+armour|Runeforged Stitched Gloves|0
+armour|Runemastered Stitched Gloves|0
+armour|Jewelled Gloves|0
+armour|Baroque Gloves|0
+armour|Runeforged Baroque Gloves|0
+armour|Opulent Gloves|0
+armour|Runeforged Opulent Gloves|0
+armour|Runeforged Jewelled Gloves|0
+armour|Runemastered Jewelled Gloves|0
+armour|Intricate Gloves|0
+armour|Gold Gloves|0
+armour|Runeforged Gold Gloves|0
+armour|Vaal Gloves|0
+armour|Runeforged Vaal Gloves|0
+armour|Runeforged Intricate Gloves|0
+armour|Runemastered Intricate Gloves|0
+armour|Pauascale Gloves|0
+armour|Sirenscale Gloves|0
+armour|Runeforged Sirenscale Gloves|0
+armour|Runeforged Pauascale Gloves|0
+armour|Runemastered Pauascale Gloves|0
+armour|Embroidered Gloves|0
+armour|Runemastered Embroidered Gloves|0
+armour|Stocky Mitts|0
+armour|Runeforged Stocky Mitts|0
+armour|Runemastered Stocky Mitts|0
+armour|Riveted Mitts|0
+armour|Plated Mitts|0
+armour|Knightly Mitts|0
+armour|Runeforged Knightly Mitts|0
+armour|Runeforged Riveted Mitts|0
+armour|Runemastered Riveted Mitts|0
+armour|Tempered Mitts|0
+armour|Elegant Mitts|0
+armour|Runeforged Tempered Mitts|0
+armour|Runemastered Tempered Mitts|0
+armour|Bolstered Mitts|0
+armour|Ancient Mitts|0
+armour|Runeforged Ancient Mitts|0
+armour|Ornate Mitts|0
+armour|Runeforged Ornate Mitts|0
+armour|Runeforged Bolstered Mitts|0
+armour|Runemastered Bolstered Mitts|0
+armour|Moulded Mitts|0
+armour|Feathered Mitts|0
+armour|Runeforged Feathered Mitts|0
+armour|Vaal Mitts|0
+armour|Runeforged Vaal Mitts|0
+armour|Runeforged Moulded Mitts|0
+armour|Runemastered Moulded Mitts|0
+armour|Detailed Mitts|0
+armour|Massive Mitts|0
+armour|Runeforged Massive Mitts|0
+armour|Runeforged Detailed Mitts|0
+armour|Titan Mitts|0
+armour|Runemastered Titan Mitts|0
+armour|Ringmail Gauntlets|0
+armour|Ironmail Gauntlets|0
+armour|Steelmail Gauntlets|0
+armour|Runeforged Steelmail Gauntlets|0
+armour|Runeforged Ringmail Gauntlets|0
+armour|Runemastered Ringmail Gauntlets|0
+armour|Layered Gauntlets|0
+armour|Captain Gauntlets|0
+armour|Commander Gauntlets|0
+armour|Runeforged Commander Gauntlets|0
+armour|Runeforged Layered Gauntlets|0
+armour|Runemastered Layered Gauntlets|0
+armour|Doubled Gauntlets|0
+armour|Zealot Gauntlets|0
+armour|Runeforged Zealot Gauntlets|0
+armour|Cultist Gauntlets|0
+armour|Runeforged Cultist Gauntlets|0
+armour|Runeforged Doubled Gauntlets|0
+armour|Runemastered Doubled Gauntlets|0
+armour|Plate Gauntlets|0
+armour|Blacksteel Gauntlets|0
+armour|Runeforged Blacksteel Gauntlets|0
+armour|Runeforged Plate Gauntlets|0
+armour|Runemastered Plate Gauntlets|0
+armour|Burnished Gauntlets|0
+armour|Runemastered Burnished Gauntlets|0
+armour|Ornate Gauntlets|0
+armour|Grand Manchettes|0
+armour|Runemastered Grand Manchettes|0
+armour|Rope Cuffs|0
+armour|Braided Cuffs|0
+armour|Bound Cuffs|0
+armour|Runeforged Bound Cuffs|0
+armour|Runeforged Rope Cuffs|0
+armour|Runemastered Rope Cuffs|0
+armour|Aged Cuffs|0
+armour|Heirloom Cuffs|0
+armour|Ancient Cuffs|0
+armour|Runeforged Ancient Cuffs|0
+armour|Runeforged Aged Cuffs|0
+armour|Runemastered Aged Cuffs|0
+armour|Goldcast Cuffs|0
+armour|Ornate Cuffs|0
+armour|Runeforged Ornate Cuffs|0
+armour|Gleaming Cuffs|0
+armour|Runeforged Gleaming Cuffs|0
+armour|Runeforged Goldcast Cuffs|0
+armour|Runemastered Goldcast Cuffs|0
+armour|Kalguuran Cuffs|0
+armour|Adherent Cuffs|0
+armour|Runeforged Adherent Cuffs|0
+armour|Runeforged Kalguuran Cuffs|0
+armour|Runemastered Verisium Cuffs|0
+armour|Tethering Bands|0
+armour|Golden Visage|0
+armour|Shabby Hood|0
+armour|Covert Hood|0
+armour|Runemastered Covert Hood|0
+armour|Armoured Cap|0
+armour|Runemastered Armoured Cap|0
+armour|Rotted Hood|0
+armour|Runeforged Shabby Hood|0
+armour|Runemastered Shabby Hood|0
+armour|Felt Cap|0
+armour|Wool Cap|0
+armour|Woven Cap|0
+armour|Runeforged Woven Cap|0
+armour|Runeforged Felt Cap|0
+armour|Runemastered Felt Cap|0
+armour|Lace Hood|0
+armour|Narrow Hood|0
+armour|Runeforged Lace Hood|0
+armour|Swathed Cap|0
+armour|Wrapped Cap|0
+armour|Runeforged Wrapped Cap|0
+armour|Desert Cap|0
+armour|Runeforged Desert Cap|0
+armour|Runeforged Swathed Cap|0
+armour|Hunter Hood|0
+armour|Deerstalker Hood|0
+armour|Runeforged Deerstalker Hood|0
+armour|Trapper Hood|0
+armour|Runeforged Trapper Hood|0
+armour|Runeforged Hunter Hood|0
+armour|Runemastered Hunter Hood|0
+armour|Viper Cap|0
+armour|Runeforged Viper Cap|0
+armour|Runemastered Viper Cap|0
+armour|Corsair Cap|0
+armour|Freebooter Cap|0
+armour|Runeforged Freebooter Cap|0
+armour|Runeforged Corsair Cap|0
+armour|Runemastered Corsair Cap|0
+armour|Leatherbound Hood|0
+armour|Runeforged Leatherbound Hood|0
+armour|Runemastered Leatherbound Hood|0
+armour|Velvet Cap|0
+armour|Runemastered Velvet Cap|0
+armour|Hewn Mask|0
+armour|Oak Mask|0
+armour|Runeforged Hewn Mask|0
+armour|Runemastered Hewn Mask|0
+armour|Face Mask|0
+armour|Bandit Mask|0
+armour|Brigand Mask|0
+armour|Runeforged Brigand Mask|0
+armour|Runeforged Face Mask|0
+armour|Runemastered Face Mask|0
+armour|Hooded Mask|0
+armour|Skulking Mask|0
+armour|Runeforged Hooded Mask|0
+armour|Runemastered Hooded Mask|0
+armour|Veiled Mask|0
+armour|Pariah Mask|0
+armour|Runeforged Pariah Mask|0
+armour|Faridun Mask|0
+armour|Runeforged Faridun Mask|0
+armour|Runeforged Veiled Mask|0
+armour|Runemastered Veiled Mask|0
+armour|Tribal Mask|0
+armour|Avian Mask|0
+armour|Runeforged Avian Mask|0
+armour|Soaring Mask|0
+armour|Runeforged Soaring Mask|0
+armour|Runeforged Tribal Mask|0
+armour|Runemastered Tribal Mask|0
+armour|Solid Mask|0
+armour|Grinning Mask|0
+armour|Runeforged Grinning Mask|0
+armour|Runeforged Solid Mask|0
+armour|Runemastered Solid Mask|0
+armour|Death Mask|0
+armour|Runemastered Death Mask|0
+armour|Twig Circlet|0
+armour|Magus Tiara|0
+armour|Runemastered Magus Tiara|0
+armour|Druidic Circlet|0
+armour|Runeforged Twig Circlet|0
+armour|Runemastered Twig Circlet|0
+armour|Wicker Tiara|0
+armour|Avian Tiara|0
+armour|Skycrown Tiara|0
+armour|Runeforged Skycrown Tiara|0
+armour|Runeforged Wicker Tiara|0
+armour|Runemastered Wicker Tiara|0
+armour|Beaded Circlet|0
+armour|Desert Circlet|0
+armour|Runeforged Beaded Circlet|0
+armour|Runemastered Beaded Circlet|0
+armour|Chain Tiara|0
+armour|Sandsworn Tiara|0
+armour|Runeforged Sandsworn Tiara|0
+armour|Sorcerous Tiara|0
+armour|Runeforged Sorcerous Tiara|0
+armour|Runeforged Chain Tiara|0
+armour|Runemastered Chain Tiara|0
+armour|Feathered Tiara|0
+armour|Jungle Tiara|0
+armour|Runeforged Jungle Tiara|0
+armour|Kamasan Tiara|0
+armour|Runeforged Kamasan Tiara|0
+armour|Runeforged Feathered Tiara|0
+armour|Runemastered Feathered Tiara|0
+armour|Gold Circlet|0
+armour|Runeforged Gold Circlet|0
+armour|Runemastered Gold Circlet|0
+armour|Vermeil Circlet|0
+armour|Runeforged Vermeil Circlet|0
+armour|Runemastered Vermeil Circlet|0
+armour|Jade Tiara|0
+armour|Ancestral Tiara|0
+armour|Runeforged Ancestral Tiara|0
+armour|Runeforged Jade Tiara|0
+armour|Runemastered Jade Tiara|0
+armour|Rusted Greathelm|0
+armour|Corroded Greathelm|0
+armour|Runeforged Rusted Greathelm|0
+armour|Runemastered Rusted Greathelm|0
+armour|Soldier Greathelm|0
+armour|Mercenary Greathelm|0
+armour|Warmonger Greathelm|0
+armour|Runeforged Warmonger Greathelm|0
+armour|Runeforged Soldier Greathelm|0
+armour|Runemastered Soldier Greathelm|0
+armour|Wrapped Greathelm|0
+armour|Homeguard Greathelm|0
+armour|Runeforged Wrapped Greathelm|0
+armour|Runemastered Wrapped Greathelm|0
+armour|Spired Greathelm|0
+armour|Elegant Greathelm|0
+armour|Runeforged Elegant Greathelm|0
+armour|Masked Greathelm|0
+armour|Runeforged Masked Greathelm|0
+armour|Runeforged Spired Greathelm|0
+armour|Runemastered Spired Greathelm|0
+armour|Elite Greathelm|0
+armour|Noble Greathelm|0
+armour|Runeforged Noble Greathelm|0
+armour|Paragon Greathelm|0
+armour|Runeforged Paragon Greathelm|0
+armour|Runeforged Elite Greathelm|0
+armour|Runemastered Elite Greathelm|0
+armour|Warrior Greathelm|0
+armour|Runeforged Warrior Greathelm|0
+armour|Runemastered Warrior Greathelm|0
+armour|Commander Greathelm|0
+armour|Imperial Greathelm|0
+armour|Runeforged Imperial Greathelm|0
+armour|Runeforged Commander Greathelm|0
+armour|Fierce Greathelm|0
+armour|Runeforged Fierce Greathelm|0
+armour|Runemastered Fierce Greathelm|0
+armour|Brimmed Helm|0
+armour|Domed Helm|0
+armour|Runeforged Brimmed Helm|0
+armour|Runemastered Brimmed Helm|0
+armour|Guarded Helm|0
+armour|Engraved Helm|0
+armour|Warded Helm|0
+armour|Runeforged Warded Helm|0
+armour|Runeforged Guarded Helm|0
+armour|Runemastered Guarded Helm|0
+armour|Visored Helm|0
+armour|Soldier Helm|0
+armour|Runeforged Visored Helm|0
+armour|Runemastered Visored Helm|0
+armour|Cowled Helm|0
+armour|Cabalist Helm|0
+armour|Runeforged Cabalist Helm|0
+armour|Cryptic Helm|0
+armour|Runeforged Cryptic Helm|0
+armour|Runeforged Cowled Helm|0
+armour|Runemastered Cowled Helm|0
+armour|Shielded Helm|0
+armour|Cassis Helm|0
+armour|Runeforged Gladiatorial Helm|0
+armour|Champion Helm|0
+armour|Runeforged Champion Helm|0
+armour|Runeforged Shielded Helm|0
+armour|Runemastered Shielded Helm|0
+armour|Closed Helm|0
+armour|Gladiatorial Helm|0
+armour|Runeforged Closed Helm|0
+armour|Decorated Helm|0
+armour|Runemastered Decorated Helm|0
+armour|Grand Visage|0
+armour|Runemastered Grand Visage|0
+armour|Ancient Visor|0
+armour|Runemastered Ancient Visor|0
+armour|Iron Crown|0
+armour|Mailed Crown|0
+armour|Runeforged Iron Crown|0
+armour|Runemastered Iron Crown|0
+armour|Horned Crown|0
+armour|Forest Crown|0
+armour|Druidic Crown|0
+armour|Runeforged Druidic Crown|0
+armour|Runeforged Horned Crown|0
+armour|Runemastered Horned Crown|0
+armour|Cultist Crown|0
+armour|Zealot Crown|0
+armour|Runeforged Cultist Crown|0
+armour|Runemastered Cultist Crown|0
+armour|Martyr Crown|0
+armour|Hallowed Crown|0
+armour|Runeforged Hallowed Crown|0
+armour|Saintly Crown|0
+armour|Runeforged Saintly Crown|0
+armour|Runeforged Martyr Crown|0
+armour|Runemastered Martyr Crown|0
+armour|Heavy Crown|0
+armour|Inquisitor Crown|0
+armour|Runeforged Inquisitor Crown|0
+armour|Divine Crown|0
+armour|Runeforged Divine Crown|0
+armour|Runeforged Heavy Crown|0
+armour|Runemastered Heavy Crown|0
+armour|Spiritbone Crown|0
+armour|Cryptic Crown|0
+armour|Runeforged Cryptic Crown|0
+armour|Runeforged Spiritbone Crown|0
+armour|Runemastered Spiritbone Crown|0
+armour|Tenebrous Crown|0
+armour|Runemastered Tenebrous Crown|0
+armour|Leather Buckler|0
+armour|Pearl Buckler|0
+armour|Runeforged Pearl Buckler|0
+armour|Ornate Buckler|0
+armour|Runemastered Ornate Buckler|0
+armour|Array Buckler|0
+armour|Runemastered Array Buckler|0
+armour|Runeforged Leather Buckler|0
+armour|Runemastered Leather Buckler|0
+armour|Wooden Buckler|0
+armour|Oak Buckler|0
+armour|Runeforged Wooden Buckler|0
+armour|Runemastered Wooden Buckler|0
+armour|Plated Buckler|0
+armour|Painted Buckler|0
+armour|Runeforged Ornate Buckler|0
+armour|Runeforged Plated Buckler|0
+armour|Runemastered Plated Buckler|0
+armour|Iron Buckler|0
+armour|Runeforged Iron Buckler|0
+armour|Runemastered Iron Buckler|0
+armour|Ridged Buckler|0
+armour|Coiled Buckler|0
+armour|Runeforged Ridged Buckler|0
+armour|Runemastered Ridged Buckler|0
+armour|Spiked Buckler|0
+armour|Spikeward Buckler|0
+armour|Runeforged Spikeward Buckler|0
+armour|Gutspike Buckler|0
+armour|Runeforged Gutspike Buckler|0
+armour|Runeforged Spiked Buckler|0
+armour|Runemastered Spiked Buckler|0
+armour|Ringed Buckler|0
+armour|Jingling Buckler|0
+armour|Runeforged Jingling Buckler|0
+armour|Runeforged Ringed Buckler|0
+armour|Edged Buckler|0
+armour|Bladeguard Buckler|0
+armour|Runeforged Bladeguard Buckler|0
+armour|Ancient Buckler|0
+armour|Runeforged Ancient Buckler|0
+armour|Runeforged Edged Buckler|0
+armour|Laminate Buckler|0
+armour|Desert Buckler|0
+armour|Runeforged Desert Buckler|0
+armour|Runeforged Laminate Buckler|0
+armour|Splintered Tower Shield|0
+armour|Ancestor Tower Shield|0
+armour|Tawhoan Tower Shield|0
+armour|Runeforged Tawhoan Tower Shield|0
+armour|Runeforged Ancestor Tower Shield|0
+armour|Blacksteel Tower Shield|0
+armour|Runemastered Blacksteel Tower Shield|0
+armour|Runeforged Splintered Tower Shield|0
+armour|Runemastered Splintered Tower Shield|0
+armour|Painted Tower Shield|0
+armour|Aged Tower Shield|0
+armour|Runeforged Painted Tower Shield|0
+armour|Runemastered Painted Tower Shield|0
+armour|Braced Tower Shield|0
+armour|Metalworked Tower Shield|0
+armour|Royal Tower Shield|0
+armour|Runeforged Royal Tower Shield|0
+armour|Runeforged Braced Tower Shield|0
+armour|Runemastered Braced Tower Shield|0
+armour|Barricade Tower Shield|0
+armour|Runeforged Barricade Tower Shield|0
+armour|Runemastered Barricade Tower Shield|0
+armour|Effigial Tower Shield|0
+armour|Cultist Tower Shield|0
+armour|Runeforged Effigial Tower Shield|0
+armour|Rampart Tower Shield|0
+armour|Bulwark Tower Shield|0
+armour|Runeforged Bulwark Tower Shield|0
+armour|Fortress Tower Shield|0
+armour|Runeforged Fortress Tower Shield|0
+armour|Runeforged Rampart Tower Shield|0
+armour|Runemastered Rampart Tower Shield|0
+armour|Heraldric Tower Shield|0
+armour|Noble Tower Shield|0
+armour|Runeforged Noble Tower Shield|0
+armour|Runeforged Heraldric Tower Shield|0
+armour|Runemastered Heraldric Tower Shield|0
+armour|Stone Tower Shield|0
+armour|Goldworked Tower Shield|0
+armour|Runeforged Goldworked Tower Shield|0
+armour|Vaal Tower Shield|0
+armour|Runeforged Vaal Tower Shield|0
+armour|Runemastered Vaal Tower Shield|0
+armour|Runeforged Stone Tower Shield|0
+armour|Crucible Tower Shield|0
+armour|Runeforged Crucible Tower Shield|0
+armour|Runemastered Crucible Tower Shield|0
+armour|Hardwood Targe|0
+armour|Golden Targe|0
+armour|Runeforged Golden Targe|0
+armour|Ironwood Targe|0
+armour|Runeforged Hardwood Targe|0
+armour|Runemastered Hardwood Targe|0
+armour|Pelage Targe|0
+armour|Fur-lined Targe|0
+armour|Mammoth Targe|0
+armour|Runeforged Mammoth Targe|0
+armour|Runeforged Pelage Targe|0
+armour|Studded Targe|0
+armour|Mercenary Targe|0
+armour|Runeforged Studded Targe|0
+armour|Crescent Targe|0
+armour|Polished Targe|0
+armour|Runeforged Polished Targe|0
+armour|Baroque Targe|0
+armour|Runeforged Baroque Targe|0
+armour|Runeforged Crescent Targe|0
+armour|Runemastered Crescent Targe|0
+armour|Chiseled Targe|0
+armour|Stone Targe|0
+armour|Runeforged Stone Targe|0
+armour|Runeforged Chiseled Targe|0
+armour|Feathered Targe|0
+armour|Avian Targe|0
+armour|Runeforged Avian Targe|0
+armour|Soaring Targe|0
+armour|Runeforged Soaring Targe|0
+armour|Runeforged Feathered Targe|0
+armour|Stratified Targe|0
+armour|Runeforged Stratified Targe|0
+armour|Carved Targe|0
+armour|Runeforged Carved Targe|0
+armour|Venerable Defender|0
+armour|Runemastered Venerable Defender|0
+armour|Blazon Crest Shield|0
+armour|Painted Crest Shield|0
+armour|Runeforged Blazon Crest Shield|0
+armour|Runemastered Blazon Crest Shield|0
+armour|Sigil Crest Shield|0
+armour|Engraved Crest Shield|0
+armour|Intricate Crest Shield|0
+armour|Runeforged Intricate Crest Shield|0
+armour|Runemastered Intricate Crest Shield|0
+armour|Runeforged Sigil Crest Shield|0
+armour|Runemastered Sigil Crest Shield|0
+armour|Emblem Crest Shield|0
+armour|Descry Crest Shield|0
+armour|Runeforged Emblem Crest Shield|0
+armour|Runemastered Emblem Crest Shield|0
+armour|Jingling Crest Shield|0
+armour|Dekharan Crest Shield|0
+armour|Runeforged Dekharan Crest Shield|0
+armour|Sekheman Crest Shield|0
+armour|Runeforged Sekheman Crest Shield|0
+armour|Runeforged Jingling Crest Shield|0
+armour|Runemastered Jingling Crest Shield|0
+armour|Sectarian Crest Shield|0
+armour|Quartered Crest Shield|0
+armour|Runeforged Quartered Crest Shield|0
+armour|Runeforged Sectarian Crest Shield|0
+armour|Omen Crest Shield|0
+armour|Glowering Crest Shield|0
+armour|Runeforged Glowering Crest Shield|0
+armour|Vaal Crest Shield|0
+armour|Runeforged Vaal Crest Shield|0
+armour|Runeforged Omen Crest Shield|0
+armour|Runemastered Omen Crest Shield|0
+armour|Wayward Crest Shield|0
+armour|Blacksteel Crest Shield|0
+armour|Runeforged Blacksteel Crest Shield|0
+armour|Runeforged Wayward Crest Shield|0
+armour|Seer Crest Shield|0
+armour|Runeforged Seer Crest Shield|0
+armour|Glacial Fortress|0
+armour|Runemastered Glacial Fortress|0
+armour|Broadhead Quiver|0
+armour|Volant Quiver|0
+armour|Visceral Quiver|0
+armour|Fire Quiver|0
+armour|Sacral Quiver|0
+armour|Two-Point Quiver|0
+armour|Blunt Quiver|0
+armour|Toxic Quiver|0
+armour|Serrated Quiver|0
+armour|Primed Quiver|0
+armour|Penetrating Quiver|0
+armour|Ab Aeterno|1
+armour|Aerisvane's Wings|1
+armour|Alkem Eira|1
+armour|Alpha's Howl|1
+armour|Apep's Supremacy|1
+armour|Apron of Emiran|1
+armour|Arvil's Wheel|1
+armour|Ashrend|1
+armour|Asphyxia's Wrath|1
+armour|Assailum|1
+armour|Atsak's Sight|1
+armour|Atziri's Acuity|1
+armour|Atziri's Disdain|1
+armour|Atziri's Splendour|1
+armour|Atziri's Step|1
+armour|Aurseize|1
+armour|Beetlebite|1
+armour|Belly of the Beast|1
+armour|Beyond Reach|1
+armour|Birth of Fury|1
+armour|Bitterbloom|1
+armour|Blackbraid|1
+armour|Blackgleam|1
+armour|Black Sun Crest|1
+armour|Blessed Bonds|1
+armour|Bloodbarrier|1
+armour|Blood Price|1
+armour|Blueflame Bracers|1
+armour|Bones of Ullr|1
+armour|Bramblejack|1
+armour|Briarpatch|1
+armour|Briskwrap|1
+armour|Bristleboar|1
+armour|Bronzebeard|1
+armour|Bushwhack|1
+armour|Cadiro's Gambit|1
+armour|Calgyra's Arc|1
+armour|Candlemaker|1
+armour|Carrion Call|1
+armour|Chernobog's Pillar|1
+armour|Cloak of Defiance|1
+armour|Cloak of Flame|1
+armour|Coat of Red|1
+armour|Constricting Command|1
+armour|Cornathaum|1
+armour|Corona of the Red Sun|1
+armour|Corpsewade|1
+armour|Cospri's Will|1
+armour|Couture of Crimson|1
+armour|Crest of Ardura|1
+armour|Crown of Eyes|1
+armour|Crown of the Pale King|1
+armour|Crown of the Victor|1
+armour|Crown of Thorns|1
+armour|Darkray Vectors|1
+armour|Death Articulated|1
+armour|Deathblow|1
+armour|Deathrattle|1
+armour|Decree of Acuity|1
+armour|Decree of Flight|1
+armour|Decree of Loyalty|1
+armour|Deidbell|1
+armour|Demigod's Virtue|1
+armour|Demon Stitcher|1
+armour|Dionadair|1
+armour|Doedre's Tenure|1
+armour|Doomgate|1
+armour|Doryani's Prototype|1
+armour|Dreadfist|1
+armour|Drillneck|1
+armour|Dunkelhalt|1
+armour|Dustbloom|1
+armour|Edyrn's Tusks|1
+armour|Effigy of Cruelty|1
+armour|Elevore|1
+armour|Empire's Grasp|1
+armour|Enfolding Dawn|1
+armour|Erian's Cobble|1
+armour|Essentia Sanguis|1
+armour|Eyes of the Runefather|1
+armour|Ezomyte Peak|1
+armour|Facebreaker|1
+armour|Feathered Fortress|1
+armour|Forbidden Gaze|1
+armour|Forgotten Warden|1
+armour|Foxshade|1
+armour|Gamblesprint|1
+armour|Geofri's Sanctuary|1
+armour|Ghostmarch|1
+armour|Ghostwrithe|1
+armour|Glimpse of Chaos|1
+armour|Gloamgown|1
+armour|Gloomform|1
+armour|Goldrim|1
+armour|Gravebind|1
+armour|Greed's Embrace|1
+armour|Greymake|1
+armour|Grip of Winter|1
+armour|Hand of Wisdom and Action|1
+armour|Hateforge|1
+armour|Heatshiver|1
+armour|Horns of Bynden|1
+armour|Horror's Flight|1
+armour|Reverie|1
+armour|Hyrri's Ire|1
+armour|Icetomb|1
+armour|Idle Hands|1
+armour|Indigon|1
+armour|Innsmouth|1
+armour|Irongrasp|1
+armour|Ironride|1
+armour|Jarngreipr|1
+armour|Kaltenhalt|1
+armour|Kaom's Heart|1
+armour|Keeper of the Arc|1
+armour|Killjoy|1
+armour|Kingsguard|1
+armour|Kitoko's Current|1
+armour|Leer Cast|1
+armour|Legionstride|1
+armour|Leopold's Applause|1
+armour|Lightning Coil|1
+armour|Lochtonial Caress|1
+armour|Loreweave|1
+armour|Luminous Pace|1
+armour|Lycosidae|1
+armour|Mahuxotl's Machination|1
+armour|Maligaro's Virtuosity|1
+armour|Mask of the Sanguimancer|1
+armour|Mask of the Stitched Demon|1
+armour|Merit of Service|1
+armour|Mind of the Council|1
+armour|Morior Invictus|1
+armour|Murkshaft|1
+armour|Myris Uxor|1
+armour|Necromantle|1
+armour|Nightfall|1
+armour|Nightscale|1
+armour|Nocturne|1
+armour|Northpaw|1
+armour|Oaksworn|1
+armour|Obern's Bastion|1
+armour|Painter's Servant|1
+armour|Pariah's Embrace|1
+armour|Perfidy|1
+armour|Plaguefinger|1
+armour|Powertread|1
+armour|Pragmatism|1
+armour|Prayers for Rain|1
+armour|Prism Guardian|1
+armour|Quatl's Molt|1
+armour|Queen of the Forest|1
+armour|Radiant Grief|1
+armour|Rathpith Globe|1
+armour|Rearguard|1
+armour|Redblade Banner|1
+armour|Redflare Conduit|1
+armour|Rise of the Phoenix|1
+armour|Rondel de Ezo|1
+armour|Sacrosanctum|1
+armour|Saffell's Frame|1
+armour|Sands of Silk|1
+armour|Sandstorm Visage|1
+armour|Scold's Bridle|1
+armour|Serpent's Lesson|1
+armour|Shackles of the Wretched|1
+armour|Shankgonne|1
+armour|Sierran Inheritance|1
+armour|Silks of Veneration|1
+armour|Silverthorne|1
+armour|Sine Aequo|1
+armour|Skin of the Loyal|1
+armour|Snakebite|1
+armour|Solus Ipse|1
+armour|Soul Mantle|1
+armour|Starkonja's Head|1
+armour|Sunsplinter|1
+armour|Svalinn|1
+armour|Tabula Rasa|1
+armour|Temporalis|1
+armour|Tetzlapokal's Desire|1
+armour|The Auspex|1
+armour|The Barrow Dweller|1
+armour|The Black Doubt|1
+armour|The Black Insignia|1
+armour|The Brass Dome|1
+armour|The Bringer of Rain|1
+armour|The Coming Calamity|1
+armour|The Covenant|1
+armour|The Dancing Mirage|1
+armour|The Deepest Tower|1
+armour|The Devouring Diadem|1
+armour|The Eternal Spark|1
+armour|The Fallen Formation|1
+armour|The Hollow Mask|1
+armour|The Road Warrior|1
+armour|The Infinite Pursuit|1
+armour|The Knight-errant|1
+armour|The Lethal Draw|1
+armour|The Master's Reach|1
+armour|The Mutable Star|1
+armour|The Prisoner's Manacles|1
+armour|The Rat Cage|1
+armour|The Smiling Knight|1
+armour|The Sunken Vessel|1
+armour|The Surrender|1
+armour|The Three Dragons|1
+armour|The Unleashed|1
+armour|The Vertex|1
+armour|The Vile Knight|1
+armour|The Wailing Wall|1
+armour|Threaded Light|1
+armour|Thrillsteel|1
+armour|Thunderfist|1
+armour|Thunderstep|1
+armour|Titanrot Cataphract|1
+armour|Trampletoe|1
+armour|Treefingers|1
+armour|Valako's Vice|1
+armour|Veil of the Night|1
+armour|Vestige of Darkness|1
+armour|Visage of Ayah|1
+armour|Vis Mortis|1
+armour|Voll's Protector|1
+armour|Wake of Destruction|1
+armour|Wandering Reliquary|1
+armour|Wanderlust|1
+armour|Waveshaper|1
+armour|Widow's Reign|1
+armour|Window to Paradise|1
+armour|Windscream|1
+armour|Wings of Caelyn|1
+armour|Wondertrap|1
+armour|Wulfsbane|1
+armour|Yriel's Fostering|1
+armour|Zerphi's Serape|1
+currency|Preserved Rib|0
+currency|Ancient Rib|0
+currency|Gnawed Rib|0
+currency|Altered Collarbone|0
+currency|Preserved Cranium|0
+currency|Preserved Collarbone|0
+currency|Ancient Collarbone|0
+currency|Gnawed Collarbone|0
+currency|Preserved Vertebrae|0
+currency|Preserved Jawbone|0
+currency|Ancient Jawbone|0
+currency|Gnawed Jawbone|0
+currency|Artificer's Orb|0
+currency|Artificer's Shard|0
+currency|Orb of Augmentation|0
+currency|Greater Orb of Augmentation|0
+currency|Perfect Orb of Augmentation|0
+currency|Exalted Orb|0
+currency|Greater Exalted Orb|0
+currency|Perfect Exalted Orb|0
+currency|Lesser Jeweller's Orb|0
+currency|Greater Jeweller's Orb|0
+currency|Perfect Jeweller's Orb|0
+currency|Simulacrum Splinter|0
+currency|Void Flux|0
+currency|Chilling Flux|0
+currency|Blazing Flux|0
+currency|Crackling Flux|0
+currency|Armourer's Scrap|0
+currency|Breach Splinter|0
+currency|Vaal Orb|0
+currency|Essence of the Abyss|0
+currency|Essence of the Breach|0
+currency|Essence of Delirium|0
+currency|Essence of Horror|0
+currency|Essence of Hysteria|0
+currency|Essence of Insanity|0
+currency|Mirror of Kalandra|0
+currency|Essence of Command|0
+currency|Essence of Battle|0
+currency|Essence of the Infinite|0
+currency|Essence of Sorcery|0
+currency|Essence of Ruin|0
+currency|Essence of Ice|0
+currency|Essence of Thawing|0
+currency|Essence of Seeking|0
+currency|Essence of Enhancement|0
+currency|Essence of Flames|0
+currency|Essence of Insulation|0
+currency|Essence of the Body|0
+currency|Essence of Electricity|0
+currency|Essence of Grounding|0
+currency|Essence of the Mind|0
+currency|Essence of Abrasion|0
+currency|Essence of Opulence|0
+currency|Essence of Haste|0
+currency|Essence of Alacrity|0
+currency|Runic Splinter|0
+currency|Glassblower's Bauble|0
+currency|Fracturing Orb|0
+currency|Gemcutter's Prism|0
+currency|Greater Essence of Command|0
+currency|Greater Essence of Battle|0
+currency|Greater Essence of the Infinite|0
+currency|Greater Essence of Sorcery|0
+currency|Greater Essence of Ruin|0
+currency|Greater Essence of Ice|0
+currency|Greater Essence of Thawing|0
+currency|Greater Essence of Seeking|0
+currency|Greater Essence of Enhancement|0
+currency|Greater Essence of Flames|0
+currency|Greater Essence of Insulation|0
+currency|Greater Essence of the Body|0
+currency|Greater Essence of Electricity|0
+currency|Greater Essence of Grounding|0
+currency|Greater Essence of the Mind|0
+currency|Greater Essence of Abrasion|0
+currency|Greater Essence of Opulence|0
+currency|Greater Essence of Haste|0
+currency|Greater Essence of Alacrity|0
+currency|Hinekora's Lock|0
+currency|Scroll of Wisdom|0
+currency|[DNT] Incursion Gemcutter's Prism (not visible to players)|0
+currency|Vaal Arcanist's Infuser|0
+currency|Ancient Infuser|0
+currency|Architect's Orb|0
+currency|Crystallised Corruption|0
+currency|Orb of Extraction|0
+currency|Vaal Catalysing Infuser|0
+currency|Vaal Blacksmith's Infuser|0
+currency|Core Destabiliser|0
+currency|Kopec's Orb of Sacrifice|0
+currency|Yugul's Orb of Sacrifice|0
+currency|Kamasa's Orb of Sacrifice|0
+currency|Yaomac's Orb of Sacrifice|0
+currency|Vaal Cultivation Orb|0
+currency|Vaal Siphoner|0
+currency|Vaal Armourer's Infuser|0
+currency|[DNT] Not Shown To Players|0
+currency|Reaver Catalyst|0
+currency|Adaptive Catalyst|0
+currency|Sibilant Catalyst|0
+currency|Chayula's Catalyst|0
+currency|Tul's Catalyst|0
+currency|Carapace Catalyst|0
+currency|Xoph's Catalyst|0
+currency|Flesh Catalyst|0
+currency|Esh's Catalyst|0
+currency|Neural Catalyst|0
+currency|Necrotic Catalyst|0
+currency|Uul-Netol's Catalyst|0
+currency|Skittering Catalyst|0
+currency|Refined Reaver Catalyst|0
+currency|Refined Adaptive Catalyst|0
+currency|Refined Sibilant Catalyst|0
+currency|Refined Chayula's Catalyst|0
+currency|Refined Tul's Catalyst|0
+currency|Refined Carapace Catalyst|0
+currency|Refined Xoph's Catalyst|0
+currency|Refined Flesh Catalyst|0
+currency|Refined Esh's Catalyst|0
+currency|Refined Neural Catalyst|0
+currency|Refined Necrotic Catalyst|0
+currency|Refined Uul-Netol's Catalyst|0
+currency|Refined Skittering Catalyst|0
+currency|Lesser Essence of Command|0
+currency|Lesser Essence of Battle|0
+currency|Lesser Essence of the Infinite|0
+currency|Lesser Essence of Sorcery|0
+currency|Lesser Essence of Ruin|0
+currency|Lesser Essence of Ice|0
+currency|Lesser Essence of Thawing|0
+currency|Lesser Essence of Seeking|0
+currency|Lesser Essence of Enhancement|0
+currency|Lesser Essence of Flames|0
+currency|Lesser Essence of Insulation|0
+currency|Lesser Essence of the Body|0
+currency|Lesser Essence of Electricity|0
+currency|Lesser Essence of Grounding|0
+currency|Lesser Essence of the Mind|0
+currency|Lesser Essence of Abrasion|0
+currency|Lesser Essence of Opulence|0
+currency|Lesser Essence of Haste|0
+currency|Lesser Essence of Alacrity|0
+currency|Arcanist's Etcher|0
+currency|Divine Orb|0
+currency|Perfect Essence of Command|0
+currency|Perfect Essence of Battle|0
+currency|Perfect Essence of the Infinite|0
+currency|Perfect Essence of Sorcery|0
+currency|Perfect Essence of Ruin|0
+currency|Perfect Essence of Ice|0
+currency|Perfect Essence of Thawing|0
+currency|Perfect Essence of Seeking|0
+currency|Perfect Essence of Enhancement|0
+currency|Perfect Essence of Flames|0
+currency|Perfect Essence of Insulation|0
+currency|Perfect Essence of the Body|0
+currency|Perfect Essence of Electricity|0
+currency|Perfect Essence of Grounding|0
+currency|Perfect Essence of the Mind|0
+currency|Perfect Essence of Abrasion|0
+currency|Perfect Essence of Opulence|0
+currency|Perfect Essence of Haste|0
+currency|Perfect Essence of Alacrity|0
+currency|Exotic Coinage|0
+currency|Orb of Annulment|0
+currency|Chaos Orb|0
+currency|Greater Chaos Orb|0
+currency|Perfect Chaos Orb|0
+currency|Liquid Verisium|0
+currency|Albino Rhoa Feather|0
+currency|Petition Splinter|0
+currency|Thaumaturgic Flux (Level 10)|0
+currency|Thaumaturgic Flux (Level 11)|0
+currency|Thaumaturgic Flux (Level 12)|0
+currency|Thaumaturgic Flux (Level 13)|0
+currency|Thaumaturgic Flux (Level 14)|0
+currency|Thaumaturgic Flux (Level 15)|0
+currency|Thaumaturgic Flux (Level 16)|0
+currency|Thaumaturgic Flux (Level 17)|0
+currency|Thaumaturgic Flux (Level 18)|0
+currency|Thaumaturgic Flux (Level 19)|0
+currency|Thaumaturgic Flux (Level 20)|0
+currency|Thaumaturgic Flux (Level 8)|0
+currency|Thaumaturgic Flux (Level 9)|0
+currency|Perfect Flux|0
+currency|Regal Orb|0
+currency|Greater Regal Orb|0
+currency|Perfect Regal Orb|0
+currency|Regal Shard|0
+currency|Orb of Chance|0
+currency|Chance Shard|0
+currency|Orb of Transmutation|0
+currency|Greater Orb of Transmutation|0
+currency|Perfect Orb of Transmutation|0
+currency|Transmutation Shard|0
+currency|Orb of Alchemy|0
+currency|Runic Alloy|0
+currency|Celestial Alloy|0
+currency|Transcendent Alloy|0
+currency|The Runebinder's Alloy|0
+currency|The Runefather's Alloy|0
+currency|Adaptive Alloy|0
+currency|Protective Alloy|0
+currency|Expansive Alloy|0
+currency|Swift Alloy|0
+currency|Cyclonic Alloy|0
+currency|Prismatic Alloy|0
+currency|Mystic Alloy|0
+currency|Sovereign Alloy|0
+currency|Verisium|0
+currency|Exceptional Verisium|0
+currency|Medved's Crest of the Circle|0
+currency|Vorana's Crest of the Scythe|0
+currency|Uhtred's Crest of the Chalice|0
+currency|Olroth's Crest of the Sun|0
+currency|Veridical Starlit Ore|0
+currency|Venerable Starlit Ore|0
+currency|Warding Starlit Ore|0
+currency|Revered Starlit Ore|0
+currency|Blacksmith's Whetstone|0
+currency|Diluted Liquid Ire|0
+currency|Concentrated Liquid Isolation|0
+currency|Diluted Liquid Guilt|0
+currency|Diluted Liquid Greed|0
+currency|Liquid Paranoia|0
+currency|Liquid Envy|0
+currency|Liquid Disgust|0
+currency|Liquid Despair|0
+currency|Concentrated Liquid Fear|0
+currency|Concentrated Liquid Suffering|0
+currency|Ancient Diluted Liquid Ire|0
+currency|Ancient Concentrated Liquid Isolation|0
+currency|Ancient Diluted Liquid Guilt|0
+currency|Ancient Diluted Liquid Greed|0
+currency|Ancient Liquid Paranoia|0
+currency|Ancient Liquid Envy|0
+currency|Ancient Liquid Disgust|0
+currency|Ancient Liquid Despair|0
+currency|Ancient Concentrated Liquid Fear|0
+currency|Ancient Concentrated Liquid Suffering|0
+currency|Potent Liquid Melancholy|0
+currency|Potent Liquid Ferocity|0
+currency|Potent Liquid Contempt|0
+currency|Ancient Potent Liquid Melancholy|0
+currency|Ancient Potent Liquid Ferocity|0
+currency|Ancient Potent Liquid Contempt|0
+currency|Shattered Triskelion|0
+currency|Omen of Gambling|0
+currency|Omen of Sinistral Necromancy|0
+currency|Omen of Dextral Necromancy|0
+currency|Omen of the Sovereign|0
+currency|Omen of the Liege|0
+currency|Omen of the Blackblooded|0
+currency|Omen of Abyssal Echoes|0
+currency|Omen of Putrefaction|0
+currency|Omen of Sinistral Alchemy|0
+currency|Omen of Dextral Alchemy|0
+currency|Omen of Light|0
+currency|Omen of Sinistral Annulment|0
+currency|Omen of Dextral Annulment|0
+currency|Omen of Greater Annulment|0
+currency|Omen of the Ancients|0
+currency|Omen of Chance|0
+currency|Omen of Whittling|0
+currency|Omen of Chaotic Rarity|0
+currency|Omen of Chaotic Effectiveness|0
+currency|Omen of Chaotic Monsters|0
+currency|Omen of Chaotic Quantity|0
+currency|Omen of Sinistral Erasure|0
+currency|Omen of Dextral Erasure|0
+currency|Omen of Amelioration|0
+currency|Omen of the Blessed|0
+currency|Omen of Sanctification|0
+currency|Omen of Homogenising Exaltation|0
+currency|Omen of Sinistral Exaltation|0
+currency|Omen of Dextral Exaltation|0
+currency|Omen of Greater Exaltation|0
+currency|Omen of Catalysing Exaltation|0
+currency|Omen of Resurgence|0
+currency|Omen of Refreshment|0
+currency|Omen of Sinistral Crystallisation|0
+currency|Omen of Dextral Crystallisation|0
+currency|Omen of Homogenising Coronation|0
+currency|Omen of Sinistral Coronation|0
+currency|Omen of Dextral Coronation|0
+currency|Omen of Corruption|0
+currency|Omen of Recombination|0
+currency|Omen of Reinforcements|0
+currency|Omen of Bartering|0
+currency|Omen of Answered Prayers|0
+currency|Omen of Secret Compartments|0
+currency|Omen of the Hunt|0
+currency|Cryptic Key|0
+currency|Medved's Saga|0
+currency|Olroth's Saga|0
+currency|Aldur's Saga|0
+currency|Uhtred's Saga|0
+currency|Vorana's Saga|0
+currency|Broken Circle Artifact|0
+currency|Black Scythe Artifact|0
+currency|Order Artifact|0
+currency|Sun Artifact|0
+currency|Rogue's Marker|0
+currency|Sacred Bloom|0
+currency|Azmeri Reliquary Key|0
+currency|Xesht's Reliquary Key|0
+currency|Tangmazu's Reliquary Key|0
+currency|Olroth's Reliquary Key|0
+currency|The Arbiter's Reliquary Key|0
+currency|Ritualistic Reliquary Key|0
+currency|Zarokh's Reliquary Key: Against the Darkness|0
+currency|Zarokh's Reliquary Key: Temporalis|0
+currency|The Trialmaster's Reliquary Key|0
+currency|Twilight Reliquary Key|0
+currency|Amanamu's Gaze|0
+currency|Raven-Touched Shard|0
+currency|Carved Cunning|0
+currency|Carved Majesty|0
+currency|Carved Mischief|0
+currency|Carved Tenacity|0
+currency|Emergent Instinct|0
+currency|Emergent Possibility|0
+currency|Emergent Protection|0
+currency|Emergent Vigour|0
+currency|Idol of the Sycophant|0
+currency|Idol of the Martyr|0
+currency|Idol of the Pharisee|0
+currency|Hawk Idol|0
+currency|Panther Idol|0
+currency|Idol of Greust|0
+currency|Idol of Yeena|0
+currency|Idol of Eramir|0
+currency|Idol of Oak|0
+currency|Idol of Alira|0
+currency|Idol of Kraityn|0
+currency|Idol of Silk|0
+currency|Stoat Idol|0
+currency|Kurgal's Gaze|0
+currency|Vision Rune|0
+currency|Greater Vision Rune|0
+currency|Lesser Vision Rune|0
+currency|Perfect Vision Rune|0
+currency|Glacial Rune|0
+currency|Greater Glacial Rune|0
+currency|Lesser Glacial Rune|0
+currency|Perfect Glacial Rune|0
+currency|Betrayal of Aldur|0
+currency|Breath of Aldur|0
+currency|Passion of Aldur|0
+currency|Ire of Aldur|0
+currency|Adept Rune|0
+currency|Greater Adept Rune|0
+currency|Lesser Adept Rune|0
+currency|Perfect Adept Rune|0
+currency|Iron Rune|0
+currency|Greater Iron Rune|0
+currency|Lesser Iron Rune|0
+currency|Perfect Iron Rune|0
+currency|Desert Rune|0
+currency|Greater Desert Rune|0
+currency|Lesser Desert Rune|0
+currency|Perfect Desert Rune|0
+currency|Resolve Rune|0
+currency|Greater Resolve Rune|0
+currency|Lesser Resolve Rune|0
+currency|Perfect Resolve Rune|0
+currency|Body Rune|0
+currency|Greater Body Rune|0
+currency|Lesser Body Rune|0
+currency|Perfect Body Rune|0
+currency|Rebirth Rune|0
+currency|Greater Rebirth Rune|0
+currency|Lesser Rebirth Rune|0
+currency|Perfect Rebirth Rune|0
+currency|Storm Rune|0
+currency|Greater Storm Rune|0
+currency|Lesser Storm Rune|0
+currency|Perfect Storm Rune|0
+currency|Mind Rune|0
+currency|Greater Mind Rune|0
+currency|Lesser Mind Rune|0
+currency|Perfect Mind Rune|0
+currency|Inspiration Rune|0
+currency|Greater Inspiration Rune|0
+currency|Lesser Inspiration Rune|0
+currency|Perfect Inspiration Rune|0
+currency|Ancient Rune of Splinters|0
+currency|Ancient Rune of the Horde|0
+currency|Ancient Rune of Animosity|0
+currency|Ancient Rune of Detonation|0
+currency|Ancient Rune of Retaliation|0
+currency|Rune of Vitality|0
+currency|Rune of the Hunt|0
+currency|Rune of Acrobatics|0
+currency|Rune of Culmination|0
+currency|Rune of Renown|0
+currency|Rune of Accumulation|0
+currency|Ancient Rune of Dueling|0
+currency|Rune of Foundations|0
+currency|Rune of the Prism|0
+currency|Rune of the Blossom|0
+currency|Rune of Consistency|0
+currency|Rune of Reach|0
+currency|Rune of Vital Flame|0
+currency|Rune of Confrontation|0
+currency|Ancient Rune of the Titan|0
+currency|Ancient Rune of Shattering|0
+currency|Ancient Rune of Prowess|0
+currency|Ancient Rune of Control|0
+currency|Ancient Rune of Discovery|0
+currency|Ancient Rune of Decay|0
+currency|Ancient Rune of Witchcraft|0
+currency|Legacy of Adonia's Ego|0
+currency|Legacy of Alkem Eira|0
+currency|Legacy of Amor Mandragora|0
+currency|Legacy of Ashrend|0
+currency|Legacy of Blackbraid|0
+currency|Legacy of Brain Rattler|0
+currency|Legacy of Bramblejack|0
+currency|Legacy of Briarpatch|0
+currency|Legacy of Briskwrap|0
+currency|Legacy of Bristleboar|0
+currency|Legacy of Brynhand's Mark|0
+currency|Legacy of Bushwhack|0
+currency|Legacy of Candlemaker|0
+currency|Legacy of Chernobog's Pillar|0
+currency|Legacy of Crown of Thorns|0
+currency|Legacy of Cursecarver|0
+currency|Legacy of Deathblow|0
+currency|Legacy of Deidbell|0
+currency|Legacy of Dionadair|0
+currency|Legacy of Duality|0
+currency|Legacy of Dunkelhalt|0
+currency|Legacy of Dusk Vigil|0
+currency|Legacy of Edyrn's Tusks|0
+currency|Legacy of Elevore|0
+currency|Legacy of Erian's Cobble|0
+currency|Legacy of A Worthy Foe|0
+currency|Legacy of Ezomyte Peak|0
+currency|Legacy of Facebreaker|0
+currency|Legacy of Foxshade|0
+currency|Legacy of Greymake|0
+currency|Legacy of Hoghunt|0
+currency|Legacy of Horns of Bynden|0
+currency|Legacy of Hrimnor's Hymn|0
+currency|Legacy of Ironbound|0
+currency|Legacy of Keeper of the Arc|0
+currency|Legacy of Kingsguard|0
+currency|Legacy of Legionstride|0
+currency|Legacy of Lifesprig|0
+currency|Legacy of Mjölner|0
+currency|Legacy of Northpaw|0
+currency|Legacy of Oaksworn|0
+currency|Legacy of Obern's Bastion|0
+currency|Legacy of Olrovasara|0
+currency|Legacy of Quill Rain|0
+currency|Legacy of Rondel de Ezo|0
+currency|Legacy of Runeseeker's Call|0
+currency|Legacy of Serle's Grit|0
+currency|Legacy of Spiteful Floret|0
+currency|Legacy of Starkonja's Head|0
+currency|Legacy of Svalinn|0
+currency|Legacy of The Blood Thorn|0
+currency|Legacy of The Knight-errant|0
+currency|Legacy of The Sentry|0
+currency|Legacy of The Smiling Knight|0
+currency|Legacy of The Unleashed|0
+currency|Legacy of The Vile Knight|0
+currency|Legacy of Trampletoe|0
+currency|Legacy of Trenchtimbre|0
+currency|Legacy of Twisted Empyrean|0
+currency|Legacy of Tyranny's Grip|0
+currency|Legacy of Wanderlust|0
+currency|Legacy of Wings of Caelyn|0
+currency|Legacy of Wulfsbane|0
+currency|Greater Rune of Leadership|0
+currency|Craiceann's Rune of Warding|0
+currency|Saqawal's Rune of Memory|0
+currency|Saqawal's Rune of Erosion|0
+currency|Farrul's Rune of the Hunt|0
+currency|Craiceann's Rune of Recovery|0
+currency|Courtesan Mannan's Rune of Cruelty|0
+currency|Thane Grannell's Rune of Mastery|0
+currency|Fenumus' Rune of Spinning|0
+currency|Countess Seske's Rune of Archery|0
+currency|Thane Girt's Rune of Wildness|0
+currency|Greater Rune of Tithing|0
+currency|Fenumus' Rune of Draining|0
+currency|Thane Myrk's Rune of Summer|0
+currency|Lady Hestra's Rune of Winter|0
+currency|Thane Leld's Rune of Spring|0
+currency|The Greatwolf's Rune of Claws|0
+currency|The Greatwolf's Rune of Willpower|0
+currency|Greater Rune of Alacrity|0
+currency|Greater Rune of Nobility|0
+currency|Hedgewitch Assandra's Rune of Wisdom|0
+currency|Saqawal's Rune of the Sky|0
+currency|Fenumus' Rune of Agony|0
+currency|Farrul's Rune of Grace|0
+currency|Farrul's Rune of the Chase|0
+currency|Robust Rune|0
+currency|Greater Robust Rune|0
+currency|Lesser Robust Rune|0
+currency|Perfect Robust Rune|0
+currency|Stone Rune|0
+currency|Greater Stone Rune|0
+currency|Lesser Stone Rune|0
+currency|Perfect Stone Rune|0
+currency|Masterwork Rune|0
+currency|Greater Ward Rune|0
+currency|Lesser Ward Rune|0
+currency|Ward Rune|0
+currency|Perfect Ward Rune|0
+currency|Greater Charging Rune|0
+currency|Charging Rune|0
+currency|Perfect Charging Rune|0
+currency|Warding Rune of Reinforcement|0
+currency|Warding Rune of Stability|0
+currency|Warding Rune of Glancing|0
+currency|Warding Rune of Heart|0
+currency|Warding Rune of Nourishment|0
+currency|Warding Rune of Annihilation|0
+currency|Warding Rune of Armature|0
+currency|Warding Rune of Obsession|0
+currency|Warding Rune of Protection|0
+currency|Warding Rune of Equinox|0
+currency|Warding Rune of Salvaging|0
+currency|Warding Rune of Bodyguards|0
+currency|Warding Rune of Hollowing|0
+currency|Warding Rune of Disintegration|0
+currency|Warding Rune of Desperation|0
+currency|Warding Rune of Symbiosis|0
+currency|Warding Rune of Courage|0
+currency|Astrid's Creativity|0
+currency|Serle's Triumph|0
+currency|Vorana's Carnage|0
+currency|Cadigan's Epiphany|0
+currency|Katla's Gloom|0
+currency|Thrud's Might|0
+currency|Kolr's Hunt|0
+currency|Aldur's Legacy|0
+currency|Medved's Tending|0
+currency|Uhtred's Sidereus|0
+currency|Soul Core of Opiloti|0
+currency|Soul Core of Tacati|0
+currency|Soul Core of Ticaba|0
+currency|Soul Core of Cholotl|0
+currency|Soul Core of Topotante|0
+currency|Soul Core of Citaqualotl|0
+currency|Soul Core of Tzamoto|0
+currency|Soul Core of Puhuarte|0
+currency|Soul Core of Zantipi|0
+currency|Soul Core of Azcapa|0
+currency|Soul Core of Jiquani|0
+currency|Soul Core of Zalatl|0
+currency|Soul Core of Xopec|0
+currency|Hayoxi's Soul Core of Heatproofing|0
+currency|Xopec's Soul Core of Power|0
+currency|Estazunti's Soul Core of Convalescence|0
+currency|Tacati's Soul Core of Affliction|0
+currency|Cholotl's Soul Core of War|0
+currency|Citaqualotl's Soul Core of Foulness|0
+currency|Xipocado's Soul Core of Dominion|0
+currency|Jiquani's Soul Core of Automation|0
+currency|Jiquani's Soul Core of Malediction|0
+currency|Jiquani's Soul Core of Targeting|0
+currency|Jiquani's Soul Core of Rallying|0
+currency|Zalatl's Soul Core of Insulation|0
+currency|Jiquani's Soul Core of Radiance|0
+currency|Jiquani's Soul Core of Severing|0
+currency|Jiquani's Soul Core of Rippling|0
+currency|Jiquani's Soul Core of Quaking|0
+currency|Jiquani's Soul Core of Munitions|0
+currency|Jiquani's Soul Core of Snares|0
+currency|Jiquani's Soul Core of Abundance|0
+currency|Jiquani's Soul Core of Squalls|0
+currency|Jiquani's Soul Core of Thundering|0
+currency|Atziri's Soul Core of Devotion|0
+currency|Topotante's Soul Core of Dampening|0
+currency|Atziri's Soul Core of Vitality|0
+currency|Atziri's Soul Core of Alacrity|0
+currency|Atziri's Soul Core of Inoculation|0
+currency|Atmohua's Soul Core of Retreat|0
+currency|Quipolatl's Soul Core of Flow|0
+currency|Tzamoto's Soul Core of Ferocity|0
+currency|Uromoti's Soul Core of Attenuation|0
+currency|Opiloti's Soul Core of Assault|0
+currency|Guatelitzi's Soul Core of Endurance|0
+currency|Soul Core of Quipolatl|0
+currency|Soul Core of Atmohua|0
+currency|Bear Idol|0
+currency|Boar Idol|0
+currency|Cat Idol|0
+currency|Fox Idol|0
+currency|Primate Idol|0
+currency|Owl Idol|0
+currency|Ox Idol|0
+currency|Rabbit Idol|0
+currency|Snake Idol|0
+currency|Idol of Sirrius|0
+currency|Idol of Thruldana|0
+currency|Idol of Grold|0
+currency|Idol of Eeshta|0
+currency|Idol of Egrin|0
+currency|Idol of Maxarius|0
+currency|Idol of Ralakesh|0
+currency|Stag Idol|0
+currency|Wolf Idol|0
+currency|Tecrod's Gaze|0
+currency|Guatelitzi's Thesis|0
+currency|Quipolatl's Thesis|0
+currency|Citaqualotl's Thesis|0
+currency|Jiquani's Thesis|0
+currency|Ulaman's Gaze|0
+flask|Thawing Charm|0
+flask|Topaz Charm|0
+flask|Amethyst Charm|0
+flask|Golden Charm|0
+flask|Staunching Charm|0
+flask|Antidote Charm|0
+flask|Dousing Charm|0
+flask|Grounding Charm|0
+flask|Stone Charm|0
+flask|Silver Charm|0
+flask|Ruby Charm|0
+flask|Sapphire Charm|0
+flask|Lesser Life Flask|0
+flask|Medium Life Flask|0
+flask|Greater Life Flask|0
+flask|Grand Life Flask|0
+flask|Giant Life Flask|0
+flask|Colossal Life Flask|0
+flask|Gargantuan Life Flask|0
+flask|Transcendent Life Flask|0
+flask|Ultimate Life Flask|0
+flask|Lesser Mana Flask|0
+flask|Medium Mana Flask|0
+flask|Greater Mana Flask|0
+flask|Grand Mana Flask|0
+flask|Giant Mana Flask|0
+flask|Colossal Mana Flask|0
+flask|Gargantuan Mana Flask|0
+flask|Transcendent Mana Flask|0
+flask|Ultimate Mana Flask|0
+flask|Arakaali's Gift|1
+flask|Beira's Anguish|1
+flask|Blood of the Warrior|1
+flask|Breath of the Mountains|1
+flask|Forsaken Bangle|1
+flask|For Utopia|1
+flask|Lavianga's Spirits|1
+flask|Melting Maelstrom|1
+flask|Nascent Hope|1
+flask|Ngamahu's Chosen|1
+flask|Olroth's Resolve|1
+flask|Opportunity|1
+flask|Rite of Passage|1
+flask|Sanguis Heroum|1
+flask|The Black Cat|1
+flask|The Fall of the Axe|1
+flask|Uhtred's Chalice|1
+flask|Valako's Roar|1
+gem|Alchemist's Boon|0
+gem|Ancestral Cry|0
+gem|Archmage|0
+gem|Armour Piercing Rounds|0
+gem|Attrition|0
+gem|Barkskin|0
+gem|Fury of the Mountain|0
+gem|Berserk|0
+gem|Blink|0
+gem|Bloodhound's Mark|0
+gem|Bone Cage|0
+gem|Bonestorm|0
+gem|Charge Regulation|0
+gem|Cluster Grenade|0
+gem|Snap|0
+gem|Combat Frenzy|0
+gem|Convalescence|0
+gem|Cull The Weak|0
+gem|Dark Effigy|0
+gem|Defiance Banner|0
+gem|Detonating Arrow|0
+gem|Dread Banner|0
+gem|Electrocuting Arrow|0
+gem|Elemental Conflux|0
+gem|Elemental Invocation|0
+gem|Elemental Sundering|0
+gem|Elemental Weakness|0
+gem|Emergency Reload|0
+gem|Entangle|0
+gem|Explosive Grenade|0
+gem|Explosive Shot|0
+gem|Explosive Spear|0
+gem|Fangs of Frost|0
+gem|Feral Invocation|0
+gem|Fireball|0
+gem|Flash Grenade|0
+gem|Forge Hammer|0
+gem|Fortifying Cry|0
+gem|Fragmentation Rounds|0
+gem|Freezing Mark|0
+gem|Freezing Salvo|0
+gem|Frost Darts|0
+gem|Frozen Locus|0
+gem|Galvanic Shards|0
+gem|Gas Arrow|0
+gem|Gas Grenade|0
+gem|Gathering Storm|0
+gem|Glacial Bolt|0
+gem|Grim Feast|0
+gem|Hailstorm Rounds|0
+gem|Hammer of the Gods|0
+gem|Hand of Chayula|0
+gem|Herald of Blood|0
+gem|Herald of Plague|0
+gem|High Velocity Rounds|0
+gem|Ice Shards|0
+gem|Ice Shot|0
+gem|Ice-Tipped Arrows|0
+gem|Incendiary Shot|0
+gem|Iron Ward|0
+gem|Lightning Rod|0
+gem|Living Bomb|0
+gem|Lunar Assault|0
+gem|Magma Barrier|0
+gem|Magnetic Salvo|0
+gem|Mana Remnants|0
+gem|Mantra of Destruction|0
+gem|Mirage Archer|0
+gem|Molten Blast|0
+gem|Mortar Cannon|0
+gem|Oil Barrage|0
+gem|Oil Grenade|0
+gem|Overwhelming Presence|0
+gem|Perfect Strike|0
+gem|Permafrost Bolts|0
+gem|Plasma Blast|0
+gem|Poisonburst Arrow|0
+gem|Primal Strikes|0
+gem|Profane Ritual|0
+gem|Raging Spirits|0
+gem|Rake|0
+gem|Rapid Shot|0
+gem|Ravenous Swarm|0
+gem|Reaper's Invocation|0
+gem|Resonating Shield|0
+gem|Sacrifice|0
+gem|Scavenged Plating|0
+gem|Shard Scavenger|0
+gem|Shield Wall|0
+gem|Shockburst Rounds|0
+gem|Shockchain Arrow|0
+gem|Siege Cascade|0
+gem|Siphon Elements|0
+gem|Siphoning Strike|0
+gem|Snipe|0
+gem|Solar Orb|0
+gem|Soul Offering|0
+gem|Spear of Solaris|0
+gem|Stampede|0
+gem|Stormblast Bolts|0
+gem|Stormcaller Arrow|0
+gem|Storm Lance|0
+gem|Storm Wave|0
+gem|Tame Beast|0
+gem|Tempest Bell|0
+gem|Thrashing Vines|0
+gem|Thunderous Leap|0
+gem|Time of Need|0
+gem|Tornado Shot|0
+gem|Toxic Domain|0
+gem|Toxic Growth|0
+gem|Trinity|0
+gem|Twister|0
+gem|Unearth|0
+gem|Vaulting Impact|0
+gem|Vine Arrow|0
+gem|Voltaic Mark|0
+gem|War Banner|0
+gem|Whirlwind Lance|0
+gem|Wind Dancer|0
+gem|Wind Serpent's Fury|0
+gem|Wing Blast|0
+gem|Withering Presence|0
+gem|Arctic Howl|0
+gem|Cross Slash|0
+gem|Lunar Blessing|0
+gem|Devour|0
+gem|Flame Breath|0
+gem|Uncut Spirit Gem|0
+gem|Uncut Spirit Gem (Level 10)|0
+gem|Uncut Spirit Gem (Level 11)|0
+gem|Uncut Spirit Gem (Level 12)|0
+gem|Uncut Spirit Gem (Level 13)|0
+gem|Uncut Spirit Gem (Level 14)|0
+gem|Uncut Spirit Gem (Level 15)|0
+gem|Uncut Spirit Gem (Level 16)|0
+gem|Uncut Spirit Gem (Level 17)|0
+gem|Uncut Spirit Gem (Level 18)|0
+gem|Uncut Spirit Gem (Level 19)|0
+gem|Uncut Spirit Gem (Level 20)|0
+gem|Uncut Spirit Gem (Level 4)|0
+gem|Uncut Spirit Gem (Level 5)|0
+gem|Uncut Spirit Gem (Level 6)|0
+gem|Uncut Spirit Gem (Level 7)|0
+gem|Uncut Spirit Gem (Level 8)|0
+gem|Uncut Spirit Gem (Level 9)|0
+gem|Ancestral Warrior Totem|0
+gem|Animus Exchange|0
+gem|Animus Splinters|0
+gem|Arc|0
+gem|Arctic Armour|0
+gem|Armour Breaker|0
+gem|Siege Ballista|0
+gem|Ball Lightning|0
+gem|Barrage|0
+gem|Barrier Invocation|0
+gem|Rampage|0
+gem|Bind Spectre|0
+gem|Bitter Dead|0
+gem|Blasphemy|0
+gem|Blood Hunt|0
+gem|Bone Offering|0
+gem|Boneshatter|0
+gem|Cast on Critical|0
+gem|Cast on Dodge|0
+gem|Cast on Elemental Ailment|0
+gem|Cast on Freeze|0
+gem|Cast on Ignite|0
+gem|Cast on Minion Death|0
+gem|Cast on Shock|0
+gem|Charged Staff|0
+gem|Comet|0
+gem|Conductive Runes|0
+gem|Conductivity|0
+gem|Contagion|0
+gem|Despair|0
+gem|Detonate Dead|0
+gem|Detonate Living|0
+gem|Disengage|0
+gem|Earthquake|0
+gem|Earthshatter|0
+gem|Ember Fusillade|0
+gem|Enfeeble|0
+gem|Escape Shot|0
+gem|Essence Drain|0
+gem|Eternal March|0
+gem|Eternal Rage|0
+gem|Explosive Transmutation|0
+gem|Eye of Winter|0
+gem|Falling Thunder|0
+gem|Ferocious Roar|0
+gem|Firestorm|0
+gem|Flameblast|0
+gem|Flame Wall|0
+gem|Flammability|0
+gem|Flicker Strike|0
+gem|Fragments Of The Past|0
+gem|Frostbolt|0
+gem|Frost Bomb|0
+gem|Frostflame Nova|0
+gem|Frost Wall|0
+gem|Furious Slam|0
+gem|Ghost Dance|0
+gem|Glacial Cascade|0
+gem|Glacial Lance|0
+gem|Grim Pillars|0
+gem|Herald of Ash|0
+gem|Herald of Ice|0
+gem|Herald of Thunder|0
+gem|Hexblast|0
+gem|Hollow Shell|0
+gem|Hypothermia|0
+gem|Ice Nova|0
+gem|Ice Strike|0
+gem|Incinerate|0
+gem|Infernal Cry|0
+gem|Killing Palm|0
+gem|Leap Slam|0
+gem|Leylines|0
+gem|Lightning Arrow|0
+gem|Lightning Conduit|0
+gem|Lightning Spear|0
+gem|Lightning Warp|0
+gem|Lingering Illusion|0
+gem|Mana Tempest|0
+gem|Orb of Storms|0
+gem|Pain Offering|0
+gem|Plague Bearer|0
+gem|Powered by Verisium|0
+gem|Rain of Arrows|0
+gem|Rain of Blades|0
+gem|Raise Zombie|0
+gem|Rapid Assault|0
+gem|Refutation|0
+gem|Remnants of Kalguur|0
+gem|Repulsion|0
+gem|Rhoa Mount|0
+gem|Artillery Ballista|0
+gem|Rolling Magma|0
+gem|Rolling Slam|0
+gem|Runic Reprieve|0
+gem|Savage Fury|0
+gem|Seismic Cry|0
+gem|Shattering Palm|0
+gem|Shield Charge|0
+gem|Shockwave Totem|0
+gem|Skeletal Arsonist|0
+gem|Skeletal Brute|0
+gem|Skeletal Cleric|0
+gem|Skeletal Frost Mage|0
+gem|Skeletal Reaver|0
+gem|Skeletal Sniper|0
+gem|Skeletal Storm Mage|0
+gem|Skyfall|0
+gem|Sniper's Mark|0
+gem|Spark|0
+gem|Spearfield|0
+gem|Spell Totem|0
+gem|Spiral Volley|0
+gem|Staggering Palm|0
+gem|Sunder|0
+gem|Supercharged Slam|0
+gem|Tempest Flurry|0
+gem|Temporal Chains|0
+gem|Thunderstorm|0
+gem|Tornado|0
+gem|Trail of Caltrops|0
+gem|Triskelion Cascade|0
+gem|Uncut Skill Gem|0
+gem|Uncut Skill Gem (Level 1)|0
+gem|Uncut Skill Gem (Level 10)|0
+gem|Uncut Skill Gem (Level 11)|0
+gem|Uncut Skill Gem (Level 12)|0
+gem|Uncut Skill Gem (Level 13)|0
+gem|Uncut Skill Gem (Level 14)|0
+gem|Uncut Skill Gem (Level 15)|0
+gem|Uncut Skill Gem (Level 16)|0
+gem|Uncut Skill Gem (Level 17)|0
+gem|Uncut Skill Gem (Level 18)|0
+gem|Uncut Skill Gem (Level 19)|0
+gem|Uncut Skill Gem (Level 2)|0
+gem|Uncut Skill Gem (Level 20)|0
+gem|Uncut Skill Gem (Level 3)|0
+gem|Uncut Skill Gem (Level 4)|0
+gem|Uncut Skill Gem (Level 5)|0
+gem|Uncut Skill Gem (Level 6)|0
+gem|Uncut Skill Gem (Level 7)|0
+gem|Uncut Skill Gem (Level 8)|0
+gem|Uncut Skill Gem (Level 9)|0
+gem|Verisium Manifestations|0
+gem|Volcanic Fissure|0
+gem|Volcano|0
+gem|Voltaic Barrier|0
+gem|Voltaic Grenade|0
+gem|Vulnerability|0
+gem|Walking Calamity|0
+gem|Wardbound Minions|0
+gem|Wave of Frost|0
+gem|Whirling Assault|0
+gem|Whirling Slash|0
+gem|Wind Blast|0
+gem|Wolf Pack|0
+gem|Pounce|0
+gem|Projectile Acceleration I|0
+gem|Projectile Acceleration III|0
+gem|Projectile Acceleration II|0
+gem|Aftershock I|0
+gem|Aftershock II|0
+gem|Ahn's Citadel|0
+gem|Ailith's Chimes|0
+gem|Ambush|0
+gem|Arcane Surge|0
+gem|Rapid Casting I|0
+gem|Rapid Casting III|0
+gem|Rapid Casting II|0
+gem|Atalui's Bloodletting|0
+gem|Behead I|0
+gem|Behead II|0
+gem|Bhatair's Vengeance|0
+gem|Biting Frost I|0
+gem|Biting Frost II|0
+gem|Blazing Critical|0
+gem|Blind I|0
+gem|Blind II|0
+gem|Bloodlust|0
+gem|Knockback|0
+gem|Bounty I|0
+gem|Bounty II|0
+gem|Break Posture|0
+gem|Brittle Armour|0
+gem|Brutality I|0
+gem|Brutality III|0
+gem|Brutality II|0
+gem|Brutus' Brain|0
+gem|Heightened Accuracy I|0
+gem|Heightened Accuracy II|0
+gem|Burning Inscription|0
+gem|Bursting Plague|0
+gem|Cannibalism I|0
+gem|Cannibalism II|0
+gem|Catalysing Elements|0
+gem|Chain I|0
+gem|Chain III|0
+gem|Chain II|0
+gem|Chaos Attunement|0
+gem|Chaos Mastery|0
+gem|Charged Mark|0
+gem|Clarity I|0
+gem|Clarity II|0
+gem|Close Combat I|0
+gem|Close Combat II|0
+gem|Cold Exposure|0
+gem|Cold Attunement|0
+gem|Cold Mastery|0
+gem|Cold Penetration|0
+gem|Combo Finisher I|0
+gem|Combo Finisher II|0
+gem|Escalating Poison|0
+gem|Concentrated Area|0
+gem|Concussive Runes|0
+gem|Concussive Spells|0
+gem|Shock|0
+gem|Controlled Destruction|0
+gem|Controlled Hazard|0
+gem|Corrosion|0
+gem|Corrupting Cry I|0
+gem|Paquate's Pact|0
+gem|Corrupting Cry II|0
+gem|Shock Conduction|0
+gem|Shock Conduction II|0
+gem|Creeping Chill|0
+gem|Crescendo I|0
+gem|Crescendo III|0
+gem|Crescendo II|0
+gem|Coursing Current|0
+gem|Deadly Herald|0
+gem|Deadly Poison I|0
+gem|Deadly Poison II|0
+gem|Projectile Deceleration I|0
+gem|Projectile Deceleration II|0
+gem|Deep Cuts I|0
+gem|Deep Cuts II|0
+gem|Deep Freeze|0
+gem|Armour Demolisher I|0
+gem|Armour Demolisher II|0
+gem|Lasting Ground|0
+gem|Devastate|0
+gem|Daze|0
+gem|Drain Ailments|0
+gem|Echoing Cry|0
+gem|Einhar's Beastrite|0
+gem|Electrocute|0
+gem|Elemental Army|0
+gem|Elemental Discharge|0
+gem|Elemental Focus|0
+gem|Empowered Sparks I|0
+gem|Empowered Sparks II|0
+gem|Slow Potency|0
+gem|Energy Barrier|0
+gem|Enraged Warcry I|0
+gem|Enraged Warcry II|0
+gem|Poison I|0
+gem|Poison III|0
+gem|Poison II|0
+gem|Eonyr's Thunder|0
+gem|Essence Harvest|0
+gem|Eternal Flame I|0
+gem|Eternal Flame III|0
+gem|Eternal Flame II|0
+gem|Eternal Mark|0
+gem|Execute I|0
+gem|Execute III|0
+gem|Execute II|0
+gem|Expand|0
+gem|Exploit Weakness|0
+gem|Accelerated Growth|0
+gem|Accelerated Growth II|0
+gem|Exposing Cry|0
+gem|Fan The Flames|0
+gem|Fan The Flames II|0
+gem|Compressed Duration I|0
+gem|Compressed Duration II|0
+gem|Feeding Frenzy I|0
+gem|Feeding Frenzy II|0
+gem|Fiery Death|0
+gem|Fire Exposure|0
+gem|Fire Attunement|0
+gem|Fire Mastery|0
+gem|Fire Penetration I|0
+gem|Fire Penetration II|0
+gem|Fist Of Kalguur|0
+gem|Fist of War I|0
+gem|Fist of War III|0
+gem|Fist of War II|0
+gem|Font of Blood|0
+gem|Font of Mana|0
+gem|Font of Rage|0
+gem|Fork|0
+gem|Fortress I|0
+gem|Fortress II|0
+gem|Frostfire|0
+gem|Frost Nexus|0
+gem|Freeze|0
+gem|Gorge|0
+gem|Healing Runes|0
+gem|Heavy Swing|0
+gem|Heightened Curse|0
+gem|Herbalism I|0
+gem|Herbalism II|0
+gem|Hex Bloom|0
+gem|Hourglass|0
+gem|Ice Bite I|0
+gem|Ice Bite II|0
+gem|Ignite I|0
+gem|Ignite III|0
+gem|Ignite II|0
+gem|Immolate|0
+gem|Impact Shockwave|0
+gem|Impending Doom|0
+gem|Inexorable Critical I|0
+gem|Inexorable Critical II|0
+gem|Infernal Legion I|0
+gem|Infernal Legion III|0
+gem|Infernal Legion II|0
+gem|Cooldown Recovery I|0
+gem|Cooldown Recovery II|0
+gem|Efficiency I|0
+gem|Efficiency II|0
+gem|Jagged Ground I|0
+gem|Jagged Ground II|0
+gem|Bleed I|0
+gem|Bleed IV|0
+gem|Bleed III|0
+gem|Bleed II|0
+gem|Lasting Shock|0
+gem|Life Bounty|0
+gem|Life Drain|0
+gem|Lifetap|0
+gem|Life Leech I|0
+gem|Life Leech III|0
+gem|Life Leech II|0
+gem|Lightning Exposure|0
+gem|Lightning Attunement|0
+gem|Lightning Mastery|0
+gem|Lightning Penetration|0
+gem|Lockdown|0
+gem|Longshot I|0
+gem|Longshot II|0
+gem|Magnified Area I|0
+gem|Magnified Area II|0
+gem|Maim|0
+gem|Mana Bounty|0
+gem|Mana Flare|0
+gem|Mark of Siphoning|0
+gem|Mark of Siphoning II|0
+gem|Rapid Attacks I|0
+gem|Rapid Attacks III|0
+gem|Rapid Attacks II|0
+gem|Meat Shield I|0
+gem|Meat Shield II|0
+gem|Minion Mastery|0
+gem|Minion Splash I|0
+gem|Minion Splash II|0
+gem|Mobility|0
+gem|Momentum|0
+gem|Murderous Intent|0
+gem|Neural Overload|0
+gem|Nova Projectiles I|0
+gem|Nova Projectiles II|0
+gem|Oisín's Oath|0
+gem|Olroth's Hubris|0
+gem|Opening Move|0
+gem|Overabundance I|0
+gem|Overabundance II|0
+gem|Overcharge|0
+gem|Stun I|0
+gem|Stun III|0
+gem|Stun II|0
+gem|Perpetual Charge|0
+gem|Prolonged Duration I|0
+gem|Prolonged Duration II|0
+gem|Physical Mastery|0
+gem|Pierce I|0
+gem|Pierce III|0
+gem|Pierce II|0
+gem|Pin I|0
+gem|Pinpoint Critical|0
+gem|Pin III|0
+gem|Pin II|0
+gem|Practical Magic I|0
+gem|Practical Magic II|0
+gem|Precision I|0
+gem|Precision II|0
+gem|Premeditation|0
+gem|Elemental Armament I|0
+gem|Elemental Armament III|0
+gem|Elemental Armament II|0
+gem|Charge Profusion I|0
+gem|Charge Profusion II|0
+gem|Rage I|0
+gem|Rage III|0
+gem|Rage II|0
+gem|Rending Apex|0
+gem|Rising Tempest|0
+gem|Runeforged Blades|0
+gem|Runic Extraction|0
+gem|Runic Infusion|0
+gem|Ruthless|0
+gem|Multishot I|0
+gem|Multishot II|0
+gem|Scouring Flame|0
+gem|Searing Flame I|0
+gem|Searing Flame II|0
+gem|Second Wind I|0
+gem|Second Wind III|0
+gem|Second Wind II|0
+gem|Shock Siphon|0
+gem|Tectonic Slams|0
+gem|Soul Drain|0
+gem|Mana Leech|0
+gem|Spell Echo|0
+gem|Armour Break I|0
+gem|Armour Break III|0
+gem|Armour Break II|0
+gem|Stormfire|0
+gem|Supercritical|0
+gem|Thrill of the Kill|0
+gem|Thrill of the Kill II|0
+gem|Unbreakable|0
+gem|Uncut Support Gem|0
+gem|Uncut Support Gem (Level 1)|0
+gem|Uncut Support Gem (Level 2)|0
+gem|Uncut Support Gem (Level 3)|0
+gem|Uncut Support Gem (Level 4)|0
+gem|Uncut Support Gem (Level 5)|0
+gem|Unleash|0
+gem|Uruk's Smelting|0
+gem|Vilenta's Propulsion|0
+gem|Vitality I|0
+gem|Vitality II|0
+gem|Wildfire|0
+gem|Window of Opportunity I|0
+gem|Window of Opportunity II|0
+gem|Wind Wave|0
+gem|Withering Touch|0
+gem|Zarokh's Revolt|0
+gem|Olroth's Conviction|0
+gem|Abiding Hex|0
+gem|Sacrificial Offering|0
+gem|Acrimony|0
+gem|Adhesive Grenades I|0
+gem|Adhesive Grenades II|0
+gem|Admixture|0
+gem|Advancing Storm|0
+gem|Alignment I|0
+gem|Alignment III|0
+gem|Alignment II|0
+gem|Amanamu's Tithe|0
+gem|Ambrosia|0
+gem|Ambrosia II|0
+gem|Ammo Conservation I|0
+gem|Arjun's Medal|0
+gem|Ammo Conservation III|0
+gem|Ammo Conservation II|0
+gem|Ancestral Aid|0
+gem|Ancestral Call I|0
+gem|Ancestral Call II|0
+gem|Urgent Totems I|0
+gem|Urgent Totems III|0
+gem|Urgent Totems II|0
+gem|Arakaali's Lust|0
+gem|Arbiter's Ignition|0
+gem|Arbiter's Reach|0
+gem|Armour Explosion|0
+gem|Arms Length|0
+gem|Astral Projection|0
+gem|Atziri's Allure|0
+gem|Atziri's Communion|0
+gem|Atziri's Impatience|0
+gem|Auto Reload|0
+gem|Barbs I|0
+gem|Barbs III|0
+gem|Barbs II|0
+gem|Battershout|0
+gem|Bidding I|0
+gem|Bidding III|0
+gem|Bidding II|0
+gem|Blindside|0
+gem|Hobble|0
+gem|Bone Shrapnel|0
+gem|Brambleslam|0
+gem|Branching Fissures I|0
+gem|Branching Fissures II|0
+gem|Breachlord's Amalgam|0
+gem|Breachlord's Rift|0
+gem|Break Endurance|0
+gem|Brink I|0
+gem|Brink II|0
+gem|Burgeon I|0
+gem|Burgeon II|0
+gem|Cadence|0
+gem|Caltrops|0
+gem|Energy Capacitor|0
+gem|Catharsis|0
+gem|Catha's Brilliance|0
+gem|Chaotic Freeze|0
+gem|Charged Shots I|0
+gem|Charged Shots II|0
+gem|Charm Bounty|0
+gem|Clash|0
+gem|Ratha's Assault|0
+gem|Commandment|0
+gem|Commiserate|0
+gem|Concoct I|0
+gem|Concoct II|0
+gem|Considered Casting|0
+gem|Cool Headed|0
+gem|Corpse Conservation|0
+gem|Crackling Barrier|0
+gem|Crater|0
+gem|Crazed Minions|0
+gem|Crystalline Shards|0
+gem|Culling Strike I|0
+gem|Culling Strike II|0
+gem|Culmination I|0
+gem|Culmination II|0
+gem|Cursed Ground|0
+gem|Danse Macabre|0
+gem|Daresso's Passion|0
+gem|Dauntless|0
+gem|Dazing Cry|0
+gem|Dazzle|0
+gem|Deadly Resolve|0
+gem|Deathmarch|0
+gem|Decaying Hex|0
+gem|Defy I|0
+gem|Defy II|0
+gem|Delayed Gratification|0
+gem|Delayed Reaction|0
+gem|Deliberation|0
+gem|Derange|0
+gem|Desperation|0
+gem|Dialla's Desire|0
+gem|Direstrike I|0
+gem|Direstrike II|0
+gem|Harmonic Remnants I|0
+gem|Harmonic Remnants II|0
+gem|Doedre's Undoing|0
+gem|Persistent Ground I|0
+gem|Persistent Ground III|0
+gem|Persistent Ground II|0
+gem|Double Barrel I|0
+gem|Double Barrel III|0
+gem|Double Barrel II|0
+gem|Durability|0
+gem|Embitter|0
+gem|Enduring Impact I|0
+gem|Enduring Impact II|0
+gem|Energy Retention|0
+gem|Hulking Minions|0
+gem|Esh's Prowess|0
+gem|Esh's Radiance|0
+gem|Excise|0
+gem|Excoriate|0
+gem|Execrate|0
+gem|Expanse|0
+gem|Short Fuse I|0
+gem|Short Fuse II|0
+gem|Extraction|0
+gem|Ferocity|0
+gem|Selfless Remnants|0
+gem|First Blood|0
+gem|Flamepierce|0
+gem|Flow|0
+gem|Fluke|0
+gem|Ixchel's Torment|0
+gem|Focused Curse|0
+gem|Freezefork|0
+gem|Fresh Clip I|0
+gem|Fresh Clip II|0
+gem|Frozen Spite|0
+gem|Gambleshot|0
+gem|Garukhan's Resolve|0
+gem|Glacier|0
+gem|Cirel's Cultivation|0
+gem|Greatwood II|0
+gem|Guatelitzi's Ablation|0
+gem|Haemocrystals|0
+gem|Hardy Totems I|0
+gem|Tawhoa's Tending|0
+gem|Hardy Totems II|0
+gem|Hayoxi's Fulmination|0
+gem|Heft|0
+gem|Helbrym's Hide|0
+gem|Her Declaration|0
+gem|Hinder|0
+gem|Hit and Run|0
+gem|Holy Descent|0
+gem|Icicle|0
+gem|Impale|0
+gem|Boundless Energy I|0
+gem|Boundless Energy II|0
+gem|Incision|0
+gem|Inhibitor|0
+gem|Innervate|0
+gem|Intense Agony|0
+gem|Remnant Potency I|0
+gem|Remnant Potency III|0
+gem|Remnant Potency II|0
+gem|Reinforced Totems I|0
+gem|Reinforced Totems II|0
+gem|Kalisa's Crescendo|0
+gem|Kaom's Madness|0
+gem|Khatal's Rejuvenation|0
+gem|Kulemak's Dominion|0
+gem|Kurgal's Leash|0
+gem|Last Gasp|0
+gem|Leverage|0
+gem|Living Lightning|0
+gem|Living Lightning II|0
+gem|Long Fuse I|0
+gem|Long Fuse II|0
+gem|Loyalty|0
+gem|Magnetic Remnants|0
+gem|Malady|0
+gem|Medved's Felling|0
+gem|Minion Instability|0
+gem|Minion Pact I|0
+gem|Minion Pact II|0
+gem|Morgana's Tempest|0
+gem|Mórrigan's Insight|0
+gem|Muster|0
+gem|Mysticism I|0
+gem|Mysticism II|0
+gem|Nimble Reload|0
+gem|Outmaneuver|0
+gem|Overextend|0
+gem|Payload|0
+gem|Perfected Endurance|0
+gem|Perfection|0
+gem|Dominus' Grasp|0
+gem|Poison Spores|0
+gem|Potential|0
+gem|Practiced Combo|0
+gem|Profanity I|0
+gem|Profanity II|0
+gem|Prototype Seventeen|0
+gem|Punch Through|0
+gem|Pursuit I|0
+gem|Pursuit III|0
+gem|Pursuit II|0
+gem|Quill Burst|0
+gem|Rageforged I|0
+gem|Rageforged II|0
+gem|Raging Cry|0
+gem|Rakiata's Flow|0
+gem|Rally|0
+gem|Overreach|0
+gem|Rearm I|0
+gem|Rearm II|0
+gem|Refraction I|0
+gem|Refraction III|0
+gem|Refraction II|0
+gem|Retaliate I|0
+gem|Retaliate II|0
+gem|Frenzied Riposte|0
+gem|Retreat I|0
+gem|Retreat III|0
+gem|Retreat II|0
+gem|Reverberate|0
+gem|Ricochet I|0
+gem|Ricochet III|0
+gem|Ricochet II|0
+gem|Rigwald's Ferocity|0
+gem|Rime|0
+gem|Rip|0
+gem|Ritualistic Curse|0
+gem|Romira's Requital|0
+gem|Rupture|0
+gem|Rusted Spikes|0
+gem|Sacrificial Lamb I|0
+gem|Sacrificial Lamb II|0
+gem|Salvo|0
+gem|See Red|0
+gem|Seraph's Heart|0
+gem|Shocking Leap|0
+gem|Electromagnetism|0
+gem|Mark for Death|0
+gem|Mark for Death II|0
+gem|Skittering Stone I|0
+gem|Skittering Stone II|0
+gem|Spar|0
+gem|Spectral Volley|0
+gem|Spell Cascade|0
+gem|Splinter Totem I|0
+gem|Splinter Totem II|0
+gem|Static Shocks|0
+gem|Steadfast I|0
+gem|Steadfast II|0
+gem|Stoicism I|0
+gem|Stoicism II|0
+gem|Stomping Ground|0
+gem|Stormchain|0
+gem|Streamlined Rounds|0
+gem|Potent Exposure|0
+gem|Strong Hearted|0
+gem|Styrn's Ferocity|0
+gem|Styrn's Mountain|0
+gem|Encroaching Ground|0
+gem|Swift Affliction I|0
+gem|Swift Affliction III|0
+gem|Swift Affliction II|0
+gem|Syzygy|0
+gem|Tacati's Ire|0
+gem|Tangmazu's Thurible|0
+gem|Tasalio's Rhythm|0
+gem|Tear|0
+gem|Tecrod's Revenge|0
+gem|Thornskin I|0
+gem|Thornskin II|0
+gem|Tireless|0
+gem|Tremors|0
+gem|Trickster's Shard|0
+gem|Tul's Avalanche|0
+gem|Tul's Stillness|0
+gem|Tumult|0
+gem|Heightened Charges|0
+gem|Uhtred's Augury|0
+gem|Uhtred's Constellation|0
+gem|Uhtred's Exodus|0
+gem|Uhtred's Omen|0
+gem|Uhtred's Rite|0
+gem|Unabating|0
+gem|Unbending|0
+gem|Unerring Power|0
+gem|Unsteady Tempo|0
+gem|Untouchable|0
+gem|Unyielding|0
+gem|Upheaval I|0
+gem|Upheaval II|0
+gem|Upwelling I|0
+gem|Upwelling II|0
+gem|Uul-Netol's Embrace|0
+gem|Vanguard I|0
+gem|Vanguard II|0
+gem|Varashta's Blessing|0
+gem|Verglas|0
+gem|Volatile Power|0
+gem|Volatility|0
+gem|Volcanic Eruption|0
+gem|Volt|0
+gem|Vorana's Siege|0
+gem|Vruun's Aftermath|0
+gem|Vruun's Inevitability|0
+gem|Warm Blooded|0
+gem|Wildshards I|0
+gem|Sione's Temper|0
+gem|Wildshards II|0
+gem|Xibaqua's Rending|0
+gem|Xoph's Pyre|0
+gem|Zarokh's Refrain|0
+gem|Zenith I|0
+gem|Zenith II|0
+gem|Zerphi's Infamy|0
+jewel|Emerald|0
+jewel|Diamond|0
+jewel|Sapphire|0
+jewel|Time-Lost Emerald|0
+jewel|Time-Lost Diamond|0
+jewel|Time-Lost Sapphire|0
+jewel|Time-Lost Ruby|0
+jewel|Ruby|0
+jewel|Timeless Jewel|0
+jewel|Against the Darkness|1
+jewel|Controlled Metamorphosis|1
+jewel|Flesh Crucible|1
+jewel|From Nothing|1
+jewel|Grand Spectrum|1
+jewel|Heart of the Well|1
+jewel|Heroic Tragedy|1
+jewel|Megalomaniac|1
+jewel|Prism of Belief|1
+jewel|Split Personality|1
+jewel|The Adorned|1
+jewel|Undying Hate|1
+jewel|Voices|1
+map|Kulemak's Invitation|0
+map|Idol of Estazunti|0
+map|Breachlord Sac|0
+map|Raven's Reflection|0
+map|The Triskelion Reforged|0
+map|Head of the King|0
+map|Expedition Logbook|0
+map|Simulacrum|0
+map|Breachstone|0
+map|An Audience with the King|0
+map|Waystone (Tier 1)|0
+map|Waystone (Tier 10)|0
+map|Waystone (Tier 11)|0
+map|Waystone (Tier 12)|0
+map|Waystone (Tier 13)|0
+map|Waystone (Tier 14)|0
+map|Waystone (Tier 15)|0
+map|Waystone (Tier 16)|0
+map|Waystone (Tier 2)|0
+map|Waystone (Tier 3)|0
+map|Waystone (Tier 4)|0
+map|Waystone (Tier 5)|0
+map|Waystone (Tier 6)|0
+map|Waystone (Tier 7)|0
+map|Waystone (Tier 8)|0
+map|Waystone (Tier 9)|0
+map|Ancient Crisis Fragment|0
+map|Faded Crisis Fragment|0
+map|Weathered Crisis Fragment|0
+map|Origin Core|0
+map|Origin Cradle|0
+map|Origin Spark|0
+map|Primary Calamity Fragment|0
+map|Secondary Calamity Fragment|0
+map|Tertiary Calamity Fragment|0
+map|Call of the Shadows|0
+map|Test of Strength Barya|0
+map|Test of Will Barya|0
+map|Test of Cunning Barya|0
+map|Test of Time Barya|0
+map|Djinn Barya|0
+map|Abyss Tablet|0
+map|Breach Tablet|0
+map|Delirium Tablet|0
+map|Expedition Tablet|0
+map|Irradiated Tablet|0
+map|Temple Tablet|0
+map|Overseer Tablet|0
+map|Ritual Tablet|0
+map|Inscribed Ultimatum|0
+map|Cowardly Fate|0
+map|Deadly Fate|0
+map|Victorious Fate|0
+map|Clear Skies|1
+map|Cruel Hegemony|1
+map|Forgotten By Time|1
+map|Freedom of Faith|1
+map|Mastered Domain|1
+map|Season of the Hunt|1
+map|The Grand Project|1
+map|Unforeseen Consequences|1
+map|Visions of Paradise|1
+map|Wraeclast Besieged|1
+weapon|Glass Shank|0
+weapon|Kris Knife|0
+weapon|Parrying Dagger|0
+weapon|Arcane Dirk|0
+weapon|Cinquedea|0
+weapon|Crone Knife|0
+weapon|Simple Dagger|0
+weapon|Skinning Knife|0
+weapon|Moon Dagger|0
+weapon|Engraved Knife|0
+weapon|Obsidian Dagger|0
+weapon|Bloodletting Dagger|0
+weapon|Mail Breaker|0
+weapon|Splintered Flail|0
+weapon|Icicle Flail|0
+weapon|Tearing Flail|0
+weapon|Great Flail|0
+weapon|Abyssal Flail|0
+weapon|Chain Flail|0
+weapon|Holy Flail|0
+weapon|Iron Flail|0
+weapon|Twin Flail|0
+weapon|Slender Flail|0
+weapon|Stone Flail|0
+weapon|Ring Flail|0
+weapon|Guarded Flail|0
+weapon|Dull Hatchet|0
+weapon|Fury Cleaver|0
+weapon|Battle Axe|0
+weapon|Profane Cleaver|0
+weapon|Dread Hatchet|0
+weapon|Hook Axe|0
+weapon|Bearded Axe|0
+weapon|Extended Cleaver|0
+weapon|Bandit Hatchet|0
+weapon|Crescent Axe|0
+weapon|Carving Hatchet|0
+weapon|Sacrificial Axe|0
+weapon|Boarding Hatchet|0
+weapon|Wooden Club|0
+weapon|Jade Club|0
+weapon|Akoyan Club|0
+weapon|Execratus Hammer|0
+weapon|Torment Club|0
+weapon|Runemastered Torment Club|0
+weapon|Kalguuran Forgehammer|0
+weapon|Runeforged Kalguuran Forgehammer|0
+weapon|Smithing Hammer|0
+weapon|Calescent Hammer|0
+weapon|Molten Hammer|0
+weapon|Slim Mace|0
+weapon|Flared Mace|0
+weapon|Flanged Mace|0
+weapon|Spiked Club|0
+weapon|Warpick|0
+weapon|Battle Pick|0
+weapon|Strife Pick|0
+weapon|Plated Mace|0
+weapon|Marching Mace|0
+weapon|Runeforged Marching Mace|0
+weapon|Crown Mace|0
+weapon|Brigand Mace|0
+weapon|Bandit Mace|0
+weapon|Marauding Mace|0
+weapon|Construct Hammer|0
+weapon|Structured Hammer|0
+weapon|Fortified Hammer|0
+weapon|Morning Star|0
+weapon|Runeforged Wooden Club|0
+weapon|Runemastered Wooden Club|0
+weapon|Runeforged Slim Mace|0
+weapon|Runeforged Spiked Club|0
+weapon|Runeforged Warpick|0
+weapon|Runeforged Morning Star|0
+weapon|Hardwood Spear|0
+weapon|Seaglass Spear|0
+weapon|Akoyan Spear|0
+weapon|Sword Spear|0
+weapon|Striking Spear|0
+weapon|Helix Spear|0
+weapon|Ironhead Spear|0
+weapon|Steelhead Spear|0
+weapon|Orichalcum Spear|0
+weapon|Hunting Spear|0
+weapon|Coursing Spear|0
+weapon|Stalking Spear|0
+weapon|Winged Spear|0
+weapon|Soaring Spear|0
+weapon|War Spear|0
+weapon|Swift Spear|0
+weapon|Flying Spear|0
+weapon|Forked Spear|0
+weapon|Branched Spear|0
+weapon|Pronged Spear|0
+weapon|Barbed Spear|0
+weapon|Jagged Spear|0
+weapon|Spiked Spear|0
+weapon|Broad Spear|0
+weapon|Massive Spear|0
+weapon|Grand Spear|0
+weapon|Crossblade Spear|0
+weapon|Guardian Spear|0
+weapon|Runeforged Hardwood Spear|0
+weapon|Runeforged Ironhead Spear|0
+weapon|Runemastered Ironhead Spear|0
+weapon|Runeforged Hunting Spear|0
+weapon|Runeforged Winged Spear|0
+weapon|Runeforged War Spear|0
+weapon|Runeforged Forked Spear|0
+weapon|Runeforged Barbed Spear|0
+weapon|Shortsword|0
+weapon|Runic Shortsword|0
+weapon|Messer|0
+weapon|Commander Sword|0
+weapon|Dark Blade|0
+weapon|Broadsword|0
+weapon|Vampiric Blade|0
+weapon|Scimitar|0
+weapon|Charred Shortsword|0
+weapon|Sickle Sword|0
+weapon|Falchion|0
+weapon|Treasured Blade|0
+weapon|Cutlass|0
+weapon|Rattling Sceptre|0
+weapon|Wrath Sceptre|0
+weapon|Stoic Sceptre|0
+weapon|Omen Sceptre|0
+weapon|Shrine Sceptre|0
+weapon|Withered Wand|0
+weapon|Dueling Wand|0
+weapon|Bone Wand|0
+weapon|Attuned Wand|0
+weapon|Siphoning Wand|0
+weapon|Volatile Wand|0
+weapon|Galvanic Wand|0
+weapon|Acrid Wand|0
+weapon|Twisted Wand|0
+weapon|Runic Fork|0
+weapon|Runemastered Runic Fork|0
+weapon|Crude Bow|0
+weapon|Tribal Bow|0
+weapon|Heavy Bow|0
+weapon|Shortbow|0
+weapon|Snakewood Shortbow|0
+weapon|Ironwood Shortbow|0
+weapon|Warden Bow|0
+weapon|Protector Bow|0
+weapon|Guardian Bow|0
+weapon|Recurve Bow|0
+weapon|Composite Bow|0
+weapon|Rider Bow|0
+weapon|Cavalry Bow|0
+weapon|Dualstring Bow|0
+weapon|Twin Bow|0
+weapon|Gemini Bow|0
+weapon|Cultist Bow|0
+weapon|Adherent Bow|0
+weapon|Fanatic Bow|0
+weapon|Zealot Bow|0
+weapon|Militant Bow|0
+weapon|Warmonger Bow|0
+weapon|Artillery Bow|0
+weapon|Obliterator Bow|0
+weapon|Heartwood Shortbow|0
+weapon|Runeforged Crude Bow|0
+weapon|Runeforged Shortbow|0
+weapon|Runeforged Warden Bow|0
+weapon|Runeforged Recurve Bow|0
+weapon|Runeforged Composite Bow|0
+weapon|Runeforged Dualstring Bow|0
+weapon|Runeforged Zealot Bow|0
+weapon|Makeshift Crossbow|0
+weapon|Piercing Crossbow|0
+weapon|Elegant Crossbow|0
+weapon|Trarthan Cannon|0
+weapon|Tense Crossbow|0
+weapon|Taut Crossbow|0
+weapon|Flexed Crossbow|0
+weapon|Sturdy Crossbow|0
+weapon|Robust Crossbow|0
+weapon|Stout Crossbow|0
+weapon|Varnished Crossbow|0
+weapon|Painted Crossbow|0
+weapon|Engraved Crossbow|0
+weapon|Dyad Crossbow|0
+weapon|Twin Crossbow|0
+weapon|Gemini Crossbow|0
+weapon|Alloy Crossbow|0
+weapon|Bombard Crossbow|0
+weapon|Cannonade Crossbow|0
+weapon|Siege Crossbow|0
+weapon|Construct Crossbow|0
+weapon|Bleak Crossbow|0
+weapon|Desolate Crossbow|0
+weapon|Blackfire Crossbow|0
+weapon|Runeforged Makeshift Crossbow|0
+weapon|Runeforged Tense Crossbow|0
+weapon|Runemastered Tense Crossbow|0
+weapon|Runeforged Dyad Crossbow|0
+weapon|Runemastered Dyad Crossbow|0
+weapon|Wrapped Quarterstaff|0
+weapon|Smooth Quarterstaff|0
+weapon|Dreaming Quarterstaff|0
+weapon|Wyrm Quarterstaff|0
+weapon|Long Quarterstaff|0
+weapon|Reaching Quarterstaff|0
+weapon|Striking Quarterstaff|0
+weapon|Gothic Quarterstaff|0
+weapon|Barbarous Quarterstaff|0
+weapon|Sinister Quarterstaff|0
+weapon|Crackling Quarterstaff|0
+weapon|Arcing Quarterstaff|0
+weapon|Bolting Quarterstaff|0
+weapon|Crescent Quarterstaff|0
+weapon|Waxing Quarterstaff|0
+weapon|Lunar Quarterstaff|0
+weapon|Steelpoint Quarterstaff|0
+weapon|Slicing Quarterstaff|0
+weapon|Bladed Quarterstaff|0
+weapon|Razor Quarterstaff|0
+weapon|Barrier Quarterstaff|0
+weapon|Guardian Quarterstaff|0
+weapon|Aegis Quarterstaff|0
+weapon|Hefty Quarterstaff|0
+weapon|Skullcrusher Quarterstaff|0
+weapon|Warding Quarterstaff|0
+weapon|Runemastered Warding Quarterstaff|0
+weapon|Runeforged Wrapped Quarterstaff|0
+weapon|Runeforged Long Quarterstaff|0
+weapon|Runemastered Long Quarterstaff|0
+weapon|Runeforged Gothic Quarterstaff|0
+weapon|Runemastered Gothic Quarterstaff|0
+weapon|Runeforged Crescent Quarterstaff|0
+weapon|Runeforged Steelpoint Quarterstaff|0
+weapon|Ashen Staff|0
+weapon|Roaring Staff|0
+weapon|Paralysing Staff|0
+weapon|Sanctified Staff|0
+weapon|Ravenous Staff|0
+weapon|Gelid Staff|0
+weapon|Voltaic Staff|0
+weapon|Pyrophyte Staff|0
+weapon|Chiming Staff|0
+weapon|Reaping Staff|0
+weapon|Permafrost Staff|0
+weapon|Reflecting Staff|0
+weapon|Perching Staff|0
+weapon|Changeling Talisman|0
+weapon|Lumbering Talisman|0
+weapon|Jade Talisman|0
+weapon|Nettle Talisman|0
+weapon|Spiny Talisman|0
+weapon|Cinderbark Talisman|0
+weapon|Ashbark Talisman|0
+weapon|Familial Talisman|0
+weapon|Fang Talisman|0
+weapon|Frenzied Talisman|0
+weapon|Fungal Talisman|0
+weapon|Primal Talisman|0
+weapon|Howling Talisman|0
+weapon|Alpha Talisman|0
+weapon|Rabid Talisman|0
+weapon|Fury Talisman|0
+weapon|Maji Talisman|0
+weapon|Vicious Talisman|0
+weapon|Cruel Talisman|0
+weapon|Wildwood Talisman|0
+weapon|Voltfang Talisman|0
+weapon|Thunder Talisman|0
+weapon|Runeforged Changeling Talisman|0
+weapon|Runeforged Nettle Talisman|0
+weapon|Runemastered Nettle Talisman|0
+weapon|Runeforged Familial Talisman|0
+weapon|Runemastered Familial Talisman|0
+weapon|Runeforged Vicious Talisman|0
+weapon|Splitting Greataxe|0
+weapon|Ember Greataxe|0
+weapon|Ceremonial Halberd|0
+weapon|Monument Greataxe|0
+weapon|Vile Greataxe|0
+weapon|Light Halberd|0
+weapon|Executioner Greataxe|0
+weapon|Arched Greataxe|0
+weapon|Elegant Glaive|0
+weapon|Savage Greataxe|0
+weapon|Rending Halberd|0
+weapon|Jagged Greataxe|0
+weapon|Reaver Glaive|0
+weapon|Felled Greatclub|0
+weapon|Totemic Greatclub|0
+weapon|Tawhoan Greatclub|0
+weapon|Giant Maul|0
+weapon|Oak Greathammer|0
+weapon|Snakewood Greathammer|0
+weapon|Ironwood Greathammer|0
+weapon|Forge Maul|0
+weapon|Blacksmith Maul|0
+weapon|Anvil Maul|0
+weapon|Studded Greatclub|0
+weapon|Cultist Greathammer|0
+weapon|Zealot Greathammer|0
+weapon|Fanatic Greathammer|0
+weapon|Temple Maul|0
+weapon|Solemn Maul|0
+weapon|Sacred Maul|0
+weapon|Leaden Greathammer|0
+weapon|Heavy Greathammer|0
+weapon|Massive Greathammer|0
+weapon|Crumbling Maul|0
+weapon|Disintegrating Maul|0
+weapon|Ruination Maul|0
+weapon|Pointed Maul|0
+weapon|Aberrant Sledge|0
+weapon|Runemastered Aberrant Sledge|0
+weapon|Runeforged Felled Greatclub|0
+weapon|Runemastered Felled Greatclub|0
+weapon|Runeforged Oak Greathammer|0
+weapon|Runemastered Oak Greathammer|0
+weapon|Runeforged Forge Maul|0
+weapon|Runeforged Studded Greatclub|0
+weapon|Runemastered Studded Greatclub|0
+weapon|Runeforged Cultist Greathammer|0
+weapon|Runeforged Temple Maul|0
+weapon|Runeforged Leaden Greathammer|0
+weapon|Runeforged Crumbling Maul|0
+weapon|Runeforged Pointed Maul|0
+weapon|Corroded Longsword|0
+weapon|Ancient Greatblade|0
+weapon|Flanged Greatblade|0
+weapon|Regalia Longsword|0
+weapon|Ultra Greatsword|0
+weapon|Iron Greatsword|0
+weapon|Blessed Claymore|0
+weapon|Broad Greatsword|0
+weapon|Rippled Greatsword|0
+weapon|Arced Longsword|0
+weapon|Stone Greatsword|0
+weapon|Obsidian Greatsword|0
+weapon|Keen Greatsword|0
+weapon|Adonia's Ego|1
+weapon|Amor Mandragora|1
+weapon|Atziri's Contempt|1
+weapon|Atziri's Rule|1
+weapon|Bluetongue|1
+weapon|Brain Rattler|1
+weapon|Brutus' Lead Sprinkler|1
+weapon|Brynhand's Mark|1
+weapon|Chainsting|1
+weapon|Chober Chaber|1
+weapon|Collapsing Horizon|1
+weapon|Cursecarver|1
+weapon|Daevata's Wind|1
+weapon|Death's Harp|1
+weapon|Doomfletch|1
+weapon|Double Vision|1
+weapon|Duality|1
+weapon|Dusk Vigil|1
+weapon|Earthbound|1
+weapon|Enezun's Charge|1
+weapon|Fairgraves' Curse|1
+weapon|Font of Power|1
+weapon|Frostbreath|1
+weapon|Fury of the King|1
+weapon|Guiding Palm|1
+weapon|Guiding Palm of the Eye|1
+weapon|Guiding Palm of the Heart|1
+weapon|Guiding Palm of the Mind|1
+weapon|Hoghunt|1
+weapon|Hrimnor's Hymn|1
+weapon|Hysseg's Claw|1
+weapon|INCOMPLETE|1
+weapon|Ironbound|1
+weapon|Lifesprig|1
+weapon|Liminal Coil|1
+weapon|Lioneye's Glare|1
+weapon|Marohi Erqi|1
+weapon|Matsya|1
+weapon|Mist Whisper|1
+weapon|Mjölner|1
+weapon|Nazir's Judgement|1
+weapon|Nebuloch|1
+weapon|Olrovasara|1
+weapon|Palm of the Dreamer|1
+weapon|Periphery|1
+weapon|Pillar of the Caged God|1
+weapon|Quecholli|1
+weapon|Quill Rain|1
+weapon|Rampart Raptor|1
+weapon|Redbeak|1
+weapon|Redemption|1
+weapon|Runeseeker's Call|1
+weapon|Sacred Flame|1
+weapon|Sadist's Mercy|1
+weapon|Saitha's Spear|1
+weapon|Sanguine Diviner|1
+weapon|Sculpted Suffering|1
+weapon|Seeing Stars|1
+weapon|Serle's Grit|1
+weapon|Shyaba|1
+weapon|Sire of Shards|1
+weapon|Skysliver|1
+weapon|Slivertongue|1
+weapon|Spire of Ire|1
+weapon|Spiteful Floret|1
+weapon|Splinterheart|1
+weapon|Splinter of Lorrata|1
+weapon|Surge of the Tide|1
+weapon|Sylvan's Effigy|1
+weapon|Tangletongue|1
+weapon|Taryn's Shiver|1
+weapon|The Blood Thorn|1
+weapon|The Burden of Shadows|1
+weapon|The Dancing Dervish|1
+weapon|The Dark Defiler|1
+weapon|The Empty Roar|1
+weapon|The Flesh Poppet|1
+weapon|The Hammer of Faith|1
+weapon|The Last Lament|1
+weapon|The Ordained|1
+weapon|The Raven's Flock|1
+weapon|The Searing Touch|1
+weapon|The Sentry|1
+weapon|The Unborn Lich|1
+weapon|The Whispering Ice|1
+weapon|The Wicked Quill|1
+weapon|Tidebreaker|1
+weapon|Trenchtimbre|1
+weapon|Trephina|1
+weapon|Twisted Empyrean|1
+weapon|Tyranny's Grip|1
+weapon|Voltaxic Rift|1
+weapon|Widowhail|1
+weapon|Winter's Bite|1
+weapon|Wylund's Stake|1
+sanctum|Urn Relic|0
+sanctum|Amphora Relic|0
+sanctum|Vase Relic|0
+sanctum|Seal Relic|0
+sanctum|Coffer Relic|0
+sanctum|Tapestry Relic|0
+sanctum|Incense Relic|0
+sanctum|The Burden of Leadership|1
+sanctum|The Changing Seasons|1
+sanctum|The Desperate Alliance|1
+sanctum|The Last Flame|1
+sanctum|The Peacemaker's Draught|1
+sanctum|The Remembered Tales|1
+wombgift|Ornate Wombgift|0
+wombgift|Banded Wombgift|0
+wombgift|Revelatory Wombgift|0
+wombgift|Lavish Wombgift|0
+wombgift|Signet Wombgift|0
