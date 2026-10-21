@@ -2,7 +2,7 @@
 
 # Chat Alert — Path of Exile 2
 
-Real-time **chat**, **trade** and **price** alerts for Path of Exile 2, read straight from the game's own chat log.
+Real-time **chat alerts** for Path of Exile 2, read straight from the game's own chat log.
 
 ![AutoHotkey](https://img.shields.io/badge/AutoHotkey-v1.1%20(64--bit)-6594B9?logo=autohotkey&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%2F%2011-0078D6?logo=windows&logoColor=white)
@@ -16,18 +16,17 @@ Real-time **chat**, **trade** and **price** alerts for Path of Exile 2, read str
 ---
 
 **Chat Alert** tails the chat log that Path of Exile 2 writes to disk and pops an on-screen banner the moment something
-you care about appears: a guildmate asking for leech, a player selling the unique you are hunting, or an item dropping
-below the price you are willing to pay.
+you care about appears: a guildmate asking for leech, a party invite in Global, or a whisper you would have missed
+while fighting a boss.
 
 It never touches the game process. It only reads a text file — no injection, no memory access, no FPS impact.
 
 | | |
 |---|---|
 | **Watch anything** | Word lists with per-word case-sensitivity, whole-word matching and priority |
-| **Trade watch** | Built-in database of 3,592 items, watchlist, price range / bulk filters, custom regex rules |
-| **Price tracking** | Automatic price extraction, per-item history, "dropped below X divine" alerts |
-| **Never miss a deal** | Push alerts to Discord or ntfy (phone notifications) |
-| **Stay organised** | Profiles, channel colours and sounds, searchable history, CSV export, statistics |
+| **Per-channel control** | Five channels, each with its own colour, sound and on/off switch |
+| **Never miss a ping** | Push alerts to Discord or ntfy (phone notifications) |
+| **Stay organised** | Profiles, searchable history, full-message panel, CSV export, statistics |
 | **Built for playing** | Global hotkeys, mute, compact always-on-top overlay panel |
 
 ---
@@ -40,14 +39,12 @@ It never touches the game process. It only reads a text file — no injection, n
   - [1. Word alerts](#1-word-alerts)
   - [2. Profiles](#2-profiles)
   - [3. Channels, categories and sounds](#3-channels-categories-and-sounds)
-  - [4. Trade Watch](#4-trade-watch)
-  - [5. Price tracking and drop alerts](#5-price-tracking-and-drop-alerts)
-  - [6. External notifications](#6-external-notifications)
-  - [7. History and message panel](#7-history-and-message-panel)
-  - [8. Overlay panel](#8-overlay-panel)
-  - [9. Statistics](#9-statistics)
-  - [10. Global hotkeys](#10-global-hotkeys)
-  - [11. Settings reference](#11-settings-reference)
+  - [4. External notifications](#4-external-notifications)
+  - [5. History and message panel](#5-history-and-message-panel)
+  - [6. Overlay panel](#6-overlay-panel)
+  - [7. Statistics](#7-statistics)
+  - [8. Global hotkeys](#8-global-hotkeys)
+  - [9. Settings reference](#9-settings-reference)
 - [Screenshots](#screenshots)
 - [Files and data](#files-and-data)
 - [Troubleshooting](#troubleshooting)
@@ -69,8 +66,6 @@ It never touches the game process. It only reads a text file — no injection, n
 
 That's it. The status bar shows `listening to chat (every 500 ms)` when it is working.
 
-> The item database (`items.txt`) ships with the app. If it is missing or outdated, open **Trade watch → Update items (API)**.
-
 ---
 
 ## How it works
@@ -81,13 +76,10 @@ Path of Exile 2 writes every chat message to a plain-text log on your disk:
 ... [INFO Client 1234] $SomePlayer: WTS Perfect Strike 5 divine
 ```
 
-Chat Alert reads **only the new lines** of that file every **500 ms**, and runs each one through:
+Chat Alert reads **only the new lines** of that file every **500 ms**, and checks each one against the word lists of
+your active profile.
 
-1. your **word lists** (per profile),
-2. your **item watchlist** (including custom text/regex rules),
-3. **price extraction** (divine / exalted / chaos / alchemy).
-
-When something matches, it shows a banner, plays a sound, adds a row to history, and — if enabled — sends an external
+When something matches, it shows a banner, plays a sound, adds a row to history and — if enabled — sends an external
 notification. Everything is logged locally to `PoE2-Chat-Alert-matches.txt`.
 
 Because the game only ever **writes** the log and Chat Alert only **reads** it, there is no interaction with the game
@@ -128,7 +120,7 @@ Every message is classified by the channel it came from, and each channel has it
 | Channel | Prefix in log | Notes |
 |---|---|---|
 | Global | `#` | |
-| Trade | `$` | Also drives price extraction and item alerts |
+| Trade | `$` | |
 | Party | `%` | |
 | Whisper | `@From` | Always at least *High* priority |
 | Guild | `&` | |
@@ -142,56 +134,7 @@ Open **Categories** to:
 
 If a category has no sound of its own, the global alarm sound from **Settings** is used.
 
-### 4. Trade Watch
-
-A dedicated window for everything trade-related (`Ctrl+Alt+W`, or the **Trade watch** button).
-
-**Item database**
-
-- Ships with **3,592 entries** (base types and uniques).
-- Type to filter instantly; double-click a result (or select + **Add to watch**) to watch it.
-- **Update items (API)** refreshes the database from the official Path of Exile 2 trade API.
-
-**Watchlist**
-
-- Every watched item is listed on the right. Tick **Alert for this item** to turn alerts on or off.
-- **Remove** deletes an item from the watchlist.
-- **Price alert** sets a per-item price threshold (see [section 5](#5-price-tracking-and-drop-alerts)).
-- **Only alert on trade lines** (on by default) keeps item alerts limited to the Trade channel. Untick it to be
-  alerted wherever the item is named.
-- **Item alert color** and **Sound (.wav)** configure how item alerts look and sound.
-
-**Custom rules**
-
-- Add your own rules matched against the whole message, either as plain text or as a regular expression.
-- Syntax: `friendly name => pattern`.
-- **Rule enabled** toggles a rule without deleting it.
-
-### 5. Price tracking and drop alerts
-
-Every trade message is scanned for a price:
-
-```
-WTS Morior Invictus 45 div      ->  45 divine
-Selling Perfect Strike — 2 ex   ->  2 exalted
-```
-
-Supported units: `divine`, `exalted`, `chaos`, `alchemy` (with common abbreviations such as `div`, `divs`, `ex`).
-
-**On the banner** the price is shown on the right side of the alert, so you can judge an offer at a glance.
-
-**Price history** — press **Prices** in the main window to see the recorded history per item, most recent last,
-with timestamps. History is stored locally and keeps the last 50 prices per item.
-
-**Drop alerts** — set a threshold for an item:
-
-1. Open **Trade watch**.
-2. Select the item in the watchlist.
-3. Press **Price alert** and enter a price in divine (leave it empty to remove the threshold).
-4. When a trade message lists that item **below** your threshold, you get an **urgent, red `DROP`** alert instead of
-   a normal one.
-
-### 6. External notifications
+### 4. External notifications
 
 Send alerts to your phone or another device while you are away from the keyboard.
 
@@ -202,9 +145,9 @@ Send alerts to your phone or another device while you are away from the keyboard
 
 - Configure in **Settings → Notify (phone)**: choose the provider and paste the URL.
 - **Test notify** sends a test message immediately, so you can verify the setup.
-- Notifications fire on every banner alert and include the channel, player, word/item, price and the `DROP` marker.
+- Notifications fire on every banner alert and include the channel, player, word and message.
 
-### 7. History and message panel
+### 5. History and message panel
 
 Every match is added to the table: **Time · Channel · Player · Word · Message**.
 
@@ -216,23 +159,23 @@ Every match is added to the table: **Time · Channel · Player · Word · Messag
 - **Quick reply** box — type a canned reply and press **Reply** to build `/whisper <player> <text>`.
 - Every copy action confirms itself with a short on-screen toast, so you always know it worked.
 - History is **saved and restored** between sessions.
-- **Export CSV** writes the full history (including the `Price` column) for spreadsheets or analysis.
+- **Export CSV** writes the full history for spreadsheets or analysis.
 
-### 8. Overlay panel
+### 6. Overlay panel
 
 A compact, always-on-top list of recent alerts with a running counter.
 
 - Toggle it with `Ctrl+Alt+O` or the overlay button.
 - Useful on a second monitor, or on top of the game when you do not want the full window open.
 
-### 9. Statistics
+### 7. Statistics
 
 Press **Stats** for a quick dashboard:
 
 - total matches, number of words with hits, top word, active profile,
 - per-word match counts, sorted descending.
 
-### 10. Global hotkeys
+### 8. Global hotkeys
 
 These work while the game has focus (unless the key is bound in-game):
 
@@ -240,11 +183,10 @@ These work while the game has focus (unless the key is bound in-game):
 |---|---|
 | `Ctrl+Alt+M` | Toggle mute |
 | `Ctrl+Alt+S` | Start / stop watching |
-| `Ctrl+Alt+W` | Open Trade Watch |
 | `Ctrl+Alt+H` | Hide / show the main window |
 | `Ctrl+Alt+O` | Toggle the overlay panel |
 
-### 11. Settings reference
+### 9. Settings reference
 
 | Setting | Description |
 |---|---|
@@ -258,7 +200,6 @@ These work while the game has focus (unless the key is bound in-game):
 | **Start with Windows (login)** | Launch Chat Alert when you log in |
 | **Start minimized in the tray** | Start hidden with a tray icon |
 | **Notify (phone)** | `off`, `discord` or `ntfy` |
-| **Trade filters** | `Min` / `Max` price, `Only bulk`, `Bulk min` — `0` disables a filter |
 
 Settings are saved automatically to `PoE2-Chat-Alert.ini`.
 
@@ -274,20 +215,13 @@ Profiles, word list, searchable history and the full-message panel in a single d
 
 ### In-game alert
 
-A Trade alert rendered over the game: channel tag, word, player and message. Prices and a `DROP` marker appear here
-when relevant.
+An alert rendered over the game: channel tag, word, player and message.
 
 ![In-game alert](screenshots/04-ingame-alert.png)
 
-### Trade Watch
-
-Item database search, watchlist, per-item price alerts, custom rules, trade filters and item sound.
-
-![Trade Watch](screenshots/03-trade-watch.png)
-
 ### Settings
 
-Log path, alarm sound, banner behaviour, Windows startup, phone notifications and trade filters.
+Log path, alarm sound, banner behaviour, Windows startup and phone notifications.
 
 ![Settings](screenshots/02-settings.png)
 
@@ -298,9 +232,8 @@ Log path, alarm sound, banner behaviour, Windows startup, phone notifications an
 | File | Purpose | In git |
 |---|---|---|
 | `PoE2-Chat-Alert.ahk` | The application | yes |
-| `items.txt` | Item database used by Trade Watch | yes |
 | `README.md`, `screenshots/` | Documentation | yes |
-| `PoE2-Chat-Alert.ini` | Your settings, profiles, watchlist and price history (created on first run) | no |
+| `PoE2-Chat-Alert.ini` | Your settings, profiles and history (created on first run) | no |
 | `PoE2-Chat-Alert-matches.txt` | Local log of every match | no |
 | `PoE2-Chat-Alert-<timestamp>.csv` | History exports created by *Export CSV* | no |
 
@@ -318,13 +251,6 @@ Set the correct path in **Settings → Log file → Browse** (or **Choose log...
 Check, in order: the app is **Watching** (not *Stop*), the active profile contains your word, the relevant channel is
 enabled in **Categories**, and the message is not within the cooldown window. Remember that only *new* lines are read —
 messages already in the log before you start are not replayed.
-
-**Trade Watch shows no items**
-`items.txt` is missing or was not found. Press **Update items (API)** (needs internet).
-
-**An item I watch never alerts**
-Make sure **Alert for this item** is ticked. If **Only alert on trade lines** is ticked, the item is only matched in the
-Trade channel. Item names are matched in English.
 
 **Phone notifications do not arrive**
 Press **Test notify**. For Discord, verify the webhook URL still exists in the channel settings. For ntfy, verify the
@@ -353,17 +279,17 @@ interact with the client in any way. Still, use it at your own risk — see the 
 Yes. Point it at that installation's `logs/Client.txt` in Settings.
 
 **Does it work with a non-English client?**
-The UI and item database are English, and item names are matched in English. Channel detection uses the `#`, `$`, `%`,
-`@`, `&` prefixes, so it is largely language-independent; plain word matching works with any text.
+The interface is English. Channel detection uses the `#`, `$`, `%`, `@`, `&` prefixes, so it is largely
+language-independent, and plain word matching works with any text.
 
 **Can I run two copies?**
 No — the script enforces a single instance. Use profiles for different setups.
 
 **Where are my settings?**
-In `PoE2-Chat-Alert.ini`, next to the script. Back it up to keep your profiles and watchlist.
+In `PoE2-Chat-Alert.ini`, next to the script. Back it up to keep your profiles.
 
-**How do I update the item database?**
-**Trade watch → Update items (API)**, or replace `items.txt` with a newer one.
+**Does it alert on my own messages?**
+No. Your own lines and system messages are ignored.
 
 ---
 
@@ -371,8 +297,8 @@ In `PoE2-Chat-Alert.ini`, next to the script. Back it up to keep your profiles a
 
 - Chat Alert is **read-only**: it reads `Client.txt` and never writes to it.
 - No game files are modified, no memory is read, no input is sent to the game.
-- All data stays on your machine. The only outbound traffic is what you explicitly enable:
-  **Update items (API)** (trade API) and external notifications (your own Discord webhook or ntfy topic).
+- All data stays on your machine. The only outbound traffic is external notifications to the Discord webhook or ntfy
+  topic that *you* configure.
 - Your settings file is git-ignored and never published.
 
 This is a community tool and is **not affiliated with, endorsed by, or supported by Grinding Gear Games**.
