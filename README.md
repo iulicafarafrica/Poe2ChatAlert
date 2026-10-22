@@ -366,8 +366,9 @@ once so the log exists — the app creates it only while the game is running.
 <details>
 <summary><b>I play both games — do I need two copies?</b></summary>
 
-No. Use **Settings → Game** to switch. Each game keeps its own log path, so going back and forth is two clicks. Words,
-profiles and history are shared; only the log file and the item database change.
+  No. Use **Settings → Game** to switch. Each game keeps its own log path, so going back and forth is two clicks. Words
+  are kept per game (each profile has a separate list for Path of Exile 1 and Path of Exile 2); history and the settings
+  are shared, only the log file, the item database and the word list change.
 
 </details>
 
@@ -424,17 +425,19 @@ with the client. Still, use it at your own risk — see below.
 Yes — for both games. Pick the game in Settings and point it at that installation's `logs/Client.txt`.
 
 **Can I watch both games at the same time?**  
-No — the app watches the log of the game selected in Settings. Switching takes a second and does not restart the app.
+No - the app watches the log of the game selected in Settings. Switching takes a second and does not restart the app. Each
+game has its own word list, so you can keep `exalted` for Path of Exile 1 and `divine` for Path of Exile 2.
 
 **Does it work on a non-English client?**  
 The UI is English. Channel detection relies on the `#`, `$`, `%`, `@`, `&` prefixes, so it is largely
 language-independent, and word matching works with any text.
 
 **Can I run two copies?**  
-No — the script enforces a single instance. Use profiles instead.
+No - the script enforces a single instance. Use profiles instead.
 
 **Where are my settings?**  
-In `PoE2-Chat-Alert.ini`, next to the script. Back it up to keep your profiles.
+In `PoE2-Chat-Alert.ini` next to the script, together with the word lists, watched items, prices and history in the
+`PoE2-Chat-Alert-*.txt` / `*.log` files. Back up the whole set to keep your profiles.
 
 **Does it alert on my own messages?**  
 No — your lines and system messages are ignored.
