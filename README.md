@@ -1,24 +1,27 @@
 <div align="center">
 
-# Chat Alert <sub>for Path of Exile 2</sub>
+# Chat Alert <sub>for Path of Exile 2 &amp; 1</sub>
 
 **Never miss a whisper, a party invite or a guildmate asking for leech — get an on-screen alert the instant a word you care about hits the chat.**
 
 ![AutoHotkey](https://img.shields.io/badge/AutoHotkey-v1.1%20·%2064--bit-6594B9?logo=autohotkey&logoColor=white&style=flat-square)
 ![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D6?logo=windows&logoColor=white&style=flat-square)
 ![Game access](https://img.shields.io/badge/Game%20access-read--only%20log-2EA44F?style=flat-square)
-![Version](https://img.shields.io/badge/version-1.1-D9A441?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.2-D9A441?style=flat-square)
 ![No dependencies](https://img.shields.io/badge/dependencies-none-6E7681?style=flat-square)
 
-[Quick start](#quick-start) · [Features](#features) · [What's new](#whats-new-in-v11) · [Screenshots](#screenshots) · [Troubleshooting](#troubleshooting)
+[Quick start](#quick-start) · [Features](#features) · [What's new](#whats-new-in-v12) · [Screenshots](#screenshots) · [Troubleshooting](#troubleshooting)
 
 </div>
 
 ---
 
-**Chat Alert** tails the chat log Path of Exile 2 writes to disk and pops a clean, always-on-top banner the moment
-something you care about appears — a guildmate asking for leech, a party invite in Global, a whisper you would have
-missed while fighting a boss.
+**Chat Alert** tails the chat log **Path of Exile 2 or Path of Exile 1** writes to disk and pops a clean, always-on-top
+banner the moment something you care about appears — a guildmate asking for leech, a party invite in Global, a whisper
+you would have missed while fighting a boss.
+
+Both games use the same log format, so one switch in **Settings → Game** is all it takes. Each game remembers its own
+log file, and you can change game at any time without restarting.
 
 It **never touches the game process**. It only reads a text file: no injection, no memory access, no FPS impact, works
 in windowed, borderless and fullscreen.
@@ -31,6 +34,7 @@ in windowed, borderless and fullscreen.
 
 | | |
 |---|---|
+| **Two games** | Path of Exile 2 **and** Path of Exile 1 — one switch, each game remembers its own log file |
 | **Word alerts** | Any word or phrase, with case-sensitivity, whole-word matching and priority levels |
 | **Five channels** | Global · Trade · Party · Whisper · Guild — each with its own colour, sound and on/off switch |
 | **Phone push** | Discord webhook and/or ntfy — enable one or both, each with its own URL |
@@ -46,9 +50,11 @@ in windowed, borderless and fullscreen.
 1. **Install AutoHotkey v1.1 (64-bit)** → [download](https://www.autohotkey.com/download/ahk-v1-1.zip). AutoHotkey **v2 is not supported**.
 2. **Download** this repo (*Code → Download ZIP*) and extract it anywhere.
 3. **Run** `PoE2-Chat-Alert.ahk`.
-4. Point it at your game log — press **Choose log...** or open **Settings**:
+4. Pick your game in **Settings → Game** and point it at that game's log — press **Choose log...** or let the app find
+   it automatically:
    ```
-   <Steam or game folder>\Path of Exile 2\logs\Client.txt
+   Path of Exile 2:  <Steam or game folder>\Path of Exile 2\logs\Client.txt
+   Path of Exile 1:  <Steam or game folder>\Path of Exile\logs\Client.txt
    ```
 5. Type a word (e.g. `leech`), press **Add**, then **Start** — or just hit <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>S</kbd>.
 
@@ -60,7 +66,7 @@ The status bar shows `listening to chat (every 500 ms)` when it is working.
 
 ## How it works
 
-Path of Exile 2 writes every chat message to a plain-text log:
+Both games write every chat message to the same kind of plain-text log, so the app reads them identically:
 
 ```
 ... [INFO Client 1234] $SomePlayer: WTS Perfect Strike 5 divine
@@ -76,6 +82,25 @@ all, and the app keeps working whether or not the game is focused.
 ---
 
 ## Features
+
+### Path of Exile 1 and Path of Exile 2
+
+One app, both games. Open **Settings → Game** and pick what you are playing:
+
+- The app switches to that game's log file (and remembers it, so switching back is instant).
+- The window title and the header show `PoE1` or `PoE2` at a glance.
+- If you choose a log file manually (**Choose log...**), the game is detected from the path automatically.
+- Your **profiles, words, history, sounds and notifications are shared** between the two games — only the log file and
+  the item database are per-game.
+
+Default log locations, if you want to set the path by hand:
+
+| Game | Steam | Standalone | Epic |
+|---|---|---|---|
+| Path of Exile 2 | `...\steamapps\common\Path of Exile 2\logs\Client.txt` | `...\Grinding Gear Games\Path of Exile 2\logs\Client.txt` | — |
+| Path of Exile 1 | `...\steamapps\common\Path of Exile\logs\Client.txt` | `...\Grinding Gear Games\Path of Exile\logs\Client.txt` | `...\Epic Games\PathOfExile\logs\Client.txt` |
+
+> The app watches **one game at a time**. To switch, change the dropdown — no restart needed.
 
 ### Word alerts
 
@@ -170,6 +195,22 @@ These work while the game has focus (unless the combination is bound in-game):
 
 ---
 
+## What's new in v1.2
+
+### Play Path of Exile 1 or Path of Exile 2
+- New **Game** selector in Settings. Both games write the same chat format, so alerts, profiles and history work unchanged.
+- The log file, item database and trade API are per game; each game remembers its own log path.
+- The window title, header and tray tooltip follow the selected game.
+- Choosing a log file manually switches the game automatically when the path is recognisable.
+
+### Two games, one config
+- Existing settings are migrated automatically: the old single `log_path` becomes the log path of the game you had
+  selected, so there is nothing to redo after updating.
+- The Settings window refreshes itself after a game change, so the log field always shows the correct path.
+- PoE2 installations are still detected out of the box; PoE1 Steam, standalone and Epic folders are probed too.
+
+---
+
 ## What's new in v1.1
 
 ### Notifications: Discord *and* ntfy, independently
@@ -231,7 +272,8 @@ These work while the game has focus (unless the combination is bound in-game):
 
 | Setting | Description |
 |---|---|
-| **Log file** | Path to `logs/Client.txt` of your PoE2 installation |
+| **Log file** | Path to `logs/Client.txt` of your installation (filled automatically per game) |
+| **Game** | `Path of Exile 2` or `Path of Exile 1` — switches log file, item database and branding |
 | **Alarm sound (.wav)** | Fallback sound used when a category has none |
 | **Banner position** | `top`, `center` or `bottom` |
 | **Banner width** | Banner width in pixels (default 380) |
@@ -251,8 +293,10 @@ Settings are stored in `PoE2-Chat-Alert.ini` next to the script and saved automa
 | File | Purpose | In git |
 |---|---|:--:|
 | `PoE2-Chat-Alert.ahk` | The application | yes |
+| `items.txt` | Item database used by Trade watch for Path of Exile 2 | yes |
+| `items-poe1.txt` | Item database used by Trade watch for Path of Exile 1 (created by *Update items*) | no |
 | `README.md`, `screenshots/` | Documentation | yes |
-| `PoE2-Chat-Alert.ini` | Your settings, profiles and history (created on first run) | no |
+| `PoE2-Chat-Alert.ini` | Your settings (both games), profiles and history (created on first run) | no |
 | `PoE2-Chat-Alert-matches.txt` | Local log of every match | no |
 | `PoE2-Chat-Alert-<timestamp>.csv` | History exports | no |
 
@@ -265,8 +309,17 @@ Delete the `.ini` file to reset the app to defaults.
 <details>
 <summary><b>The status bar says "Log not found"</b></summary>
 
-Set the correct path in **Settings → Log file → Browse**. It must point to `...\Path of Exile 2\logs\Client.txt`.
-Launch the game once so the log exists.
+Check that **Settings → Game** matches the game you are playing, then set the correct path in **Settings → Log file →
+Browse**. It must point to `...\Path of Exile 2\logs\Client.txt` or `...\Path of Exile\logs\Client.txt`. Launch the game
+once so the log exists — the app creates it only while the game is running.
+
+</details>
+
+<details>
+<summary><b>I play both games — do I need two copies?</b></summary>
+
+No. Use **Settings → Game** to switch. Each game keeps its own log path, so going back and forth is two clicks. Words,
+profiles and history are shared; only the log file and the item database change.
 
 </details>
 
@@ -320,7 +373,10 @@ Chat Alert only reads a text file written by the game. It does not read memory, 
 with the client. Still, use it at your own risk — see below.
 
 **Does it work with the standalone client?**  
-Yes — point it at that installation's `logs/Client.txt`.
+Yes — for both games. Pick the game in Settings and point it at that installation's `logs/Client.txt`.
+
+**Can I watch both games at the same time?**  
+No — the app watches the log of the game selected in Settings. Switching takes a second and does not restart the app.
 
 **Does it work on a non-English client?**  
 The UI is English. Channel detection relies on the `#`, `$`, `%`, `@`, `&` prefixes, so it is largely
@@ -345,8 +401,8 @@ No — your lines and system messages are ignored.
   *your* Discord webhook or ntfy topic.
 - Personal settings are git-ignored and never published.
 
-This is a community tool, **not affiliated with, endorsed by, or supported by Grinding Gear Games**. Path of Exile 2 is
-a trademark of Grinding Gear Games. Use at your own risk.
+This is a community tool, **not affiliated with, endorsed by, or supported by Grinding Gear Games**. Path of Exile and
+Path of Exile 2 are trademarks of Grinding Gear Games. Use it at your own risk.
 
 ---
 

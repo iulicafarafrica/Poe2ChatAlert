@@ -1,8 +1,10 @@
 ﻿; ============================================================
-;  CHAT ALERT — Path of Exile 2  (AutoHotkey v1.1)
+;  CHAT ALERT — Path of Exile 1 & 2  (AutoHotkey v1.1)
 ; ------------------------------------------------------------
 ;  Watches the in-game chat and alerts you when a word you
 ;  care about shows up (default: leech, leach).
+;  Works with Path of Exile 1 and Path of Exile 2 — pick the
+;  game in Settings; each one remembers its own log file.
 ;
 ;  FEATURES
 ;  - modern dark UI (tab-free, everything in one window)
@@ -26,10 +28,11 @@
 ;      Ctrl+Alt+O  toggle the overlay panel
 ;  - statistics dashboard per word + CSV export
 ;  - profiles: export / import a profile to a .ini file
-;  - trade watch: local item database (items.txt) with search +
-;    a watchlist; alerts when a WTS/chat line names a watched item;
+;  - trade watch: local item database (items.txt for PoE2,
+;    items-poe1.txt for PoE1) with search + a watchlist; alerts
+;    when a WTS/chat line names a watched item;
 ;    optional price range + bulk-only filters;
-;    "Update items (API)" refreshes items.txt from the trade API
+;    "Update items (API)" refreshes the database from the trade API
 ;  - settings: sound, banner position, start with Windows...
 ;
 ;  HOW IT WORKS
@@ -50,10 +53,15 @@ SetBatchLines, -1
 SetTitleMatchMode, 2
 
 ; -------------------- paths --------------------
+GameMode     := "poe2"
 AppName      := "Chat Alert — PoE2"
 IniFile      := A_ScriptDir "\PoE2-Chat-Alert.ini"
 MatchLogFile := A_ScriptDir "\PoE2-Chat-Alert-matches.txt"
-ItemsFile    := A_ScriptDir "\items.txt"
+ItemsPoe1    := A_ScriptDir "\items-poe1.txt"
+ItemsPoe2    := A_ScriptDir "\items.txt"
+ItemsFile    := ItemsPoe2
+LogPathPoe1  := ""
+LogPathPoe2  := ""
 
 ; -------------------- theme --------------------
 cBg     := "1E1E22"
@@ -133,6 +141,7 @@ LastAlarm    := 0
 MatchCount   := 0
 hAlert       := ""
 hToast       := ""
+SettingsOpen := 0
 CtxRow       := 0
 StatusMsg    := "starting..."
 
@@ -144,7 +153,17 @@ BuildTray()
 OnExit("OnScriptExit")
 
 if (LogPath = "" or !FileExist(LogPath))
+{
     LogPath := FindPoELog()
+    if (LogPath != "")
+    {
+        if (GameMode = "poe1")
+            LogPathPoe1 := LogPath
+        else
+            LogPathPoe2 := LogPath
+        SaveSettings()
+    }
+}
 
 if (LogPath != "" and FileExist(LogPath))
 {
@@ -198,12 +217,44 @@ HasProfile(name)
     return false
 }
 
+ApplyGameMode()
+{
+    global GameMode, AppName, ItemsFile, ItemsPoe1, ItemsPoe2
+    GameMode  := (GameMode = "poe1") ? "poe1" : "poe2"
+    AppName   := (GameMode = "poe1") ? "Chat Alert — PoE1" : "Chat Alert — PoE2"
+    ItemsFile := (GameMode = "poe1") ? ItemsPoe1 : ItemsPoe2
+}
+
 LoadSettings()
 {
     global IniFile, LogPath, Beeps, CooldownSec, AlertSec, Muted, Volume
     global AlertPos, AlertWidth, StartMinimized, ActiveProfile, CustomSound
     global NotifyDiscordOn, NotifyNtfyOn, NotifyDiscord, NotifyNtfy
+    global GameMode, LogPathPoe1, LogPathPoe2
+    IniRead, GameMode,       %IniFile%, settings, game,            poe2
+    if !(GameMode = "poe1" or GameMode = "poe2")
+        GameMode := "poe2"
+    ApplyGameMode()
+    IniRead, LogPathPoe1,    %IniFile%, settings, log_path_poe1,    % ""
+    IniRead, LogPathPoe2,    %IniFile%, settings, log_path_poe2,    % ""
     IniRead, LogPath,        %IniFile%, settings, log_path,        % ""
+    if (LogPathPoe1 = "ERROR")
+        LogPathPoe1 := ""
+    if (LogPathPoe2 = "ERROR")
+        LogPathPoe2 := ""
+    if (LogPath = "ERROR")
+        LogPath := ""
+    LogPathPoe1 := Trim(LogPathPoe1)
+    LogPathPoe2 := Trim(LogPathPoe2)
+    LogPath     := Trim(LogPath)
+    ; migrate the old single log_path key into the active game's slot
+    if (LogPath != "")
+    {
+        if (GameMode = "poe1" and LogPathPoe1 = "")
+            LogPathPoe1 := LogPath
+        if (GameMode = "poe2" and LogPathPoe2 = "")
+            LogPathPoe2 := LogPath
+    }
     IniRead, Beeps,          %IniFile%, settings, beeps,           6
     IniRead, CooldownSec,    %IniFile%, settings, cooldown_sec,    10
     IniRead, AlertSec,       %IniFile%, settings, alert_sec,       8
@@ -243,9 +294,7 @@ LoadSettings()
     }
     NotifyDiscordOn := (NotifyDiscordOn ? 1 : 0)
     NotifyNtfyOn    := (NotifyNtfyOn ? 1 : 0)
-    if (LogPath = "ERROR")
-        LogPath := ""
-    LogPath := Trim(LogPath)
+    LogPath := (GameMode = "poe1") ? LogPathPoe1 : LogPathPoe2
     if (Beeps < 1 or Beeps > 20)
         Beeps := 6
     if (CooldownSec < 0 or CooldownSec > 300)
@@ -435,6 +484,10 @@ SaveSettings()
     global IniFile, LogPath, Beeps, CooldownSec, AlertSec, Muted, Volume
     global AlertPos, AlertWidth, StartMinimized, ActiveProfile, CustomSound
     global NotifyDiscordOn, NotifyNtfyOn, NotifyDiscord, NotifyNtfy
+    global GameMode, LogPathPoe1, LogPathPoe2
+    IniWrite, %GameMode%,       %IniFile%, settings, game
+    IniWrite, %LogPathPoe1%,    %IniFile%, settings, log_path_poe1
+    IniWrite, %LogPathPoe2%,    %IniFile%, settings, log_path_poe2
     IniWrite, %LogPath%,        %IniFile%, settings, log_path
     IniWrite, %Beeps%,          %IniFile%, settings, beeps
     IniWrite, %CooldownSec%,    %IniFile%, settings, cooldown_sec
@@ -975,7 +1028,8 @@ ParseItemsJson(json)
 
 FetchItemsFromApi()
 {
-    url := "https://www.pathofexile.com/api/trade2/data/items"
+    global GameMode
+    url := (GameMode = "poe1") ? "https://www.pathofexile.com/api/trade/data/items" : "https://www.pathofexile.com/api/trade2/data/items"
     try
     {
         whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
@@ -1126,32 +1180,60 @@ BuildWatchPattern()
 ; ============================================================
 ;  LOG  —  find / open / tail
 ; ============================================================
-FindPoELog()
+FindPoELog(game := "")
 {
+    global GameMode
+    if (game = "")
+        game := GameMode
+    want2 := (game = "poe2")
     WinGet, poePath, ProcessPath, ahk_class POEWindowClass
     if (!ErrorLevel and poePath != "")
     {
         folder := SubStr(poePath, 1, InStr(poePath, "\",, 0))
-        if FileExist(folder "logs\Client.txt")
+        is2 := InStr(folder, "Path of Exile 2") ? true : false
+        if (is2 = want2 and FileExist(folder "logs\Client.txt"))
             return folder "logs\Client.txt"
     }
     doc := ""
     try doc := A_MyDocuments
     candidates := []
-    candidates.Push("C:\Program Files (x86)\Steam\steamapps\common\Path of Exile 2\logs\Client.txt")
-    candidates.Push(A_ProgramFiles "\Steam\steamapps\common\Path of Exile 2\logs\Client.txt")
-    candidates.Push("D:\SteamLibrary\steamapps\common\Path of Exile 2\logs\Client.txt")
-    candidates.Push("E:\SteamLibrary\steamapps\common\Path of Exile 2\logs\Client.txt")
-    candidates.Push("C:\Program Files (x86)\Grinding Gear Games\Path of Exile 2\logs\Client.txt")
-    if (doc != "")
+    steam := ["C:\Program Files (x86)\Steam\steamapps\common\", A_ProgramFiles "\Steam\steamapps\common\", "D:\SteamLibrary\steamapps\common\", "E:\SteamLibrary\steamapps\common\"]
+    if want2
     {
-        candidates.Push(doc "\My Games\Path of Exile 2\logs\Client.txt")
-        candidates.Push(doc "\My Games\Path of Exile\logs\Client.txt")
+        for i, s in steam
+            candidates.Push(s "Path of Exile 2\logs\Client.txt")
+        candidates.Push("C:\Program Files (x86)\Grinding Gear Games\Path of Exile 2\logs\Client.txt")
+        candidates.Push("C:\Program Files\Grinding Gear Games\Path of Exile 2\logs\Client.txt")
+        if (doc != "")
+            candidates.Push(doc "\My Games\Path of Exile 2\logs\Client.txt")
+    }
+    else
+    {
+        for i, s in steam
+            candidates.Push(s "Path of Exile\logs\Client.txt")
+        candidates.Push("C:\Program Files (x86)\Grinding Gear Games\Path of Exile\logs\Client.txt")
+        candidates.Push("C:\Program Files\Grinding Gear Games\Path of Exile\logs\Client.txt")
+        candidates.Push("C:\Program Files\Epic Games\PathOfExile\logs\Client.txt")
+        candidates.Push(A_ProgramFiles "\Epic Games\PathOfExile\logs\Client.txt")
+        if (doc != "")
+            candidates.Push(doc "\My Games\Path of Exile\logs\Client.txt")
     }
     for i, c in candidates
         if FileExist(c)
             return c
     return ""
+}
+
+UpdateBranding()
+{
+    global AppName, MainHwnd, GameMode
+    gn := (GameMode = "poe1") ? "Path of Exile 1" : "Path of Exile 2"
+    if (MainHwnd and WinExist("ahk_id " . MainHwnd))
+    {
+        try WinSetTitle, ahk_id %MainHwnd%,, %AppName%
+        try GuiControl, Main:, MainSub, %gn% — chat watcher
+    }
+    try Menu, Tray, Tip, %AppName%
 }
 
 StartWatching()
@@ -1715,11 +1797,11 @@ return
 BuildMainGui()
 {
     global AppName, cBg, cPanel, cLine, cText, cDim, cGold, cBtn, cBtnOn, cInput
-    global Volume, Muted, LogPath, ProfileList
+    global Volume, Muted, LogPath, ProfileList, GameMode
     global StatusPill, ProfileDDL, WordsCount, NewWord
     global WordLV, HistLV, Vol, VolLabel, BtnToggle, BtnMute, StatusVal, LogLine, HistMsg, QuickReply
     global HistSearch, HistChan
-    global MainHwnd, HistHwnd
+    global MainHwnd, HistHwnd, MainSub
 
     Gui, Main:New, +HwndMainHwnd, %AppName%
     Gui, Main:Color, %cBg%
@@ -1729,7 +1811,8 @@ BuildMainGui()
     Gui, Main:Font, s15 bold c%cGold%, Segoe UI
     Gui, Main:Add, Text, x18 y14 w300 BackgroundTrans, CHAT ALERT
     Gui, Main:Font, s9 norm c%cDim%, Segoe UI
-    Gui, Main:Add, Text, x18 y40 w320 BackgroundTrans, Path of Exile 2 — chat watcher
+    gn := (GameMode = "poe1") ? "Path of Exile 1" : "Path of Exile 2"
+    Gui, Main:Add, Text, x18 y40 w320 BackgroundTrans vMainSub, %gn% — chat watcher
     Gui, Main:Font, s9 bold cFFFFFF, Segoe UI
     Gui, Main:Add, Text, x392 y18 w130 h22 Center 0x200 Background5E9E58 vStatusPill, WATCHING
     FlatBtn(532, 14, 130, 30, "Trade watch", "BtnWatch", "8A6A28", "FFFFFF")
@@ -2051,6 +2134,11 @@ BtnToggle:
                 SetStatus("Log not found — click ""Choose log...""")
                 return
             }
+            if (GameMode = "poe1")
+                LogPathPoe1 := LogPath
+            else
+                LogPathPoe2 := LogPath
+            SaveSettings()
         }
         StartWatching()
     }
@@ -2484,7 +2572,9 @@ ShowSettings()
     global NotifyDiscordOn, NotifyNtfyOn, NotifyDiscord, NotifyNtfy
     global S_Log, S_Sound, S_Pos, S_Width, S_Beeps, S_Cool, S_Alert, S_Run, S_Min
     global S_PMin, S_PMax, S_Bulk, S_BMin
-    global S_NDiscOn, S_NNtfyOn, S_NDiscord, S_NNtfy
+    global S_NDiscOn, S_NNtfyOn, S_NDiscord, S_NNtfy, S_Game
+    global GameMode, SettingsOpen
+    SettingsOpen := 1
     Gui, Set:Destroy
     Gui, Set:New, +OwnerMain, %AppName% — Settings
     Gui, Set:Color, %cBg%
@@ -2494,6 +2584,11 @@ ShowSettings()
     Gui, Set:Add, Edit, x18 y36 w400 h24 c%cInput% vS_Log, %LogPath%
     Gui, Set:Font, s9 c%cText%, Segoe UI
     Gui, Set:Add, Text, x426 y36 w60 h24 Center 0x200 Background%cPanel% gBrowseLog, Browse
+
+    Gui, Set:Add, Text, x300 y16 w44 BackgroundTrans, Game:
+    Gui, Set:Add, DropDownList, x346 y13 w140 c%cInput% vS_Game gSetGameChanged, Path of Exile 2|Path of Exile 1
+    gLabel := (GameMode = "poe1") ? "Path of Exile 1" : "Path of Exile 2"
+    GuiControl, Set:ChooseString, S_Game, %gLabel%
 
     Gui, Set:Font, s9 c%cText%, Segoe UI
     Gui, Set:Add, Text, x18 y70 w120 BackgroundTrans, Alarm sound (.wav):
@@ -2624,7 +2719,7 @@ TestNotify:
     NotifyNtfyOn    := (vNNtfyOn ? 1 : 0)
     NotifyDiscord   := vNDisc
     NotifyNtfy      := vNNtfy
-    res := SendNotify(AppName, "Test notification from PoE2 Chat Alert. If you see this on your phone, it works.")
+    res := SendNotify(AppName, "Test notification from " . AppName . ". If you see this on your phone, it works.")
     NotifyDiscordOn := savedDiscordOn
     NotifyNtfyOn    := savedNtfyOn
     NotifyDiscord   := savedDiscord
@@ -2643,7 +2738,51 @@ TestNotify:
     }
 return
 
+SetGameChanged:
+    GuiControlGet, gLabel, Set:, S_Game
+    newGame := (gLabel = "Path of Exile 1") ? "poe1" : "poe2"
+    if (newGame = GameMode)
+        return
+    StopWatching()
+    GameMode := newGame
+    ApplyGameMode()
+    UpdateBranding()
+    p := (GameMode = "poe1") ? LogPathPoe1 : LogPathPoe2
+    if (p = "" or !FileExist(p))
+        p := FindPoELog(GameMode)
+    if (GameMode = "poe1")
+        LogPathPoe1 := p
+    else
+        LogPathPoe2 := p
+    LogPath := p
+    LoadItems()
+    BuildWatchPattern()
+    SaveSettings()
+    if (LogPath != "" and FileExist(LogPath))
+    {
+        StartWatching()
+        UpdateStatus()
+        SetStatus(AppName . " — watching")
+    }
+    else
+    {
+        UpdateStatus()
+        SetStatus("No log found for " . ((GameMode = "poe1") ? "PoE1" : "PoE2") . " — use Browse to pick it.")
+        GuiControl, Main:, BtnToggle, Start
+    }
+    SetTimer, ReopenSettings, -80
+return
+
+ReopenSettings:
+    if SettingsOpen
+    {
+        Gui, Set:Destroy
+        ShowSettings()
+    }
+return
+
 SetDoSave:
+    SettingsOpen := 0
     GuiControlGet, vLog,   Set:, S_Log
     GuiControlGet, vSnd,   Set:, S_Sound
     GuiControlGet, vPos,   Set:, S_Pos
@@ -2690,6 +2829,27 @@ SetDoSave:
         try SoundSet, %Volume%
 
     newLog := Trim(vLog)
+
+    ; keep the selected game in sync with the chosen log file
+    det := ""
+    if InStr(newLog, "Path of Exile 2")
+        det := "poe2"
+    else if InStr(newLog, "Path of Exile")
+        det := "poe1"
+    if (det != "" and det != GameMode)
+    {
+        StopWatching()
+        GameMode := det
+        ApplyGameMode()
+        UpdateBranding()
+        LoadItems()
+        BuildWatchPattern()
+    }
+    if (GameMode = "poe1")
+        LogPathPoe1 := newLog
+    else
+        LogPathPoe2 := newLog
+
     if (newLog != LogPath)
     {
         StopWatching()
@@ -2708,6 +2868,7 @@ SetDoSave:
 return
 
 CloseSettings:
+    SettingsOpen := 0
     Gui, Set:Destroy
 return
 

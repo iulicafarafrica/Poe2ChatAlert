@@ -2,6 +2,7 @@
 PoE2-Chat-Alert.ini
 PoE2-Chat-Alert-matches.txt
 PoE2-Chat-Alert-*.csv
+items-poe1.txt
 
 # Backups / temporary files
 *.bak
