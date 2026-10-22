@@ -2233,13 +2233,14 @@ BuildMainGui()
     FlatBtn(430, 138, 70, 24, "Delete", "BtnDeleteWord", cBtn, cText)
     FlatBtn(506, 138, 86, 24, "Options...", "BtnWordOpts", cBtn, cText)
 
-    Gui, Main:Add, ListView, x18 y170 w628 h116 vWordLV Grid -Multi Background%cPanel% c%cText% gWordDblClick, Word|Cs|WW|Prio
+    Gui, Main:Add, ListView, x18 y170 w628 h116 vWordLV Grid -Multi Background%cPanel% c%cText% gWordDblClick, Word|Cs|WW|Rx|Prio
     Gui, Main:Default
     Gui, Main:ListView, WordLV
-    LV_ModifyCol(1, 400)
-    LV_ModifyCol(2, 70)
+    LV_ModifyCol(1, 380)
+    LV_ModifyCol(2, 60)
     LV_ModifyCol(3, 60)
-    LV_ModifyCol(4, 80)
+    LV_ModifyCol(4, 60)
+    LV_ModifyCol(5, 68)
 
     ; history
     Gui, Main:Font, s9 bold c%cGold%, Segoe UI
@@ -2318,7 +2319,7 @@ RefreshWordList()
     for i, o in Words
     {
         pn := (o.prio >= 1 and o.prio <= 2) ? prioName[o.prio] : ""
-        LV_Add("", o.text, (o.rx ? "rx" : ((o.cs ? "yes" : ""))), (o.ww ? "yes" : ""), pn)
+        LV_Add("", o.text, (o.cs ? "yes" : ""), (o.ww ? "yes" : ""), (o.rx ? "rx" : ""), pn)
     }
     gn := (GameMode = "poe1") ? "Path of Exile 1" : "Path of Exile 2"
     GuiControl, Main:, WordsCount, % Words.Length() . " word(s) - " . gn
