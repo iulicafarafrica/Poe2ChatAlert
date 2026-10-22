@@ -1,6 +1,6 @@
 <div align="center">
 
-# Chat Alert <sub>for Path of Exile 1 &amp; 2</sub>
+# Chat Alert — for Path of Exile 1 &amp; 2
 
 **Never miss a whisper, a party invite or a guildmate asking for leech — get an on-screen alert the instant a word you care about hits the chat.**
 
