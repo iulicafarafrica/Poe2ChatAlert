@@ -273,25 +273,38 @@ LoadSettings()
         NotifyNtfy := ""
     NotifyDiscord := Trim(NotifyDiscord)
     NotifyNtfy    := Trim(NotifyNtfy)
-    ; migrate the old single-URL key (notify_url) once
-    IniRead, legacyUrl,      %IniFile%, settings, notify_url,      % ""
-    if (legacyUrl != "ERROR" and legacyUrl != "")
+    ; migrate the old single-provider keys (notify_mode + notify_url) once,
+    ; sending the URL to the provider that used it back then
+    IniRead, legacyMode, %IniFile%, settings, notify_mode, % ""
+    IniRead, legacyUrl,  %IniFile%, settings, notify_url,  % ""
+    if (legacyMode = "ERROR")
+        legacyMode := ""
+    if (legacyUrl = "ERROR")
+        legacyUrl := ""
+    legacyUrl := Trim(legacyUrl)
+    if (legacyUrl != "")
     {
-        legacyUrl := Trim(legacyUrl)
-        if (NotifyDiscord = "")
+        isNtfy := !(InStr(legacyUrl, "discord.com") or InStr(legacyUrl, "discordapp.com"))
+        if (legacyMode = "discord")
+            isNtfy := 0
+        else if (legacyMode = "ntfy")
+            isNtfy := 1
+        if (isNtfy)
+        {
+            if (NotifyNtfy = "")
+                NotifyNtfy := legacyUrl
+        }
+        else if (NotifyDiscord = "")
             NotifyDiscord := legacyUrl
-        else if (NotifyNtfy = "")
-            NotifyNtfy := legacyUrl
     }
-    ; per-provider switches (fall back to the old single-provider key)
+    ; per-provider switches: an existing key wins, a missing one is inferred
+    ; from the URL (used before the split) or from the old single-provider mode
     IniRead, NotifyDiscordOn, %IniFile%, settings, notify_discord_on, -1
     IniRead, NotifyNtfyOn,    %IniFile%, settings, notify_ntfy_on,    -1
-    if (NotifyDiscordOn = -1 or NotifyNtfyOn = -1)
-    {
-        IniRead, legacyMode, %IniFile%, settings, notify_mode, off
-        NotifyDiscordOn := (legacyMode = "discord" or legacyMode = "both") ? 1 : 0
-        NotifyNtfyOn    := (legacyMode = "ntfy"    or legacyMode = "both") ? 1 : 0
-    }
+    if (NotifyDiscordOn = -1)
+        NotifyDiscordOn := (NotifyDiscord != "") ? 1 : ((legacyMode = "discord" or legacyMode = "both") ? 1 : 0)
+    if (NotifyNtfyOn = -1)
+        NotifyNtfyOn := (NotifyNtfy != "") ? 1 : ((legacyMode = "ntfy" or legacyMode = "both") ? 1 : 0)
     NotifyDiscordOn := (NotifyDiscordOn ? 1 : 0)
     NotifyNtfyOn    := (NotifyNtfyOn ? 1 : 0)
     LogPath := (GameMode = "poe1") ? LogPathPoe1 : LogPathPoe2
