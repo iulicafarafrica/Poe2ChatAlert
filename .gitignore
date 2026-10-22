@@ -2,10 +2,13 @@
 PoE2-Chat-Alert.ini
 PoE2-Chat-Alert-matches.txt
 PoE2-Chat-Alert-*.csv
-items-poe1.txt
+PoE2-Chat-Alert-words.txt
+PoE2-Chat-Alert-watch.txt
+PoE2-Chat-Alert-prices.txt
+PoE2-Chat-Alert-history.log
+*.tmp
 
 # Backups / temporary files
 *.bak
-*.tmp
 Thumbs.db
 desktop.ini

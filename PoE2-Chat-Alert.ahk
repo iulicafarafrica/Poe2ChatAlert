@@ -63,6 +63,14 @@ ItemsFile    := ItemsPoe2
 LogPathPoe1  := ""
 LogPathPoe2  := ""
 
+; -------------------- data files (kept out of the INI) --------------------
+WordsFile    := A_ScriptDir "\PoE2-Chat-Alert-words.txt"
+WatchFile    := A_ScriptDir "\PoE2-Chat-Alert-watch.txt"
+PricesFile   := A_ScriptDir "\PoE2-Chat-Alert-prices.txt"
+HistoryFile  := A_ScriptDir "\PoE2-Chat-Alert-history.log"
+HistoryKeep  := 500        ; history lines kept in the log file
+HistoryMem   := 200        ; history rows kept in memory
+
 ; -------------------- theme --------------------
 cBg     := "1E1E22"
 cPanel  := "26262C"
@@ -106,6 +114,9 @@ NotifyDiscord   := ""       ; Discord webhook URL
 NotifyNtfy      := ""       ; ntfy topic URL (https://ntfy.sh/<topic>)
 PriceAlerts    := {}        ; item display name -> threshold price (divine)
 PriceHist      := {}        ; sanitized item key -> "ts_amt_cur;ts_amt_cur;..."
+PricesDirty    := 0         ; price history changed and not yet written to disk
+WordSets       := {}        ; "profile|game" -> array of word objects
+HistoryLines   := 0         ; number of lines in the history log file
 
 ; -------------------- data --------------------
 CatColor := {}
@@ -185,6 +196,143 @@ return
 
 
 ; ============================================================
+;  FILE HELPERS  (atomic writes, escaping, legacy INI reading)
+; ============================================================
+StoreEsc(s)
+{
+    s := "" . s
+    StringReplace, s, s, \, \\, All
+    StringReplace, s, s, `t, \t, All
+    StringReplace, s, s, `r, \r, All
+    StringReplace, s, s, `n, \n, All
+    return s
+}
+
+StoreUnesc(s)
+{
+    out := ""
+    i := 1
+    n := StrLen(s)
+    while i <= n
+    {
+        c := SubStr(s, i, 1)
+        nx := SubStr(s, i + 1, 1)
+        if (c = "\" and nx = "t")
+        {
+            out .= Chr(9)
+            i += 2
+        }
+        else if (c = "\" and nx = "r")
+        {
+            out .= Chr(13)
+            i += 2
+        }
+        else if (c = "\" and nx = "n")
+        {
+            out .= Chr(10)
+            i += 2
+        }
+        else if (c = "\" and nx = "\")
+        {
+            out .= "\"
+            i += 2
+        }
+        else
+        {
+            out .= c
+            i++
+        }
+    }
+    return out
+}
+
+StoreWrite(path, content)
+{
+    tmp := path ".tmp"
+    f := FileOpen(tmp, "w", "UTF-8-RAW")
+    if !IsObject(f)
+        return false
+    f.Write(content)
+    f.Close()
+    FileMove, %tmp%, %path%, 1
+    return true
+}
+
+StoreRead(path)
+{
+    if !FileExist(path)
+        return ""
+    f := FileOpen(path, "r", "UTF-8-RAW")
+    if !IsObject(f)
+        return ""
+    t := f.Read()
+    f.Close()
+    return t
+}
+
+StoreAppend(path, line)
+{
+    try
+    {
+        f := FileOpen(path, "a", "UTF-8-RAW")
+        if !IsObject(f)
+            return
+        f.Write(line . "`r`n")
+        f.Close()
+    }
+}
+
+; read the raw text of an INI file (handles both UTF-16 and ANSI)
+IniRawText(path)
+{
+    if !FileExist(path)
+        return ""
+    t := ""
+    f := FileOpen(path, "r", "UTF-16")
+    if IsObject(f)
+    {
+        t := f.Read()
+        f.Close()
+        if (InStr(t, "[") = 0)
+            t := ""
+    }
+    if (t = "")
+    {
+        f := FileOpen(path, "r")
+        if IsObject(f)
+        {
+            t := f.Read()
+            f.Close()
+        }
+    }
+    return t
+}
+
+; extract the raw "key=value" lines of one INI section
+IniRawSection(path, section)
+{
+    txt := IniRawText(path)
+    if (txt = "")
+        return ""
+    lines := []
+    inSec := false
+    Loop, Parse, txt, `n, `r
+    {
+        ln := RTrim(A_LoopField, "`r")
+        if (InStr(ln, "[") = 1 and InStr(ln, "]") > 1)
+        {
+            nm := SubStr(ln, 2, InStr(ln, "]") - 2)
+            inSec := (Trim(nm) = section)
+            continue
+        }
+        if (inSec and Trim(ln) != "")
+            lines.Push(ln)
+    }
+    return lines
+}
+
+
+; ============================================================
 ;  CONFIG  —  load / save
 ; ============================================================
 InitConfig()
@@ -196,6 +344,7 @@ InitConfig()
     LoadProfileList()
     if !HasProfile(ActiveProfile)
         ActiveProfile := ProfileList[1]
+    LoadWordSets()
     LoadProfile(ActiveProfile)
     LoadItems()
     LoadTrade()
@@ -206,6 +355,7 @@ InitConfig()
     BuildPattern()
     BuildWatchPattern()
     SaveAll()
+    SetTimer, FlushPricesTimer, 15000     ; write the price history to disk every 15 s
 }
 
 HasProfile(name)
@@ -416,28 +566,33 @@ SaveProfileList()
 
 LoadProfile(name)
 {
-    global IniFile, Words
+    global IniFile, Words, WordSets, GameMode
     Words := []
-    seen := {}
-    IniRead, out, %IniFile%, profile:%name%
-    if (out = "ERROR" or Trim(out) = "")
+    key := name "|" GameMode
+    if (WordSets.HasKey(key))
     {
-        ; --- one-time migration from the old "keywords" key ---
-        IniRead, kw, %IniFile%, settings, keywords, % ""
-        if (kw != "" and kw != "ERROR")
-        {
-            Loop, Parse, kw, CSV
-            {
-                w := ToLower(Trim(A_LoopField))
-                if (w = "" or seen.HasKey(w))
-                    continue
-                seen[w] := 1
-                Words.Push({text: w, cs: 0, ww: 0, prio: 0})
-            }
-            IniDelete, %IniFile%, settings, keywords
-        }
+        for i, w in WordSets[key]
+            Words.Push({text: w.text, cs: w.cs, ww: w.ww, prio: w.prio, rx: w.rx})
         return
     }
+    ; --- one-time migration from the old "keywords" key ---
+    IniRead, kw, %IniFile%, settings, keywords, % ""
+    if (kw != "" and kw != "ERROR")
+    {
+        Loop, Parse, kw, CSV
+        {
+            w := ToLower(Trim(A_LoopField))
+            if (w = "" or WordSetsHas(name, w))
+                continue
+            WordSetsAdd(name, w, {text: w, cs: 0, ww: 0, prio: 0, rx: 0})
+        }
+        IniDelete, %IniFile%, settings, keywords
+    }
+    ; --- one-time migration from the old shared profile section ---
+    IniRead, out, %IniFile%, profile:%name%
+    if (out = "ERROR" or Trim(out) = "")
+        return
+    seen := {}
     Loop, Parse, out, `n, `r
     {
         if (A_LoopField = "")
@@ -449,8 +604,44 @@ LoadProfile(name)
         if (w = "" or seen.HasKey(w))
             continue
         seen[w] := 1
-        Words.Push(ParseWordFlags(w, SubStr(A_LoopField, p+1)))
+        o := ParseWordFlags(w, SubStr(A_LoopField, p+1))
+        WordSetsAdd(name, w, o)
     }
+    ; the old profile was shared by both games: copy it to the other game too
+    other := (GameMode = "poe1") ? "poe2" : "poe1"
+    if (!WordSets.HasKey(name "|" other) and WordSets.HasKey(key))
+    {
+        for i, w in WordSets[key]
+            WordSetsAdd(name, w.text, {text: w.text, cs: w.cs, ww: w.ww, prio: w.prio, rx: w.rx}, other)
+    }
+    LoadProfile(name)
+}
+
+WordSetsHas(name, text, game := "")
+{
+    global WordSets, GameMode
+    if (game = "")
+        game := GameMode
+    key := name "|" game
+    if (!WordSets.HasKey(key))
+        return false
+    for i, w in WordSets[key]
+    {
+        if (w.text = text)
+            return true
+    }
+    return false
+}
+
+WordSetsAdd(name, text, obj, game := "")
+{
+    global WordSets, GameMode
+    if (game = "")
+        game := GameMode
+    key := name "|" game
+    if (!WordSets.HasKey(key))
+        WordSets[key] := []
+    WordSets[key].Push(obj)
 }
 
 ParseWordFlags(text, val)
@@ -458,6 +649,7 @@ ParseWordFlags(text, val)
     cs := 0
     ww := 0
     prio := 0
+    rx := 0
     Loop, Parse, val, |
     {
         f := Trim(A_LoopField)
@@ -465,31 +657,76 @@ ParseWordFlags(text, val)
             cs := 1
         else if (f = "ww")
             ww := 1
+        else if (f = "rx")
+            rx := 1
         else if (SubStr(f, 1, 1) = "p")
             prio := SubStr(f, 2) + 0
     }
     if (prio < 0 or prio > 2)
         prio := 0
-    return {text: text, cs: cs, ww: ww, prio: prio}
+    return {text: text, cs: cs, ww: ww, prio: prio, rx: rx}
+}
+
+WordFlagsText(w)
+{
+    fl := ""
+    if (w.cs)
+        fl .= (fl = "" ? "" : "|") . "cs"
+    if (w.ww)
+        fl .= (fl = "" ? "" : "|") . "ww"
+    if (w.rx)
+        fl .= (fl = "" ? "" : "|") . "rx"
+    if (w.prio > 0)
+        fl .= (fl = "" ? "" : "|") . "p" . w.prio
+    if (fl = "")
+        fl := "1"
+    return fl
 }
 
 SaveProfile(name)
 {
-    global IniFile, Words
-    IniDelete, %IniFile%, profile:%name%
+    global WordSets, Words, GameMode
+    WordSets[name "|" GameMode] := []
     for i, w in Words
+        WordSets[name "|" GameMode].Push({text: w.text, cs: w.cs, ww: w.ww, prio: w.prio, rx: w.rx})
+    SaveWordSets()
+}
+
+LoadWordSets()
+{
+    global WordSets, WordsFile
+    WordSets := {}
+    txt := StoreRead(WordsFile)
+    if (txt = "")
+        return
+    Loop, Parse, txt, `n, `r
     {
-        fl := ""
-        if (w.cs)
-            fl .= (fl = "" ? "" : "|") . "cs"
-        if (w.ww)
-            fl .= (fl = "" ? "" : "|") . "ww"
-        if (w.prio > 0)
-            fl .= (fl = "" ? "" : "|") . "p" . w.prio
-        if (fl = "")
-            fl := "1"
-        IniWrite, %fl%, %IniFile%, profile:%name%, % w.text
+        if (A_LoopField = "")
+            continue
+        f := StrSplit(A_LoopField, "`t")
+        if (f.Length() < 4)
+            continue
+        prof := StoreUnesc(f[1])
+        game := f[2]
+        text := StoreUnesc(f[3])
+        o := ParseWordFlags(text, f[4])
+        WordSetsAdd(prof, text, o, game)
     }
+}
+
+SaveWordSets()
+{
+    global WordSets, WordsFile
+    out := ""
+    for key, arr in WordSets
+    {
+        p := InStr(key, "|")
+        prof := StoreEsc(SubStr(key, 1, p - 1))
+        game := SubStr(key, p + 1)
+        for i, w in arr
+            out .= prof . "`t" . game . "`t" . StoreEsc(w.text) . "`t" . WordFlagsText(w) . "`r`n"
+    }
+    StoreWrite(WordsFile, out)
 }
 
 SaveSettings()
@@ -589,6 +826,15 @@ BuildPattern()
     for i, o in Words
     {
         w := o.text
+        if (o.rx)
+        {
+            ; user-supplied regular expression: used verbatim (already escaped by the user)
+            part := w
+            if (o.cs)
+                part := "(?-i:" . part . ")"
+            parts.Push(part)
+            continue
+        }
         esc := EscapeRegex(w)
         if (o.ww)
         {
@@ -796,52 +1042,98 @@ SavePriceHist(item, amt, cur)
 
 LoadPrices()
 {
-    global IniFile, PriceHist, PriceAlerts
+    global IniFile, PriceHist, PriceAlerts, PricesFile
     PriceHist := {}
     PriceAlerts := {}
-    IniRead, out, %IniFile%, prices
-    if (out = "ERROR" or Trim(out) = "")
-        return
-    Loop, Parse, out, `n, `r
+    ; one-time migration from the old INI section
+    if (!FileExist(PricesFile))
     {
-        if (A_LoopField = "")
-            continue
-        p := InStr(A_LoopField, "=")
-        if !p
-            continue
-        k := SubStr(A_LoopField, 1, p - 1)
-        v := SubStr(A_LoopField, p + 1)
-        if InStr(k, "hist_", 1) = 1
+        legacy := IniRawSection(IniFile, "prices")
+        for i, ln in legacy
         {
-            PriceHist[SubStr(k, 6)] := v
-            continue
-        }
-        if InStr(k, "alert_", 1) = 1
-        {
-            bar := InStr(v, "|")
-            if !bar
+            p := InStr(ln, "=")
+            if (!p)
                 continue
-            amt := SubStr(v, 1, bar - 1) + 0
-            nm  := SubStr(v, bar + 1)
+            k := SubStr(ln, 1, p - 1)
+            v := SubStr(ln, p + 1)
+            if InStr(k, "hist_", 1) = 1
+            {
+                PriceHist[SubStr(k, 6)] := v
+                continue
+            }
+            if InStr(k, "alert_", 1) = 1
+            {
+                bar := InStr(v, "|")
+                if (!bar)
+                    continue
+                amt := SubStr(v, 1, bar - 1) + 0
+                nm  := SubStr(v, bar + 1)
+                if (nm != "" and amt > 0)
+                    PriceAlerts[nm] := amt
+            }
+        }
+        if (PriceHist.Count() > 0 or PriceAlerts.Count() > 0)
+            SavePrices()
+        return
+    }
+    txt := StoreRead(PricesFile)
+    if (txt = "")
+        return
+    Loop, Parse, txt, `n, `r
+    {
+        if (Trim(A_LoopField) = "")
+            continue
+        f := StrSplit(A_LoopField, "`t")
+        if (f.Length() < 3)
+            continue
+        if (f[1] = "h")
+            PriceHist[StoreUnesc(f[2])] := StoreUnesc(f[3])
+        else if (f[1] = "a" and f.Length() >= 4)
+        {
+            amt := f[3] + 0
+            nm := StoreUnesc(f[4])
             if (nm != "" and amt > 0)
                 PriceAlerts[nm] := amt
         }
     }
 }
-
 SavePrices()
 {
-    global IniFile, PriceHist, PriceAlerts
-    IniDelete, %IniFile%, prices
+    global PriceHist, PriceAlerts, PricesFile, PricesDirty
+    out := ""
     for name, amt in PriceAlerts
     {
         k := PriceKey(name)
-        IniWrite, % amt . "|" . name, %IniFile%, prices, alert_%k%
+        out .= "a`t" . StoreEsc(k) . "`t" . amt . "`t" . StoreEsc(name) . "`r`n"
     }
     for key, s in PriceHist
+    {
         if (s != "")
-            IniWrite, % s, %IniFile%, prices, hist_%key%
+            out .= "h`t" . StoreEsc(key) . "`t" . StoreEsc(s) . "`r`n"
+    }
+    StoreWrite(PricesFile, out)
+    PricesDirty := 0
 }
+
+; the price history changes on every trade match: write it to disk rarely,
+; not on every single match
+MarkPricesDirty()
+{
+    global PricesDirty
+    PricesDirty := 1
+}
+
+FlushPrices()
+{
+    global PricesDirty
+    if (PricesDirty)
+        SavePrices()
+    return
+}
+
+FlushPricesTimer:
+    FlushPrices()
+return
 
 
 ; ============================================================
@@ -849,37 +1141,19 @@ SavePrices()
 ; ============================================================
 JsonEscape(s)
 {
-    StringReplace, s, s, `"`, "'", All
-    StringReplace, s, s, `r, "", All
-    StringReplace, s, s, `n, " ", All
+    bs := Chr(92)
+    dq := Chr(34)
+    s := StrReplace(s, bs, bs bs)          ; backslash  -> \\
+    s := StrReplace(s, dq, bs . dq)        ; quote      -> \"
+    s := StrReplace(s, "`r", " ")
+    s := StrReplace(s, "`n", " ")
+    s := StrReplace(s, "`t", " ")
+    while RegExMatch(s, "[\x00-\x08\x0B\x0C\x0E-\x1F]", m)
+        s := StrReplace(s, m, "")
     return s
 }
 
-SendNotify(title, body)
-{
-    global NotifyDiscordOn, NotifyNtfyOn, NotifyDiscord, NotifyNtfy
-    out := ""
-    bad := 0
-    if (NotifyDiscordOn)
-    {
-        r := (NotifyDiscord = "") ? "no URL" : SendOne("discord", NotifyDiscord, title, body)
-        out .= (out = "" ? "" : " · ") . "discord: " . r
-        if (r != "ok")
-            bad := 1
-    }
-    if (NotifyNtfyOn)
-    {
-        r := (NotifyNtfy = "") ? "no URL" : SendOne("ntfy", NotifyNtfy, title, body)
-        out .= (out = "" ? "" : " · ") . "ntfy: " . r
-        if (r != "ok")
-            bad := 1
-    }
-    if (out = "")
-        return "off"
-    return bad ? out : "ok"
-}
-
-SendOne(kind, url, title, body)
+SendOne(kind, url, title, body, replyCmd := "", linkUrl := "", linkLabel := "")
 {
     try
     {
@@ -888,15 +1162,27 @@ SendOne(kind, url, title, body)
         if (kind = "discord")
         {
             q := Chr(34)
-            payload := "{" . q . "content" . q . ":" . q . JsonEscape(title . " — " . body) . q . "}"
+            text := title . " — " . body
+            if (replyCmd != "")
+                text .= "`n" . replyCmd
+            payload := "{" . q . "content" . q . ":" . q . JsonEscape(text) . q
+            if (linkUrl != "")
+            {
+                payload .= "," . q . "components" . q . ":[{" . q . "type" . q . ":1," . q . "components" . q . ":[{"
+                payload .= q . "type" . q . ":2," . q . "style" . q . ":5," . q . "label" . q . ":" . q . JsonEscape(linkLabel) . q
+                payload .= "," . q . "url" . q . ":" . q . JsonEscape(linkUrl) . q . "}]}]"
+            }
+            payload .= "}"
             whr.Open("POST", url, false)
-            whr.SetRequestHeader("Content-Type", "application/json")
+            whr.SetRequestHeader("Content-Type", "application/json; charset=utf-8")
             whr.Send(payload)
         }
         else
         {
             whr.Open("POST", url, false)
             whr.SetRequestHeader("Title", RegExReplace(title, "[^\x20-\x7E]", "-"))
+            if (linkUrl != "")
+                whr.SetRequestHeader("X-Click", linkUrl)
             whr.Send(body)
         }
         code := whr.Status
@@ -917,9 +1203,33 @@ SendOne(kind, url, title, body)
     }
 }
 
+SendNotify(title, body, replyCmd := "", linkUrl := "", linkLabel := "")
+{
+    global NotifyDiscordOn, NotifyNtfyOn, NotifyDiscord, NotifyNtfy
+    out := ""
+    bad := 0
+    if (NotifyDiscordOn)
+    {
+        r := (NotifyDiscord = "") ? "no URL" : SendOne("discord", NotifyDiscord, title, body, replyCmd, linkUrl, linkLabel)
+        out .= (out = "" ? "" : " · ") . "discord: " . r
+        if (r != "ok")
+            bad := 1
+    }
+    if (NotifyNtfyOn)
+    {
+        r := (NotifyNtfy = "") ? "no URL" : SendOne("ntfy", NotifyNtfy, title, body, replyCmd, linkUrl, linkLabel)
+        out .= (out = "" ? "" : " · ") . "ntfy: " . r
+        if (r != "ok")
+            bad := 1
+    }
+    if (out = "")
+        return "off"
+    return bad ? out : "ok"
+}
+
 SendNotifyChat(label, chan, name, kind, shortMsg, priceTxt, priceDrop)
 {
-    global AppName, PriceAlerts, NotifyDiscordOn, NotifyNtfyOn
+    global AppName, PriceAlerts, NotifyDiscordOn, NotifyNtfyOn, GameMode
     if !NotifyDiscordOn and !NotifyNtfyOn
         return
     nbody := chan . " — " . (name != "" ? name : "?")
@@ -929,7 +1239,19 @@ SendNotifyChat(label, chan, name, kind, shortMsg, priceTxt, priceDrop)
     if (priceDrop)
         nbody .= "  ·  dropped below " . PriceAlerts[label] . " divine"
     nbody .= "  —  " . shortMsg
-    SendNotify(AppName, nbody)
+    ; a ready-to-paste whisper command so the phone can answer in one tap
+    replyCmd := ""
+    if (name != "" and name != "?")
+        replyCmd := "/whisper " . name . " "
+    ; a link to the in-game trade search for the item that was matched
+    linkUrl := ""
+    linkLabel := ""
+    if (kind = "ITEM" and label != "")
+    {
+        linkUrl := "https://www.pathofexile.com/trade/search/" . (GameMode = "poe1" ? "poe1" : "poe2")
+        linkLabel := "Răspunde"
+    }
+    SendNotify(AppName, nbody, replyCmd, linkUrl, linkLabel)
 }
 
 CollectMatches(hay, pat, names, poss)
@@ -1068,85 +1390,131 @@ FetchItemsFromApi()
 
 LoadWatch()
 {
-    global IniFile, WatchList, WatchOn
+    global IniFile, WatchList, WatchOn, WatchFile
     WatchList := []
     WatchOn := {}
-    IniRead, out, %IniFile%, watch
-    if (out = "ERROR" or Trim(out) = "")
-        return
-    Loop, Parse, out, `n, `r
+    ; one-time migration from the old INI sections
+    if (!FileExist(WatchFile))
     {
-        if (A_LoopField = "")
+        legacy := IniRawSection(IniFile, "watch")
+        for i, ln in legacy
+        {
+            p := InStr(ln, "=")
+            if (!p)
+                continue
+            nm := SubStr(ln, 1, p - 1)
+            if (nm = "")
+                continue
+            WatchList.Push(nm)
+            WatchOn[nm] := (SubStr(ln, p + 1) + 0) ? 1 : 0
+        }
+        legacyRx := IniRawSection(IniFile, "watch_regex")
+        for i, ln in legacyRx
+        {
+            p := InStr(ln, "=")
+            if (!p)
+                continue
+            ParseWatchRuleLine(SubStr(ln, p + 1))
+        }
+        SaveWatch()
+        return
+    }
+    txt := StoreRead(WatchFile)
+    if (txt = "")
+        return
+    Loop, Parse, txt, `n, `r
+    {
+        if (Trim(A_LoopField) = "")
             continue
-        p := InStr(A_LoopField, "=")
-        if !p
+        f := StrSplit(A_LoopField, "`t")
+        if (f.Length() < 2)
             continue
-        nm := SubStr(A_LoopField, 1, p - 1)
-        if (nm = "")
-            continue
-        WatchList.Push(nm)
-        WatchOn[nm] := (SubStr(A_LoopField, p + 1) + 0) ? 1 : 0
+        if (f[1] = "W" and f.Length() >= 3)
+        {
+            nm := StoreUnesc(f[2])
+            if (nm = "")
+                continue
+            WatchList.Push(nm)
+            WatchOn[nm] := (f[3] + 0) ? 1 : 0
+        }
+        else if (f[1] = "R" and f.Length() >= 4)
+        {
+            AddWatchRule(StoreUnesc(f[2]), StoreUnesc(f[3]), (f[4] + 0) ? 1 : 0)
+        }
     }
 }
 
 SaveWatch()
 {
-    global IniFile, WatchList, WatchOn
-    IniDelete, %IniFile%, watch
+    global WatchList, WatchOn, RXItems, WatchFile
+    out := ""
     for i, nm in WatchList
-        IniWrite, % (WatchOn.HasKey(nm) ? WatchOn[nm] : 1), %IniFile%, watch, %nm%
+        out .= "W`t" . StoreEsc(nm) . "`t" . (WatchOn.HasKey(nm) ? WatchOn[nm] : 1) . "`r`n"
+    for i, r in RXItems
+        out .= "R`t" . StoreEsc(r.name) . "`t" . StoreEsc(r.pat) . "`t" . (r.on ? 1 : 0) . "`r`n"
+    StoreWrite(WatchFile, out)
+}
+
+AddWatchRule(name, pat, on)
+{
+    global RXItems
+    RXItems.Push({name: name, pat: pat, on: on})
+}
+
+; parse one legacy "0|Name => pattern" line
+ParseWatchRuleLine(val)
+{
+    en := 1
+    bar := InStr(val, "|")
+    if bar
+    {
+        en := (SubStr(val, 1, bar - 1) + 0) ? 1 : 0
+        val := SubStr(val, bar + 1)
+    }
+    arrow := InStr(val, "=>")
+    if arrow
+    {
+        nm := Trim(SubStr(val, 1, arrow - 1))
+        pt := Trim(SubStr(val, arrow + 2))
+    }
+    else
+    {
+        nm := Trim(val)
+        pt := Trim(val)
+    }
+    if (pt = "")
+        return
+    if (nm = "")
+        nm := pt
+    AddWatchRule(nm, pt, en)
 }
 
 LoadWatchRegex()
 {
-    global IniFile, RXItems
+    ; the rules are stored together with the watch list in the watch file
+    global RXItems, WatchFile
     RXItems := []
-    IniRead, out, %IniFile%, watch_regex
-    if (out = "ERROR" or Trim(out) = "")
+    if (!FileExist(WatchFile))
         return
-    Loop, Parse, out, `n, `r
+    txt := StoreRead(WatchFile)
+    if (txt = "")
+        return
+    Loop, Parse, txt, `n, `r
     {
-        if (A_LoopField = "")
+        if (Trim(A_LoopField) = "")
             continue
-        p := InStr(A_LoopField, "=")
-        if !p
+        f := StrSplit(A_LoopField, "`t")
+        if (f.Length() < 4)
             continue
-        val := SubStr(A_LoopField, p + 1)
-        en := 1
-        bar := InStr(val, "|")
-        if bar
-        {
-            en := (SubStr(val, 1, bar - 1) + 0) ? 1 : 0
-            val := SubStr(val, bar + 1)
-        }
-        arrow := InStr(val, "=>")
-        if arrow
-        {
-            nm := Trim(SubStr(val, 1, arrow - 1))
-            pt := Trim(SubStr(val, arrow + 2))
-        }
-        else
-        {
-            nm := Trim(val)
-            pt := Trim(val)
-        }
-        if (pt = "")
-            continue
-        if (nm = "")
-            nm := pt
-        RXItems.Push({name: nm, pat: pt, on: en})
+        if (f[1] = "R")
+            AddWatchRule(StoreUnesc(f[2]), StoreUnesc(f[3]), (f[4] + 0) ? 1 : 0)
     }
 }
 
 SaveWatchRegex()
 {
-    global IniFile, RXItems
-    IniDelete, %IniFile%, watch_regex
-    for i, r in RXItems
-    {
-        val := (r.on ? 1 : 0) . "|" . r.name . " => " . r.pat
-        IniWrite, %val%, %IniFile%, watch_regex, %i%
-    }
+    ; written by SaveWatch together with the watch list
+    SaveWatch()
 }
 
 RXValid(pat)
@@ -1202,10 +1570,10 @@ FindPoELog(game := "")
     WinGet, poePath, ProcessPath, ahk_class POEWindowClass
     if (!ErrorLevel and poePath != "")
     {
-        folder := SubStr(poePath, 1, InStr(poePath, "\",, 0))
+        SplitPath, poePath, , folder
         is2 := InStr(folder, "Path of Exile 2") ? true : false
-        if (is2 = want2 and FileExist(folder "logs\Client.txt"))
-            return folder "logs\Client.txt"
+        if (is2 = want2 and FileExist(folder "\logs\Client.txt"))
+            return folder "\logs\Client.txt"
     }
     doc := ""
     try doc := A_MyDocuments
@@ -1420,7 +1788,7 @@ OnMatch(line)
         {
             priceTxt := priceInfo.amt " " priceInfo.cur
             SavePriceHist(label, priceInfo.amt, priceInfo.cur)
-            SavePrices()
+            MarkPricesDirty()            ; written to disk at most every few seconds
             if (priceInfo.cur = "divine" and PriceAlerts.HasKey(label) and priceInfo.amt < PriceAlerts[label])
                 priceDrop := true
         }
@@ -1451,7 +1819,7 @@ OnMatch(line)
         sndPrio := 1
     if (priceDrop and sndPrio < 2)
         sndPrio := 2
-    TrayTip, %AppName% — Chat, %shortMsg%, 5, 2
+    TrayTip, %shortMsg%, %AppName% — Chat, 5, 2
     ShowAlert(label, chan, name, shortMsg, kind, sndPrio, priceTxt, priceDrop)
     if (kind = "ITEM")
         PlayItemSound()
@@ -1760,7 +2128,7 @@ FlatBtn(x, y, w, h, text, label, bg, fg)
 ShowWordOpts(row)
 {
     global Words, WordOptRow, cBg, cPanel, cText, cDim, cGold, cInput
-    global WoCase, WoWhole, WoPrio
+    global WoCase, WoWhole, WoPrio, WoRx
     WordOptRow := row
     o := Words[row]
     Gui, WordOpt:Destroy
@@ -1775,15 +2143,17 @@ ShowWordOpts(row)
     Gui, WordOpt:Add, CheckBox, x18 y74 w320 h22 vWoCase %cort%, Case-sensitive (match exact letter case)
     wort := (o.ww ? "Checked" : "")
     Gui, WordOpt:Add, CheckBox, x18 y102 w320 h22 vWoWhole %wort%, Whole word only (not inside a larger word)
+    rxt := (o.rx ? "Checked" : "")
+    Gui, WordOpt:Add, CheckBox, x18 y130 w320 h22 vWoRx %rxt%, Regular expression (the text above is used as-is)
     Gui, WordOpt:Font, s9 norm c%cDim%, Segoe UI
-    Gui, WordOpt:Add, Text, x18 y132 w320 h18 BackgroundTrans, Priority:
+    Gui, WordOpt:Add, Text, x18 y160 w320 h18 BackgroundTrans, Priority:
     psel := (o.prio = 1) ? "High" : (o.prio = 2 ? "Urgent" : "Normal")
     Gui, WordOpt:Font, s9 norm c%cText%, Segoe UI
-    Gui, WordOpt:Add, DropDownList, x18 y152 w200 vWoPrio, Normal|High|Urgent
+    Gui, WordOpt:Add, DropDownList, x18 y180 w200 vWoPrio, Normal|High|Urgent
     GuiControl, WordOpt:ChooseString, WoPrio, %psel%
-    Gui, WordOpt:Add, Button, x18 y192 w110 h30 Default gWordOptSave, Save
-    Gui, WordOpt:Add, Button, x140 y192 w110 h30 gWordOptCancel, Cancel
-    Gui, WordOpt:Show, w320 h236, Word options
+    Gui, WordOpt:Add, Button, x18 y220 w110 h30 Default gWordOptSave, Save
+    Gui, WordOpt:Add, Button, x140 y220 w110 h30 gWordOptCancel, Cancel
+    Gui, WordOpt:Show, w320 h264, Word options
     return
 }
 
@@ -1794,7 +2164,14 @@ WordOptSave:
     o := Words[WordOptRow]
     o.cs := WoCase
     o.ww := WoWhole
+    o.rx := WoRx
     o.prio := prio
+    if (o.rx and !RXValid(o.text))
+    {
+        badRx := "This is not a valid regular expression:" . "`n" . o.text
+        MsgBox, 48, %AppName%, %badRx%
+        return
+    }
     Gui, WordOpt:Destroy
     SaveProfile(ActiveProfile)
     BuildPattern()
@@ -1859,8 +2236,8 @@ BuildMainGui()
     Gui, Main:Add, ListView, x18 y170 w628 h116 vWordLV Grid -Multi Background%cPanel% c%cText% gWordDblClick, Word|Cs|WW|Prio
     Gui, Main:Default
     Gui, Main:ListView, WordLV
-    LV_ModifyCol(1, 420)
-    LV_ModifyCol(2, 60)
+    LV_ModifyCol(1, 400)
+    LV_ModifyCol(2, 70)
     LV_ModifyCol(3, 60)
     LV_ModifyCol(4, 80)
 
@@ -1933,7 +2310,7 @@ RefreshProfileDDL()
 
 RefreshWordList()
 {
-    global Words
+    global Words, GameMode
     Gui, Main:Default
     Gui, Main:ListView, WordLV
     LV_Delete()
@@ -1941,9 +2318,10 @@ RefreshWordList()
     for i, o in Words
     {
         pn := (o.prio >= 1 and o.prio <= 2) ? prioName[o.prio] : ""
-        LV_Add("", o.text, (o.cs ? "yes" : ""), (o.ww ? "yes" : ""), pn)
+        LV_Add("", o.text, (o.rx ? "rx" : ((o.cs ? "yes" : ""))), (o.ww ? "yes" : ""), pn)
     }
-    GuiControl, Main:, WordsCount, % Words.Length() . " word(s)"
+    gn := (GameMode = "poe1") ? "Path of Exile 1" : "Path of Exile 2"
+    GuiControl, Main:, WordsCount, % Words.Length() . " word(s) - " . gn
 }
 
 UpdateStatus()
@@ -1977,11 +2355,28 @@ return
 
 PushHistory(time, chan, player, word, msg, line, price := "")
 {
-    global History
-    History.Push({time: time, chan: chan, player: player, word: word, msg: msg, line: line, price: price})
-    if (History.Length() > 100)
+    global History, HistoryFile, HistoryMem, HistoryKeep, HistoryLines
+    rec := {time: time, chan: chan, player: player, word: word, msg: msg, line: line, price: price}
+    History.Push(rec)
+    if (History.Length() > HistoryMem)
         History.RemoveAt(1)
+    ; append-only: one line per match, written immediately so a crash cannot lose it
+    StoreAppend(HistoryFile, StoreEsc(time) . "`t" . StoreEsc(chan) . "`t" . StoreEsc(player) . "`t" . StoreEsc(word) . "`t" . StoreEsc(msg) . "`t" . StoreEsc(line) . "`t" . StoreEsc(price))
+    HistoryLines++
+    if (HistoryLines > HistoryKeep)
+        TrimHistoryFile()
     RefreshHistory()
+}
+
+; keep the history log bounded: rewrite it with the newest rows only
+TrimHistoryFile()
+{
+    global History, HistoryFile, HistoryLines
+    out := ""
+    for i, h in History
+        out .= StoreEsc(h.time) . "`t" . StoreEsc(h.chan) . "`t" . StoreEsc(h.player) . "`t" . StoreEsc(h.word) . "`t" . StoreEsc(h.msg) . "`t" . StoreEsc(h.line) . "`t" . StoreEsc(h.price) . "`r`n"
+    StoreWrite(HistoryFile, out)
+    HistoryLines := History.Length()
 }
 
 HistIdx(row)
@@ -2019,37 +2414,66 @@ RefreshHistory()
 
 SaveHistory()
 {
-    global IniFile, History
-    IniDelete, %IniFile%, history
-    for i, h in History
-    {
-        v := h.time . "`t" . h.chan . "`t" . h.player . "`t" . h.word . "`t" . h.msg . "`t" . h.line . "`t" . (h.HasProp("price") ? h.price : "")
-        IniWrite, %v%, %IniFile%, history, %i%
-    }
+    ; history is append-only in its own file; nothing to do here
 }
 
 LoadHistory()
 {
-    global IniFile, History
+    global History, HistoryFile, HistoryMem, IniFile
     History := []
-    IniRead, out, %IniFile%, history
-    if (out = "ERROR" or Trim(out) = "")
-        return
-    Loop, Parse, out, `n, `r
+    ; one-time migration from the old INI section
+    if (!FileExist(HistoryFile))
     {
-        if (A_LoopField = "")
+        legacy := IniRawSection(IniFile, "history")
+        for i, ln in legacy
+        {
+            p := InStr(ln, "=")
+            if (!p)
+                continue
+            f := StrSplit(SubStr(ln, p + 1), "`t")
+            if (f.Length() < 6)
+                continue
+            price := (f.Length() >= 7) ? f[7] : ""
+            History.Push({time: f[1], chan: f[2], player: f[3], word: f[4], msg: f[5], line: f[6], price: price})
+        }
+        if (History.Length() > 0)
+        {
+            out := ""
+            for i, h in History
+                out .= StoreEsc(h.time) . "`t" . StoreEsc(h.chan) . "`t" . StoreEsc(h.player) . "`t" . StoreEsc(h.word) . "`t" . StoreEsc(h.msg) . "`t" . StoreEsc(h.line) . "`t" . StoreEsc(h.price) . "`r`n"
+            StoreWrite(HistoryFile, out)
+        }
+    }
+    txt := StoreRead(HistoryFile)
+    if (txt = "")
+        return
+    lines := []
+    Loop, Parse, txt, `n, `r
+    {
+        if (Trim(A_LoopField) = "")
             continue
-        p := InStr(A_LoopField, "=")
-        if !p
-            continue
-        f := StrSplit(SubStr(A_LoopField, p+1), "`t")
+        lines.Push(A_LoopField)
+    }
+    HistoryLines := lines.Length()
+    ; keep only the newest HistoryMem rows
+    if (lines.Length() > HistoryMem)
+    {
+        keep := []
+        for i, ln in lines
+        {
+            if (i > lines.Length() - HistoryMem)
+                keep.Push(ln)
+        }
+        lines := keep
+    }
+    for i, ln in lines
+    {
+        f := StrSplit(ln, "`t")
         if (f.Length() < 6)
             continue
         price := (f.Length() >= 7) ? f[7] : ""
-        History.Push({time: f[1], chan: f[2], player: f[3], word: f[4], msg: f[5], line: f[6], price: price})
+        History.Push({time: StoreUnesc(f[1]), chan: StoreUnesc(f[2]), player: StoreUnesc(f[3]), word: StoreUnesc(f[4]), msg: StoreUnesc(f[5]), line: StoreUnesc(f[6]), price: StoreUnesc(price)})
     }
-    while (History.Length() > 100)
-        History.RemoveAt(1)
 }
 
 HistSelRow()
@@ -2070,15 +2494,33 @@ BtnAddWords:
         SetStatus("Type a word first.")
         return
     }
-    incoming := SplitWords(raw)
+    incoming := []
+    trimmed := Trim(raw)
+    if (SubStr(trimmed, 1, 2) = "//" and SubStr(trimmed, -2) = "//" and StrLen(trimmed) > 4)
+        incoming.Push(trimmed)          ; a single regex: never split it (it may contain commas)
+    else
+        incoming := SplitWords(raw)
     added := 0
+    skipped := 0
     for i, w in incoming
     {
-        wl := ToLower(w)
+        ; //pattern// is treated as a regular expression
+        isRx := (SubStr(w, 1, 2) = "//" and SubStr(w, -2) = "//" and StrLen(w) > 4)
+        if (isRx)
+            w := SubStr(w, 3, StrLen(w) - 4)
+        else
+            w := ToLower(w)
+        if (w = "")
+            continue
+        if (isRx and !RXValid(w))
+        {
+            skipped++
+            continue
+        }
         dup := false
         for j, ex in Words
         {
-            if (ex.text = wl)
+            if (ex.text = w)
             {
                 dup := true
                 break
@@ -2086,14 +2528,20 @@ BtnAddWords:
         }
         if dup
             continue
-        Words.Push({text: wl, cs: 0, ww: 0, prio: 0})
+        Words.Push({text: w, cs: 0, ww: 0, prio: 0, rx: isRx})
         added++
     }
     GuiControl, Main:, NewWord,
-    SaveProfile(ActiveProfile)
-    BuildPattern()
-    RefreshWordList()
-    SetStatus("Added " . added . " word(s).")
+    if (added)
+    {
+        SaveProfile(ActiveProfile)
+        BuildPattern()
+        RefreshWordList()
+    }
+    if (skipped)
+        SetStatus("Added " . added . " word(s), skipped " . skipped . " invalid regex.")
+    else
+        SetStatus("Added " . added . " word(s).")
 return
 
 BtnDeleteWord:
@@ -2202,7 +2650,7 @@ ToggleMute()
     GuiControl, Main:, BtnMute, % (Muted ? "Unmute" : "Mute")
     IniWrite, %Muted%, %IniFile%, settings, muted
     SetStatus(Muted ? "Sound muted." : "Sound on.")
-    TrayTip, Chat Alert, % (Muted ? "Sound muted (Ctrl+Alt+M)" : "Sound on (Ctrl+Alt+M)"), 2, 1
+    TrayTip, % (Muted ? "Sound muted (Ctrl+Alt+M)" : "Sound on (Ctrl+Alt+M)"), Chat Alert, 2, 1
 }
 
 BtnTest:
@@ -2321,23 +2769,37 @@ return
 
 DoExportProfile(path)
 {
-    global Words, ActiveProfile
+    global Words, ActiveProfile, WordSets, GameMode
     FileDelete, %path%
     IniWrite, %ActiveProfile%, %path%, profile, name
-    for i, o in Words
+    total := 0
+    ; export the word list of every game, so a profile can be shared between PoE1 and PoE2
+    for key, arr in WordSets
     {
-        fl := ""
-        if (o.cs)
-            fl .= (fl = "" ? "" : "|") . "cs"
-        if (o.ww)
-            fl .= (fl = "" ? "" : "|") . "ww"
-        if (o.prio > 0)
-            fl .= (fl = "" ? "" : "|") . "p" . o.prio
-        if (fl = "")
-            fl := "1"
-        IniWrite, %fl%, %path%, words, % o.text
+        p := InStr(key, "|")
+        if (!p)
+            continue
+        prof := SubStr(key, 1, p - 1)
+        game := SubStr(key, p + 1)
+        if (prof != ActiveProfile)
+            continue
+        for i, o in arr
+        {
+            sec := "words:" game
+            IniWrite, % WordFlagsText(o), %path%, %sec%, % o.text
+            total++
+        }
     }
-    return Words.Length()
+    if (total = 0)
+    {
+        secCur := "words:" GameMode
+        for i, o in Words
+        {
+            IniWrite, % WordFlagsText(o), %path%, %secCur%, % o.text
+            total++
+        }
+    }
+    return total
 }
 
 BtnImportProfile:
@@ -2356,42 +2818,73 @@ return
 
 DoImportProfile(src)
 {
-    global Words, ActiveProfile
-    IniRead, out, %src%, words
-    if (out = "ERROR" or Trim(out) = "")
-        IniRead, out, %src%, profile:Default
-    if (out = "ERROR" or Trim(out) = "")
-        return -1
+    global Words, ActiveProfile, WordSets, GameMode
     added := 0
-    Loop, Parse, out, `n, `r
+    ; new format: one section per game
+    games := ["poe1", "poe2"]
+    for gi, game in games
     {
-        if (A_LoopField = "")
+        sec := "words:" game
+        IniRead, out, %src%, %sec%
+        if (out = "ERROR" or Trim(out) = "")
             continue
-        p := InStr(A_LoopField, "=")
-        if !p
-            continue
-        w := SubStr(A_LoopField, 1, p-1)
-        if (w = "")
-            continue
-        dup := false
-        for j, ex in Words
+        seen := {}
+        Loop, Parse, out, `n, `r
         {
-            if (ex.text = w)
+            if (A_LoopField = "")
+                continue
+            p := InStr(A_LoopField, "=")
+            if (!p)
+                continue
+            w := SubStr(A_LoopField, 1, p-1)
+            if (w = "" or seen.HasKey(w))
+                continue
+            seen[w] := 1
+            o := ParseWordFlags(w, SubStr(A_LoopField, p+1))
+            if (!WordSetsHas(ActiveProfile, w, game))
             {
-                dup := true
-                break
+                WordSetsAdd(ActiveProfile, w, o, game)
+                added++
             }
         }
-        if dup
-            continue
-        Words.Push(ParseWordFlags(w, SubStr(A_LoopField, p+1)))
-        added++
     }
-    SaveProfile(ActiveProfile)
+    if (added = 0)
+    {
+        ; old format: one shared word list
+        IniRead, out, %src%, words
+        if (out = "ERROR" or Trim(out) = "")
+            IniRead, out, %src%, profile:Default
+        if (out = "ERROR" or Trim(out) = "")
+            return -1
+        seen := {}
+        Loop, Parse, out, `n, `r
+        {
+            if (A_LoopField = "")
+                continue
+            p := InStr(A_LoopField, "=")
+            if (!p)
+                continue
+            w := SubStr(A_LoopField, 1, p-1)
+            if (w = "" or seen.HasKey(w))
+                continue
+            seen[w] := 1
+            o := ParseWordFlags(w, SubStr(A_LoopField, p+1))
+            if (!WordSetsHas(ActiveProfile, w, GameMode))
+            {
+                WordSetsAdd(ActiveProfile, w, o, GameMode)
+                added++
+            }
+        }
+    }
+    if (added = 0)
+        return -1
+    SaveWordSets()
+    LoadProfile(ActiveProfile)
     BuildPattern()
     RefreshWordList()
     return added
 }
+    Loop, Parse, out, `n, `r
 
 BtnCopy:
     row := HistSelRow()
@@ -2756,10 +3249,14 @@ SetGameChanged:
     newGame := (gLabel = "Path of Exile 1") ? "poe1" : "poe2"
     if (newGame = GameMode)
         return
+    SaveProfile(ActiveProfile)          ; keep the current game's word list
     StopWatching()
     GameMode := newGame
     ApplyGameMode()
     UpdateBranding()
+    LoadProfile(ActiveProfile)          ; load the new game's word list
+    BuildPattern()
+    RefreshWordList()
     p := (GameMode = "poe1") ? LogPathPoe1 : LogPathPoe2
     if (p = "" or !FileExist(p))
         p := FindPoELog(GameMode)
@@ -2851,10 +3348,14 @@ SetDoSave:
         det := "poe1"
     if (det != "" and det != GameMode)
     {
+        SaveProfile(ActiveProfile)
         StopWatching()
         GameMode := det
         ApplyGameMode()
         UpdateBranding()
+        LoadProfile(ActiveProfile)
+        BuildPattern()
+        RefreshWordList()
         LoadItems()
         BuildWatchPattern()
     }

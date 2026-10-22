@@ -7,10 +7,10 @@
 ![AutoHotkey](https://img.shields.io/badge/AutoHotkey-v1.1%20·%2064--bit-6594B9?logo=autohotkey&logoColor=white&style=flat-square)
 ![Platform](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D6?logo=windows&logoColor=white&style=flat-square)
 ![Game access](https://img.shields.io/badge/Game%20access-read--only%20log-2EA44F?style=flat-square)
-![Version](https://img.shields.io/badge/version-1.2-D9A441?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.3-D9A441?style=flat-square)
 ![No dependencies](https://img.shields.io/badge/dependencies-none-6E7681?style=flat-square)
 
-[Quick start](#quick-start) · [Features](#features) · [What's new](#whats-new-in-v12) · [Screenshots](#screenshots) · [Troubleshooting](#troubleshooting)
+[Quick start](#quick-start) · [Features](#features) · [What's new](#whats-new-in-v13) · [Screenshots](#screenshots) · [Troubleshooting](#troubleshooting)
 
 </div>
 
@@ -107,12 +107,17 @@ Default log locations, if you want to set the path by hand:
 The core of the app. Add any word or phrase and get alerted whenever it appears.
 
 - **Add / Delete** words in the active profile.
+- Each profile keeps **a separate list per game** - the counter next to **WORDS** shows which one you are editing, and
+  switching the game in **Settings -> Game** swaps the list automatically.
+- **Regular expressions**: type the pattern between slashes, e.g. `//div(or|ine) \d+ (?!forge)/`. It matches `divine 5 div`
+  but not `divine forge 5 div`. Invalid patterns are rejected with a message instead of never matching.
 - **Per-word options** — *Options...* button, or the `Cs` / `WW` / `Prio` columns:
 
   | Option | Meaning |
   |:--:|---|
   | **Cs** | Case-sensitive: `Leech` will not match `leech` |
   | **WW** | Whole word: `leech` will not match `leeching` |
+  | **Rx** | The word is a regular expression and is used exactly as typed |
   | **Prio** | `Normal` · `High` · `Urgent` — higher priority means a louder sound and a longer banner |
 
 - **Cooldown** keeps the same alert from spamming you (default 10 s).
@@ -124,7 +129,8 @@ Different characters, different leagues, different goals — keep separate lists
 
 - Switch instantly from the **Profile** dropdown.
 - **New** / **Delete** profiles.
-- **Export** / **Import** a profile to or from an `.ini` file to back it up or share it.
+- **Export** / **Import** a profile to or from an `.ini` file to back it up or share it. The export contains the words of
+  **both** games, so one file can restore a profile in Path of Exile 1 and Path of Exile 2.
 
 ### Channels, categories and sounds
 
@@ -149,6 +155,9 @@ Get alerts on your phone or another device while you are away from the keyboard.
 - **ntfy** — paste a topic URL (`https://ntfy.sh/<your-topic>`), then subscribe to the same topic in the ntfy app.
 - **Each provider has its own checkbox and its own URL field** — enable Discord, ntfy, or **both at the same time**.
 - Notifications include the channel, player, word and message.
+- Discord alerts carry a **Raspunde** button that opens the trade search for the matched item, and the message ends with
+  a ready-to-paste `/whisper <player>` command so you can answer from your phone. ntfy alerts get the same link as a
+  click action.
 - **Test notify** sends a real test and reports the result per provider (e.g. `discord: ok · ntfy: ok`), so a wrong
   URL is caught immediately instead of failing silently.
 
@@ -192,6 +201,41 @@ These work while the game has focus (unless the combination is bound in-game):
 | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>S</kbd> | Start / stop watching |
 | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>H</kbd> | Hide / show the main window |
 | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>O</kbd> | Toggle the overlay panel |
+
+---
+
+## What's new in v1.3
+
+### A word list for each game
+- Every profile now keeps **its own words per game** — put `exalted` in Path of Exile 1 and `divine` in Path of Exile 2,
+  and each game alerts only on its own words.
+- Switching the game in **Settings → Game** swaps the word list automatically; the counter in the main window shows which
+  game's list you are editing.
+- Existing word lists are copied to both games on the first start, so nothing is lost.
+
+### Regular expressions in the word list
+- Type a word between slashes to add it as a regular expression: `//div(or|ine) \d+ (?!forge)/` matches `divine 5 div`
+  but not `divine forge 5 div`.
+- Regular expressions are case-insensitive unless you tick **Case-sensitive** in *Options...*; invalid patterns are
+  rejected with a clear message instead of silently never matching.
+- The `Rx` column marks the words that are regular expressions.
+
+### A "Răspunde" button on Discord
+- Discord alerts now carry a **Răspunde** button that opens the trade search for the item that matched.
+- The message also ends with a ready-to-paste `/whisper <player>` command, so you can answer straight from your phone.
+- ntfy alerts get the same link as a click action.
+
+### Nothing gets lost any more
+- The match history is now an **append-only log** written the moment a match happens, so a crash or a forced exit cannot
+  lose it any more. The file is trimmed automatically.
+- The price history is written to disk every few seconds instead of on every single match.
+- Word lists, watched items, custom rules, prices and history moved out of the `.ini` into their own small files, written
+  atomically — a half-written file can no longer corrupt your configuration. Everything is migrated automatically on the
+  first start.
+
+### The Path of Exile 1 item database is included
+- `items-poe1.txt` (5 414 entries) ships with the app, so **Trade watch** works in Path of Exile 1 right away.
+- *Update items (API)* still refreshes the database for the game you are playing.
 
 ---
 
@@ -294,7 +338,7 @@ Settings are stored in `PoE2-Chat-Alert.ini` next to the script and saved automa
 |---|---|:--:|
 | `PoE2-Chat-Alert.ahk` | The application | yes |
 | `items.txt` | Item database used by Trade watch for Path of Exile 2 | yes |
-| `items-poe1.txt` | Item database used by Trade watch for Path of Exile 1 (created by *Update items*) | no |
+| `items-poe1.txt` | Item database used by Trade watch for Path of Exile 1 | yes |
 | `README.md`, `screenshots/` | Documentation | yes |
 | `PoE2-Chat-Alert.ini` | Your settings (both games), profiles and history (created on first run) | no |
 | `PoE2-Chat-Alert-matches.txt` | Local log of every match | no |
