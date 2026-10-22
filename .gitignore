@@ -10,5 +10,6 @@ PoE2-Chat-Alert-history.log
 
 # Backups / temporary files
 *.bak
+screenshots/03-trade-watch.png
 Thumbs.db
 desktop.ini
