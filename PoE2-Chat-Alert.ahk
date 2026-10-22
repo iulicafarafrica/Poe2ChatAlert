@@ -2372,12 +2372,35 @@ PushHistory(time, chan, player, word, msg, line, price := "")
 ; keep the history log bounded: rewrite it with the newest rows only
 TrimHistoryFile()
 {
-    global History, HistoryFile, HistoryLines
+    global HistoryFile, HistoryKeep, HistoryLines
+    txt := StoreRead(HistoryFile)
+    if (txt = "")
+    {
+        HistoryLines := 0
+        return
+    }
+    lines := []
+    Loop, Parse, txt, `n, `r
+    {
+        if (Trim(A_LoopField) = "")
+            continue
+        lines.Push(A_LoopField)
+    }
+    if (lines.Length() > HistoryKeep)
+    {
+        keep := []
+        for i, ln in lines
+        {
+            if (i > lines.Length() - HistoryKeep)
+                keep.Push(ln)
+        }
+        lines := keep
+    }
     out := ""
-    for i, h in History
-        out .= StoreEsc(h.time) . "`t" . StoreEsc(h.chan) . "`t" . StoreEsc(h.player) . "`t" . StoreEsc(h.word) . "`t" . StoreEsc(h.msg) . "`t" . StoreEsc(h.line) . "`t" . StoreEsc(h.price) . "`r`n"
+    for i, ln in lines
+        out .= ln . "`r`n"
     StoreWrite(HistoryFile, out)
-    HistoryLines := History.Length()
+    HistoryLines := lines.Length()
 }
 
 HistIdx(row)
@@ -2420,7 +2443,7 @@ SaveHistory()
 
 LoadHistory()
 {
-    global History, HistoryFile, HistoryMem, IniFile
+    global History, HistoryFile, HistoryMem, HistoryLines, IniFile
     History := []
     ; one-time migration from the old INI section
     if (!FileExist(HistoryFile))
