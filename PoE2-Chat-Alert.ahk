@@ -92,8 +92,10 @@ PriceMin       := 0
 PriceMax       := 0
 BulkOnly       := 0
 BulkMin        := 0
-NotifyMode     := "off"     ; off / discord / ntfy
-NotifyUrl      := ""        ; Discord webhook URL  or  ntfy topic URL
+NotifyDiscordOn := 0        ; 1 = send alerts to Discord
+NotifyNtfyOn    := 0        ; 1 = send alerts to ntfy
+NotifyDiscord   := ""       ; Discord webhook URL
+NotifyNtfy      := ""       ; ntfy topic URL (https://ntfy.sh/<topic>)
 PriceAlerts    := {}        ; item display name -> threshold price (divine)
 PriceHist      := {}        ; sanitized item key -> "ts_amt_cur;ts_amt_cur;..."
 
@@ -200,7 +202,7 @@ LoadSettings()
 {
     global IniFile, LogPath, Beeps, CooldownSec, AlertSec, Muted, Volume
     global AlertPos, AlertWidth, StartMinimized, ActiveProfile, CustomSound
-    global NotifyMode, NotifyUrl
+    global NotifyDiscordOn, NotifyNtfyOn, NotifyDiscord, NotifyNtfy
     IniRead, LogPath,        %IniFile%, settings, log_path,        % ""
     IniRead, Beeps,          %IniFile%, settings, beeps,           6
     IniRead, CooldownSec,    %IniFile%, settings, cooldown_sec,    10
@@ -212,13 +214,35 @@ LoadSettings()
     IniRead, StartMinimized, %IniFile%, settings, start_minimized, 0
     IniRead, ActiveProfile,  %IniFile%, settings, active_profile,  Default
     IniRead, CustomSound,    %IniFile%, settings, custom_sound,    C:\Windows\Media\Alarm01.wav
-    IniRead, NotifyMode,     %IniFile%, settings, notify_mode,     off
-    IniRead, NotifyUrl,      %IniFile%, settings, notify_url,      % ""
-    if (NotifyUrl = "ERROR")
-        NotifyUrl := ""
-    NotifyUrl := Trim(NotifyUrl)
-    if !(NotifyMode = "off" or NotifyMode = "discord" or NotifyMode = "ntfy")
-        NotifyMode := "off"
+    IniRead, NotifyDiscord,  %IniFile%, settings, notify_discord,  % ""
+    IniRead, NotifyNtfy,     %IniFile%, settings, notify_ntfy,     % ""
+    if (NotifyDiscord = "ERROR")
+        NotifyDiscord := ""
+    if (NotifyNtfy = "ERROR")
+        NotifyNtfy := ""
+    NotifyDiscord := Trim(NotifyDiscord)
+    NotifyNtfy    := Trim(NotifyNtfy)
+    ; migrate the old single-URL key (notify_url) once
+    IniRead, legacyUrl,      %IniFile%, settings, notify_url,      % ""
+    if (legacyUrl != "ERROR" and legacyUrl != "")
+    {
+        legacyUrl := Trim(legacyUrl)
+        if (NotifyDiscord = "")
+            NotifyDiscord := legacyUrl
+        else if (NotifyNtfy = "")
+            NotifyNtfy := legacyUrl
+    }
+    ; per-provider switches (fall back to the old single-provider key)
+    IniRead, NotifyDiscordOn, %IniFile%, settings, notify_discord_on, -1
+    IniRead, NotifyNtfyOn,    %IniFile%, settings, notify_ntfy_on,    -1
+    if (NotifyDiscordOn = -1 or NotifyNtfyOn = -1)
+    {
+        IniRead, legacyMode, %IniFile%, settings, notify_mode, off
+        NotifyDiscordOn := (legacyMode = "discord" or legacyMode = "both") ? 1 : 0
+        NotifyNtfyOn    := (legacyMode = "ntfy"    or legacyMode = "both") ? 1 : 0
+    }
+    NotifyDiscordOn := (NotifyDiscordOn ? 1 : 0)
+    NotifyNtfyOn    := (NotifyNtfyOn ? 1 : 0)
     if (LogPath = "ERROR")
         LogPath := ""
     LogPath := Trim(LogPath)
@@ -410,7 +434,7 @@ SaveSettings()
 {
     global IniFile, LogPath, Beeps, CooldownSec, AlertSec, Muted, Volume
     global AlertPos, AlertWidth, StartMinimized, ActiveProfile, CustomSound
-    global NotifyMode, NotifyUrl
+    global NotifyDiscordOn, NotifyNtfyOn, NotifyDiscord, NotifyNtfy
     IniWrite, %LogPath%,        %IniFile%, settings, log_path
     IniWrite, %Beeps%,          %IniFile%, settings, beeps
     IniWrite, %CooldownSec%,    %IniFile%, settings, cooldown_sec
@@ -422,8 +446,12 @@ SaveSettings()
     IniWrite, %StartMinimized%, %IniFile%, settings, start_minimized
     IniWrite, %ActiveProfile%,  %IniFile%, settings, active_profile
     IniWrite, %CustomSound%,    %IniFile%, settings, custom_sound
-    IniWrite, %NotifyMode%,     %IniFile%, settings, notify_mode
-    IniWrite, %NotifyUrl%,      %IniFile%, settings, notify_url
+    IniWrite, %NotifyDiscordOn%, %IniFile%, settings, notify_discord_on
+    IniWrite, %NotifyNtfyOn%,    %IniFile%, settings, notify_ntfy_on
+    IniWrite, %NotifyDiscord%,   %IniFile%, settings, notify_discord
+    IniWrite, %NotifyNtfy%,      %IniFile%, settings, notify_ntfy
+    IniDelete, %IniFile%, settings, notify_mode
+    IniDelete, %IniFile%, settings, notify_url
 }
 
 SaveAll()
@@ -763,37 +791,70 @@ JsonEscape(s)
 
 SendNotify(title, body)
 {
-    global NotifyMode, NotifyUrl
-    if (NotifyMode = "off" or NotifyUrl = "")
-        return
+    global NotifyDiscordOn, NotifyNtfyOn, NotifyDiscord, NotifyNtfy
+    out := ""
+    bad := 0
+    if (NotifyDiscordOn)
+    {
+        r := (NotifyDiscord = "") ? "no URL" : SendOne("discord", NotifyDiscord, title, body)
+        out .= (out = "" ? "" : " · ") . "discord: " . r
+        if (r != "ok")
+            bad := 1
+    }
+    if (NotifyNtfyOn)
+    {
+        r := (NotifyNtfy = "") ? "no URL" : SendOne("ntfy", NotifyNtfy, title, body)
+        out .= (out = "" ? "" : " · ") . "ntfy: " . r
+        if (r != "ok")
+            bad := 1
+    }
+    if (out = "")
+        return "off"
+    return bad ? out : "ok"
+}
+
+SendOne(kind, url, title, body)
+{
     try
     {
         whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
         whr.SetTimeouts(4000, 4000, 4000, 4000)
-        if (NotifyMode = "discord")
+        if (kind = "discord")
         {
             q := Chr(34)
             payload := "{" . q . "content" . q . ":" . q . JsonEscape(title . " — " . body) . q . "}"
-            whr.Open("POST", NotifyUrl, false)
+            whr.Open("POST", url, false)
             whr.SetRequestHeader("Content-Type", "application/json")
             whr.Send(payload)
         }
-        else if (NotifyMode = "ntfy")
+        else
         {
-            whr.Open("POST", NotifyUrl, false)
-            whr.SetRequestHeader("Title", title)
+            whr.Open("POST", url, false)
+            whr.SetRequestHeader("Title", RegExReplace(title, "[^\x20-\x7E]", "-"))
             whr.Send(body)
         }
+        code := whr.Status
+        return (code >= 200 and code < 300) ? "ok" : "HTTP " . code
     }
-    catch
+    catch e
     {
+        code := 0
+        try
+        {
+            code := whr.Status
+        }
+        catch
+        {
+            code := 0
+        }
+        return (code ? "HTTP " . code : "network error: " . e.Message)
     }
 }
 
 SendNotifyChat(label, chan, name, kind, shortMsg, priceTxt, priceDrop)
 {
-    global AppName, PriceAlerts, NotifyMode
-    if (NotifyMode = "off")
+    global AppName, PriceAlerts, NotifyDiscordOn, NotifyNtfyOn
+    if !NotifyDiscordOn and !NotifyNtfyOn
         return
     nbody := chan . " — " . (name != "" ? name : "?")
     nbody .= (kind = "ITEM") ? "  ·  ITEM: " . label : "  ·  " . label
@@ -2420,10 +2481,10 @@ ShowSettings()
     global AppName, cBg, cPanel, cLine, cText, cDim, cGold, cInput
     global LogPath, CustomSound, Beeps, CooldownSec, AlertSec, AlertWidth, AlertPos, StartMinimized
     global PriceMin, PriceMax, BulkOnly, BulkMin
-    global NotifyMode, NotifyUrl
+    global NotifyDiscordOn, NotifyNtfyOn, NotifyDiscord, NotifyNtfy
     global S_Log, S_Sound, S_Pos, S_Width, S_Beeps, S_Cool, S_Alert, S_Run, S_Min
     global S_PMin, S_PMax, S_Bulk, S_BMin
-    global S_NMode, S_NUrl
+    global S_NDiscOn, S_NNtfyOn, S_NDiscord, S_NNtfy
     Gui, Set:Destroy
     Gui, Set:New, +OwnerMain, %AppName% — Settings
     Gui, Set:Color, %cBg%
@@ -2464,38 +2525,45 @@ ShowSettings()
 
     ; --- external notifications ---
     Gui, Set:Font, s9 c%cText%, Segoe UI
-    Gui, Set:Add, Text, x18 y238 w110 BackgroundTrans, Notify (phone):
-    Gui, Set:Add, DropDownList, x132 y236 w84 c%cInput% vS_NMode, off|discord|ntfy
-    GuiControl, Set:ChooseString, S_NMode, %NotifyMode%
-    Gui, Set:Add, Edit, x224 y236 w288 h24 c%cInput% vS_NUrl, %NotifyUrl%
+    Gui, Set:Add, Text, x18 y238 w60 BackgroundTrans, Notify:
+    Gui, Set:Add, CheckBox, x80 y240 w80 vS_NDiscOn BackgroundTrans c%cText%, Discord
+    GuiControl, Set:, S_NDiscOn, %NotifyDiscordOn%
+    Gui, Set:Add, CheckBox, x170 y240 w80 vS_NNtfyOn BackgroundTrans c%cText%, ntfy
+    GuiControl, Set:, S_NNtfyOn, %NotifyNtfyOn%
     Gui, Set:Font, s8 c%cDim%, Segoe UI
-    Gui, Set:Add, Text, x18 y262 w460 BackgroundTrans, Discord = webhook URL   ·   ntfy = https://ntfy.sh/<your-topic>. Fired on every banner alert.
+    Gui, Set:Add, Text, x18 y266 w104 h24 BackgroundTrans, Discord webhook:
+    Gui, Set:Add, Text, x18 y296 w104 h24 BackgroundTrans, ntfy topic URL:
+    Gui, Set:Font, s9 c%cText%, Segoe UI
+    Gui, Set:Add, Edit, x126 y262 w356 h24 c%cInput% vS_NDiscord, %NotifyDiscord%
+    Gui, Set:Add, Edit, x126 y292 w356 h24 c%cInput% vS_NNtfy, %NotifyNtfy%
+    Gui, Set:Font, s8 c%cDim%, Segoe UI
+    Gui, Set:Add, Text, x18 y320 w464 BackgroundTrans, Tick the providers to use. Both can be enabled at the same time.
 
-    Gui, Set:Add, Text, x18 y282 w460 h1 Background%cLine%,
+    Gui, Set:Add, Text, x18 y342 w464 h1 Background%cLine%,
     Gui, Set:Font, s8 c%cDim%, Segoe UI
-    Gui, Set:Add, Text, x18 y290 w460 BackgroundTrans, Trade filters (0 = off). Prices are plain numbers found in trade messages.
+    Gui, Set:Add, Text, x18 y350 w464 BackgroundTrans, Trade filters (0 = off). Prices are plain numbers found in trade messages.
 
     Gui, Set:Font, s9 c%cText%, Segoe UI
-    Gui, Set:Add, Text, x18 y314 w30 BackgroundTrans, Min
-    Gui, Set:Add, Edit, x50 y310 w60 h24 c%cInput% vS_PMin, %PriceMin%
-    Gui, Set:Add, Text, x120 y314 w30 BackgroundTrans, Max
-    Gui, Set:Add, Edit, x152 y310 w60 h24 c%cInput% vS_PMax, %PriceMax%
-    Gui, Set:Add, CheckBox, x228 y312 w90 vS_Bulk BackgroundTrans c%cText%, Only bulk
+    Gui, Set:Add, Text, x18 y374 w30 BackgroundTrans, Min
+    Gui, Set:Add, Edit, x50 y370 w60 h24 c%cInput% vS_PMin, %PriceMin%
+    Gui, Set:Add, Text, x120 y374 w30 BackgroundTrans, Max
+    Gui, Set:Add, Edit, x152 y370 w60 h24 c%cInput% vS_PMax, %PriceMax%
+    Gui, Set:Add, CheckBox, x228 y372 w90 vS_Bulk BackgroundTrans c%cText%, Only bulk
     GuiControl, Set:, S_Bulk, %BulkOnly%
-    Gui, Set:Add, Text, x326 y314 w60 BackgroundTrans, Bulk min
-    Gui, Set:Add, Edit, x390 y310 w48 h24 c%cInput% vS_BMin, %BulkMin%
+    Gui, Set:Add, Text, x326 y374 w60 BackgroundTrans, Bulk min
+    Gui, Set:Add, Edit, x390 y370 w48 h24 c%cInput% vS_BMin, %BulkMin%
 
-    Gui, Set:Add, Text, x18 y344 w460 h1 Background%cLine%,
+    Gui, Set:Add, Text, x18 y404 w464 h1 Background%cLine%,
     Gui, Set:Font, s8 c%cDim%, Segoe UI
-    Gui, Set:Add, Text, x18 y352 w460 BackgroundTrans, The alarm sound is used only if the matched category has no sound of its own.
+    Gui, Set:Add, Text, x18 y412 w464 BackgroundTrans, The alarm sound is used only if the matched category has no sound of its own.
 
     Gui, Set:Font, s9 c%cText%, Segoe UI
-    Gui, Set:Add, Text, x18 y390 w70 h28 Center 0x200 Background3E5A3E gSetDoSave cFFFFFF, Save
-    Gui, Set:Add, Text, x98 y390 w70 h28 Center 0x200 Background%cPanel% gCloseSettings, Cancel
-    Gui, Set:Add, Text, x178 y390 w90 h28 Center 0x200 Background%cPanel% gTestFromSettings, Test sound
-    Gui, Set:Add, Text, x278 y390 w92 h28 Center 0x200 Background%cPanel% gTestNotify, Test notify
+    Gui, Set:Add, Text, x18 y450 w70 h28 Center 0x200 Background3E5A3E gSetDoSave cFFFFFF, Save
+    Gui, Set:Add, Text, x98 y450 w70 h28 Center 0x200 Background%cPanel% gCloseSettings, Cancel
+    Gui, Set:Add, Text, x178 y450 w90 h28 Center 0x200 Background%cPanel% gTestFromSettings, Test sound
+    Gui, Set:Add, Text, x278 y450 w92 h28 Center 0x200 Background%cPanel% gTestNotify, Test notify
 
-    Gui, Set:Show, w512 h442, %AppName% — Settings
+    Gui, Set:Show, w512 h506, %AppName% — Settings
 }
 
 BrowseLog:
@@ -2522,28 +2590,57 @@ TestFromSettings:
 return
 
 TestNotify:
-    GuiControlGet, vNMode, Set:, S_NMode
-    GuiControlGet, vNUrl,  Set:, S_NUrl
-    vNMode := (vNMode = "" ? "off" : vNMode)
-    vNUrl  := Trim(vNUrl)
-    if !(vNMode = "discord" or vNMode = "ntfy")
+    GuiControlGet, vNDiscOn, Set:, S_NDiscOn
+    GuiControlGet, vNNtfyOn, Set:, S_NNtfyOn
+    GuiControlGet, vNDisc,   Set:, S_NDiscord
+    GuiControlGet, vNNtfy,   Set:, S_NNtfy
+    vNDisc := Trim(vNDisc)
+    vNNtfy := Trim(vNNtfy)
+    provs := ""
+    if (vNDiscOn)
+        provs .= (provs = "" ? "" : " + ") . "discord"
+    if (vNNtfyOn)
+        provs .= (provs = "" ? "" : " + ") . "ntfy"
+    if (provs = "")
     {
-        MsgBox, 48, %AppName%, Choose Discord or ntfy first.
+        MsgBox, 48, %AppName%, Tick Discord and/or ntfy first.
         return
     }
-    if (vNUrl = "")
+    if (vNDiscOn and vNDisc = "")
     {
-        MsgBox, 48, %AppName%, Enter the %vNMode% URL first.
+        MsgBox, 48, %AppName%, Enter the Discord webhook URL first.
         return
     }
-    savedMode := NotifyMode
-    savedUrl  := NotifyUrl
-    NotifyMode := vNMode
-    NotifyUrl  := vNUrl
-    SendNotify(AppName, "Test notification from PoE2 Chat Alert. If you see this on your phone, it works.")
-    NotifyMode := savedMode
-    NotifyUrl  := savedUrl
-    SetStatus("Test notification sent (" . vNMode . ").")
+    if (vNNtfyOn and vNNtfy = "")
+    {
+        MsgBox, 48, %AppName%, Enter the ntfy topic URL first.
+        return
+    }
+    savedDiscordOn := NotifyDiscordOn
+    savedNtfyOn    := NotifyNtfyOn
+    savedDiscord   := NotifyDiscord
+    savedNtfy      := NotifyNtfy
+    NotifyDiscordOn := (vNDiscOn ? 1 : 0)
+    NotifyNtfyOn    := (vNNtfyOn ? 1 : 0)
+    NotifyDiscord   := vNDisc
+    NotifyNtfy      := vNNtfy
+    res := SendNotify(AppName, "Test notification from PoE2 Chat Alert. If you see this on your phone, it works.")
+    NotifyDiscordOn := savedDiscordOn
+    NotifyNtfyOn    := savedNtfyOn
+    NotifyDiscord   := savedDiscord
+    NotifyNtfy      := savedNtfy
+    if (res = "ok")
+    {
+        SetStatus("Test notification sent (" . provs . ").")
+        CopyToast("Test notification sent via " . provs, "ok")
+    }
+    else
+    {
+        SetStatus("Test notification FAILED (" . provs . ").")
+        msg := "Could not send the test notification via " . provs . "." . "`n`n" . res
+        msg .= "`n`nCheck the URL(s) and that the phone is subscribed to the same ntfy topic."
+        MsgBox, 16, %AppName%, %msg%
+    }
 return
 
 SetDoSave:
@@ -2560,8 +2657,10 @@ SetDoSave:
     GuiControlGet, vPMax,  Set:, S_PMax
     GuiControlGet, vBulk,  Set:, S_Bulk
     GuiControlGet, vBMin,  Set:, S_BMin
-    GuiControlGet, vNMode, Set:, S_NMode
-    GuiControlGet, vNUrl,  Set:, S_NUrl
+    GuiControlGet, vNDiscOn, Set:, S_NDiscOn
+    GuiControlGet, vNNtfyOn, Set:, S_NNtfyOn
+    GuiControlGet, vNDisc, Set:, S_NDiscord
+    GuiControlGet, vNNtfy, Set:, S_NNtfy
 
     ; validate numbers
     vB := (vB < 1) ? 1 : (vB > 20 ? 20 : vB)
@@ -2583,12 +2682,10 @@ SetDoSave:
     PriceMax    := vPMax + 0
     BulkOnly    := (vBulk ? 1 : 0)
     BulkMin     := vBMin + 0
-    NotifyMode  := (vNMode = "" ? "off" : vNMode)
-    NotifyUrl   := Trim(vNUrl)
-    if !(NotifyMode = "off" or NotifyMode = "discord" or NotifyMode = "ntfy")
-        NotifyMode := "off"
-    if (NotifyMode = "off")
-        NotifyUrl := ""
+    NotifyDiscordOn := (vNDiscOn ? 1 : 0)
+    NotifyNtfyOn    := (vNNtfyOn ? 1 : 0)
+    NotifyDiscord := Trim(vNDisc)
+    NotifyNtfy    := Trim(vNNtfy)
     if (vSnd != "" and FileExist(vSnd))
         try SoundSet, %Volume%
 
