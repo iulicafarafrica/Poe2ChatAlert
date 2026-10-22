@@ -118,7 +118,13 @@ PricesDirty    := 0         ; price history changed and not yet written to disk
 WordSets       := {}        ; "profile|game" -> array of word objects
 HistoryLines   := 0         ; number of lines in the history log file
 ItemRefreshDays := 7        ; refresh the item database when it is older than this
-LastRefreshTry := 0         ; last automatic refresh attempt (A_Now)
+LastRefreshTry := 0         ; last automatic refresh attempt (hour stamp)
+
+; a small sortable stamp (YYYYMMHH) - A_Now is too big for 32 bit arithmetic
+NowStamp()
+{
+    return (A_YYYY * 100 + A_MM) * 100 + A_H
+}
 
 ; -------------------- data --------------------
 CatColor := {}
@@ -358,7 +364,7 @@ InitConfig()
     BuildWatchPattern()
     SaveAll()
     SetTimer, FlushPricesTimer, 15000     ; write the price history to disk every 15 s
-    SetTimer, AutoRefreshItems, 20000     ; refresh the item database a moment after start
+    SetTimer, AutoRefreshItems, -20000    ; refresh the item database a moment after start (one shot)
     SetTimer, AutoRefreshItemsHourly, 3600000
 }
 
@@ -1398,12 +1404,27 @@ FetchItemsFromApi()
 ; download a fresh copy; 0 disables the automatic refresh
 
 ; age of a database file in days (a missing file counts as "very old")
+; NB: AHK v1 integers are 32 bit, so A_Now (14 digits) must never be used in
+; arithmetic - the date is converted to a small day number instead.
+DaysFromYMD(y, m, d)
+{
+    y := y - (m <= 2 ? 1 : 0)
+    era := Floor(y / 400)
+    yoe := y - era * 400
+    mp := Mod(m + 9, 12)
+    doy := Floor((153 * mp + 2) / 5) + d - 1
+    doe := yoe * 365 + Floor(yoe / 4) - Floor(yoe / 100) + doy
+    return era * 146097 + doe - 719468
+}
+
 ItemDbAge(path)
 {
     if !FileExist(path)
         return 99999
-    FileGetTime, ft, %path%, M
-    return (A_Now - ft) / 86400000
+    FileGetTime, ft, %path%, M          ; YYYYMMDDHH24MISS, local time
+    fileDay := DaysFromYMD(SubStr(ft, 1, 4) + 0, SubStr(ft, 5, 2) + 0, SubStr(ft, 7, 2) + 0)
+    today := DaysFromYMD(A_YYYY, A_MM, A_DD)
+    return today - fileDay
 }
 
 ItemDbAgeText(path)
@@ -1427,12 +1448,12 @@ MaybeRefreshItems(quiet := 1)
     global ItemsFile, ItemRefreshDays, LastRefreshTry, GameMode
     if (ItemRefreshDays <= 0)
         return 0
-    ; do not hammer a failing API
-    if (LastRefreshTry > 0 and (A_Now - LastRefreshTry) < 3600000)
+    ; do not hammer a failing API (one attempt per hour)
+    if (LastRefreshTry > 0 and (NowStamp() - LastRefreshTry) < 1)
         return 0
     if (ItemDbAge(ItemsFile) < ItemRefreshDays)
         return 0
-    LastRefreshTry := A_Now
+    LastRefreshTry := NowStamp()
     SetStatus("Updating the item database...")
     n := FetchItemsFromApi()
     if (n < 0)
@@ -3372,7 +3393,7 @@ SetGameChanged:
         GuiControl, Main:, BtnToggle, Start
     }
     SetTimer, ReopenSettings, -80
-    SetTimer, AutoRefreshItems, 2500       ; the new game's database may be stale
+    SetTimer, AutoRefreshItems, -2500      ; the new game's database may be stale (one shot)
 return
 
 ReopenSettings:
@@ -3450,7 +3471,7 @@ SetDoSave:
         RefreshWordList()
         LoadItems()
         BuildWatchPattern()
-        SetTimer, AutoRefreshItems, 2500   ; the new game's database may be stale
+        SetTimer, AutoRefreshItems, -2500      ; the new game's database may be stale (one shot)
     }
     if (GameMode = "poe1")
         LogPathPoe1 := newLog
