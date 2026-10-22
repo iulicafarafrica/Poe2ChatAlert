@@ -1,6 +1,6 @@
 <div align="center">
 
-# Chat Alert <sub>for Path of Exile 2 &amp; 1</sub>
+# Chat Alert <sub>for Path of Exile 1 &amp; 2</sub>
 
 **Never miss a whisper, a party invite or a guildmate asking for leech — get an on-screen alert the instant a word you care about hits the chat.**
 
@@ -16,7 +16,7 @@
 
 ---
 
-**Chat Alert** tails the chat log **Path of Exile 2 or Path of Exile 1** writes to disk and pops a clean, always-on-top
+**Chat Alert** tails the in-game chat log of **Path of Exile 1 and Path of Exile 2** and pops a clean, always-on-top
 banner the moment something you care about appears — a guildmate asking for leech, a party invite in Global, a whisper
 you would have missed while fighting a boss.
 
@@ -34,7 +34,7 @@ in windowed, borderless and fullscreen.
 
 | | |
 |---|---|
-| **Two games** | Path of Exile 2 **and** Path of Exile 1 — one switch, each game remembers its own log file |
+| **Two games** | Path of Exile 1 **and** Path of Exile 2 — one switch, each game remembers its own log file |
 | **Word alerts** | Any word or phrase, with case-sensitivity, whole-word matching and priority levels |
 | **Five channels** | Global · Trade · Party · Whisper · Guild — each with its own colour, sound and on/off switch |
 | **Phone push** | Discord webhook and/or ntfy — enable one or both, each with its own URL |
