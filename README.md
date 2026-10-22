@@ -235,7 +235,17 @@ These work while the game has focus (unless the combination is bound in-game):
 
 ### The Path of Exile 1 item database is included
 - `items-poe1.txt` (5 414 entries) ships with the app, so **Trade watch** works in Path of Exile 1 right away.
-- *Update items (API)* still refreshes the database for the game you are playing.
+- The database of the game you are playing is **refreshed automatically** when it is missing or older than a week - the
+  app checks in the background a moment after start and once per hour, and never blocks the UI while it downloads.
+  *Update items (API)* still refreshes it on demand.
+- **Trade watch** shows when the database was last updated, so you always know if it is current.
+
+### Bug fixes
+- Discord payloads are escaped correctly: a message containing `\` or `"` no longer breaks the JSON and silently drops
+  the notification.
+- The ntfy title and the message are encoded as UTF-8.
+- The log file is detected correctly when the game is running.
+- The Discord alert shows the message as the body and the application name as the title.
 
 ---
 

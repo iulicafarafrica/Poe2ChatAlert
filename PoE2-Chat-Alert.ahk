@@ -117,6 +117,8 @@ PriceHist      := {}        ; sanitized item key -> "ts_amt_cur;ts_amt_cur;..."
 PricesDirty    := 0         ; price history changed and not yet written to disk
 WordSets       := {}        ; "profile|game" -> array of word objects
 HistoryLines   := 0         ; number of lines in the history log file
+ItemRefreshDays := 7        ; refresh the item database when it is older than this
+LastRefreshTry := 0         ; last automatic refresh attempt (A_Now)
 
 ; -------------------- data --------------------
 CatColor := {}
@@ -356,6 +358,8 @@ InitConfig()
     BuildWatchPattern()
     SaveAll()
     SetTimer, FlushPricesTimer, 15000     ; write the price history to disk every 15 s
+    SetTimer, AutoRefreshItems, 20000     ; refresh the item database a moment after start
+    SetTimer, AutoRefreshItemsHourly, 3600000
 }
 
 HasProfile(name)
@@ -1368,6 +1372,7 @@ FetchItemsFromApi()
     try
     {
         whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+        whr.SetTimeouts(20000, 20000, 20000, 20000)
         whr.Open("GET", url, false)
         whr.SetRequestHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36")
         whr.SetRequestHeader("Accept", "application/json")
@@ -1387,6 +1392,68 @@ FetchItemsFromApi()
     }
     return n
 }
+
+; --- automatic item database refresh -------------------------------------
+; how old (in days) the item database of a game may get before we
+; download a fresh copy; 0 disables the automatic refresh
+
+; age of a database file in days (a missing file counts as "very old")
+ItemDbAge(path)
+{
+    if !FileExist(path)
+        return 99999
+    FileGetTime, ft, %path%, M
+    return (A_Now - ft) / 86400000
+}
+
+ItemDbAgeText(path)
+{
+    global ItemRefreshDays
+    age := ItemDbAge(path)
+    if (age > 3650)
+        return "never updated"
+    if (age < 1)
+        return "updated today"
+    if (age < 2)
+        return "updated yesterday"
+    return "updated " . Floor(age) . " days ago"
+}
+
+; refresh the item database of the game that is currently active, but only
+; when it is missing or older than ItemRefreshDays. Never blocks the UI for
+; long and never shows a dialog in quiet mode.
+MaybeRefreshItems(quiet := 1)
+{
+    global ItemsFile, ItemRefreshDays, LastRefreshTry, GameMode
+    if (ItemRefreshDays <= 0)
+        return 0
+    ; do not hammer a failing API
+    if (LastRefreshTry > 0 and (A_Now - LastRefreshTry) < 3600000)
+        return 0
+    if (ItemDbAge(ItemsFile) < ItemRefreshDays)
+        return 0
+    LastRefreshTry := A_Now
+    SetStatus("Updating the item database...")
+    n := FetchItemsFromApi()
+    if (n < 0)
+    {
+        if (quiet)
+            SetStatus("Could not update the item database - keeping the current one.")
+        return -1
+    }
+    SetStatus("Item database updated (" . n . " entries).")
+    if (!quiet)
+        MsgBox, 64, %AppName%, Item database updated: %n% entries.
+    return n
+}
+
+AutoRefreshItems:
+    MaybeRefreshItems(1)
+return
+
+AutoRefreshItemsHourly:
+    MaybeRefreshItems(1)
+return
 
 LoadWatch()
 {
@@ -3305,6 +3372,7 @@ SetGameChanged:
         GuiControl, Main:, BtnToggle, Start
     }
     SetTimer, ReopenSettings, -80
+    SetTimer, AutoRefreshItems, 2500       ; the new game's database may be stale
 return
 
 ReopenSettings:
@@ -3382,6 +3450,7 @@ SetDoSave:
         RefreshWordList()
         LoadItems()
         BuildWatchPattern()
+        SetTimer, AutoRefreshItems, 2500   ; the new game's database may be stale
     }
     if (GameMode = "poe1")
         LogPathPoe1 := newLog
@@ -3544,7 +3613,7 @@ return
 ShowTradeWatch()
 {
     global AppName, cBg, cPanel, cLine, cText, cDim, cInput, PaletteOrder
-    global Items, WatchList, WatchOn, TradeOnly, ItemColor, ItemSound
+    global Items, ItemsFile, WatchList, WatchOn, TradeOnly, ItemColor, ItemSound
     global W_Search, W_Results, W_Watch, W_Enabled, W_TradeOnly, W_Color, W_Swatch, W_Sound
     global W_RuleEdit, W_Rules, W_RuleEnabled
 
@@ -3554,7 +3623,8 @@ ShowTradeWatch()
     Gui, Watch:Font, s9 c%cText%, Segoe UI
 
     n := Items.Length()
-    Gui, Watch:Add, Text, x18 y16 w360 BackgroundTrans, Item database (%n% entries):
+    dbInfo := "Item database (" . n . " entries, " . ItemDbAgeText(ItemsFile) . "):"
+    Gui, Watch:Add, Text, x18 y16 w360 BackgroundTrans, %dbInfo%
     Gui, Watch:Add, Edit, x18 y36 w360 h24 c%cInput% vW_Search gW_SearchChanged,
     Gui, Watch:Add, ListBox, x18 y64 w360 h168 c%cInput% vW_Results gW_ResultsPick,
     Gui, Watch:Font, s8 c%cDim%, Segoe UI
