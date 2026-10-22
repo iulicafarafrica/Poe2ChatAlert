@@ -340,11 +340,15 @@ Settings are stored in `PoE2-Chat-Alert.ini` next to the script and saved automa
 | `items.txt` | Item database used by Trade watch for Path of Exile 2 | yes |
 | `items-poe1.txt` | Item database used by Trade watch for Path of Exile 1 | yes |
 | `README.md`, `screenshots/` | Documentation | yes |
-| `PoE2-Chat-Alert.ini` | Your settings (both games), profiles and history (created on first run) | no |
+| `PoE2-Chat-Alert.ini` | Your settings (both games) and categories (created on first run) | no |
+| `PoE2-Chat-Alert-words.txt` | Your word lists, per profile and per game | no |
+| `PoE2-Chat-Alert-watch.txt` | Watched items and custom rules | no |
+| `PoE2-Chat-Alert-prices.txt` | Price history and per-item price alerts | no |
+| `PoE2-Chat-Alert-history.log` | Every match, appended the moment it happens | no |
 | `PoE2-Chat-Alert-matches.txt` | Local log of every match | no |
 | `PoE2-Chat-Alert-<timestamp>.csv` | History exports | no |
 
-Delete the `.ini` file to reset the app to defaults.
+Delete the `.ini` file and the `PoE2-Chat-Alert-*.txt` / `*.log` files to reset the app to defaults.
 
 ---
 
