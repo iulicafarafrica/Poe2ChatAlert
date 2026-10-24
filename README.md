@@ -10,51 +10,11 @@
 ![Version](https://img.shields.io/badge/version-1.3-D9A441?style=flat-square)
 ![No dependencies](https://img.shields.io/badge/dependencies-none-6E7681?style=flat-square)
 
-[My other tools](#my-other-tools-for-path-of-exile) · [Screenshots](#screenshots) · [Quick start](#quick-start) · [Features](#features) · [What's new](#whats-new-in-v13) · [Troubleshooting](#troubleshooting)
+[Quick start](#quick-start) · [Features](#features) · [What's new](#whats-new-in-v13) · [Screenshots](#screenshots) · [Troubleshooting](#troubleshooting)
 
 </div>
 
 ---
-
-## My other tools for Path of Exile
-
-- **[Path of Expedition](https://github.com/iulicafarafrica/PathOfExpedition2)** — PoE2 Expedition price checker & planner. Reads the in-game panel with OCR, shows live poe.ninja prices, rune recipes and an Expedition guide. 10 UI languages.
-
----
-
-## Screenshots
-
-<table>
-<tr>
-<td width="50%">
-
-**Main window** — profiles, word list, history and full-message panel.
-
-<img src="screenshots/01-main-window.png" alt="Main window">
-
-</td>
-<td width="50%">
-
-**Settings** — log path, alarms, banner behaviour, notifications.
-
-<img src="screenshots/02-settings.png" alt="Settings">
-
-</td>
-</tr>
-<tr>
-<td colspan="2">
-
-**In-game alert** — channel tag, word, player and message, rendered over the game.
-
-<img src="screenshots/04-ingame-alert.png" alt="In-game alert">
-
-</td>
-</tr>
-</table>
-
----
-
-## About
 
 **Chat Alert** tails the in-game chat log of **Path of Exile 1 and Path of Exile 2** and pops a clean, always-on-top
 banner the moment something you care about appears — a guildmate asking for leech, a party invite in Global, a whisper
@@ -65,6 +25,8 @@ log file, and you can change game at any time without restarting.
 
 It **never touches the game process**. It only reads a text file: no injection, no memory access, no FPS impact, works
 in windowed, borderless and fullscreen.
+
+<img src="screenshots/04-ingame-alert.png" alt="Chat Alert banner over Path of Exile 2" width="720">
 
 ---
 
@@ -325,6 +287,38 @@ These work while the game has focus (unless the combination is bound in-game):
 - Copy actions (whisper, quick reply, copy line/player) now show a **toast confirmation** at the bottom of the screen,
   in green for success and red for "select a row first" style errors.
 - The Settings window was re-laid out so every provider has a dedicated row.
+
+---
+
+## Screenshots
+
+<table>
+<tr>
+<td width="50%">
+
+**Main window** — profiles, word list, history and full-message panel.
+
+<img src="screenshots/01-main-window.png" alt="Main window">
+
+</td>
+<td width="50%">
+
+**Settings** — log path, alarms, banner behaviour, notifications.
+
+<img src="screenshots/02-settings.png" alt="Settings">
+
+</td>
+</tr>
+<tr>
+<td colspan="2">
+
+**In-game alert** — channel tag, word, player and message, rendered over the game.
+
+<img src="screenshots/04-ingame-alert.png" alt="In-game alert">
+
+</td>
+</tr>
+</table>
 
 ---
 
