@@ -1,6 +1,0 @@
-Default	poe1	diamond	1
-Default	poe1	wts	1
-Default	poe1	wtb	1
-Default	poe2	diamond	1
-Default	poe2	wts	1
-Default	poe2	wtb	1
