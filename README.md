@@ -65,6 +65,8 @@ in windowed, borderless and fullscreen.
 **[Path of Expedition](https://github.com/iulicafarafrica/PathOfExpedition2)** — PoE2 Expedition price checker & planner.
 Reads the in-game panel with OCR, shows live poe.ninja prices, rune recipes and an Expedition guide. 10 UI languages.
 
+<a href="https://github.com/iulicafarafrica/PathOfExpedition2"><img src="screenshots/06-path-of-expedition.png" alt="Path of Expedition — live prices, rune planner and all combos" width="560"></a>
+
 **[PoE2 Trade Watcher](https://chromewebstore.google.com/detail/poe2-trade-watcher/cijhdepfikmgngilainmcokgblkbbdkp)**
 — Chrome extension. Save PoE2 trade items, track prices, build collections, and get Discord or ntfy alerts.
 
