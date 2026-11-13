@@ -2057,7 +2057,7 @@ currency|Imperial Delirium Orb|0
 currency|Cartographer's Delirium Orb|0
 currency|Challenging Delirium Orb|0
 currency|Kalguuran Delirium Orb|0
-currency|Skittering Delirium Orb|0
+currency|Threaded Delirium Orb|0
 currency|Primal Delirium Orb|0
 currency|Jeweller's Delirium Orb|0
 currency|Singular Delirium Orb|0
@@ -2331,7 +2331,7 @@ currency|Maven's Chisel of Avarice|0
 currency|Maven's Chisel of Divination|0
 currency|Maven's Chisel of Proliferation|0
 currency|Maven's Chisel of Procurement|0
-currency|Maven's Chisel of Scarabs|0
+currency|Maven's Chisel of Threads|0
 currency|Divine Orb|0
 currency|Orb of Intention|0
 currency|Foulborn Orb of Augmentation|0
@@ -2391,9 +2391,9 @@ currency|Valdo's Puzzle Box|0
 currency|Blacksmith's Whetstone|0
 currency|Coin of Restoration|0
 currency|Coin of Desecration|0
-currency|Coin of Knowledge|0
-currency|Coin of Skill|0
-currency|Coin of Power|0
+currency|Soul Core of Intellect|0
+currency|Soul Core of Finesse|0
+currency|Soul Core of Might|0
 currency|Memory of Trauma|0
 currency|Gold|0
 currency|Primal Crystallised Lifeforce|0
@@ -2549,6 +2549,7 @@ currency|Hand of Arimor|0
 currency|Abberathine Horns|0
 currency|Admiral Proclar's Pipe|0
 currency|Alchemical Chalice|0
+currency|Royal Visage|0
 currency|Crescent Splinter|0
 currency|Primordial Fragment|0
 currency|Cloth Belt Piece|0
@@ -5013,6 +5014,7 @@ itemised monsters|Mutated Winterclaw|0
 itemised monsters|Scrabbling Menace|0
 itemised monsters|Cave Crustacean|0
 itemised monsters|Invading Crustacean|0
+itemised monsters|Shield Crab|0
 itemised monsters|Bleached Crustacean|0
 itemised monsters|Shivershell|0
 itemised monsters|Deep Crustacean|0
